@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promundi 🇵🇦 — Inteligencia de Experiencia al Cliente en Panamá</title>
+<meta name="description" content="La primera plataforma ciudadana que mide la experiencia del cliente en Panamá mediante evaluaciones emocionales anónimas." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://promundi.com.pa/" />
+<meta property="og:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
+<meta property="og:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
+<meta property="og:locale" content="es_PA" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Promundi","url":"https://promundi.com.pa","description":"Plataforma de inteligencia de experiencia al cliente en Panamá","applicationCategory":"DataApplication","inLanguage":"es-PA"}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+:root{
+  --p:#0A4D6E;--a:#C8102E;--g:#2D6A4F;--o:#C9943A;
+  --bg:#F8F9FA;--card:#fff;--tx:#1A1A1A;--mu:#64748B;--bd:#E2E8F0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:var(--card);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:var(--p);cursor:default;user-select:none;}
+.logo span{color:var(--a);}
+.nav-pills{display:flex;gap:6px;}
+.pill{padding:8px 16px;border-radius:8px;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;background:transparent;color:var(--mu);transition:all 0.2s;}
+.pill.active{background:var(--p);color:#fff;}
+.pill:hover:not(.active){background:var(--bd);}
+
+/* HERO */
+.hero{padding:60px 5% 44px;text-align:center;background:radial-gradient(ellipse at top right,#dbeafe 0%,var(--bg) 70%);border-bottom:1px solid var(--bd);}
+.hero-badge{display:inline-block;padding:5px 16px;background:rgba(10,77,110,0.1);color:var(--p);border-radius:100px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;color:var(--p);max-width:640px;margin:0 auto 14px;}
+.hero h1 em{color:var(--a);font-style:normal;}
+.hero p{max-width:520px;margin:0 auto 28px;color:var(--mu);font-size:0.95rem;line-height:1.7;}
+.hero-ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
+.live-stats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;}
+.stat-item{text-align:center;}
+.stat-val{display:block;font-size:1.9rem;font-weight:800;color:var(--p);}
+.stat-lab{font-size:0.65rem;color:var(--mu);text-transform:uppercase;font-weight:600;letter-spacing:1px;}
+.sdiv{width:1px;height:36px;background:var(--bd);align-self:center;}
+
+/* BUTTONS */
+.btn{padding:12px 22px;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:all 0.2s;}
+.btn-p{background:var(--p);color:#fff;}.btn-p:hover{background:#083d58;}
+.btn-o{background:transparent;color:var(--p);border:2px solid var(--p);}.btn-o:hover{background:var(--p);color:#fff;}
+.btn-r{background:var(--a);color:#fff;}.btn-r:hover{background:#a00d23;}
+.btn-gh{background:transparent;color:var(--mu);border:1.5px solid var(--bd);}.btn-gh:hover{border-color:var(--tx);color:var(--tx);}
+.btn-w{background:#fff;color:var(--p);}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:#25D366;color:#fff;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;text-decoration:none;white-space:nowrap;}
+
+/* MAIN */
+.main{max-width:860px;margin:0 auto;padding:36px 5% 80px;}
+.view{display:none;}.view.active{display:block;}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:6px;}
+.sec-sub{font-size:0.78rem;color:var(--mu);margin-bottom:20px;}
+
+/* SETUP CARD */
+.setup-card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:28px;margin-bottom:18px;}
+.setup-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mu);margin-bottom:8px;margin-top:18px;display:block;}
+.setup-label:first-of-type{margin-top:0;}
+.req{color:var(--a);font-size:0.72rem;}
+.place-input{width:100%;padding:13px 16px;border:1.5px solid var(--bd);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.92rem;outline:none;transition:border-color 0.2s;background:#fff;}
+.place-input:focus{border-color:var(--p);}
+.step1{background:linear-gradient(135deg,rgba(10,77,110,0.06),rgba(45,106,79,0.04));border:2px solid var(--p);border-radius:14px;padding:18px;margin-bottom:18px;}
+.step1-badge{display:inline-flex;align-items:center;gap:6px;background:var(--p);color:#fff;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:4px 12px;border-radius:100px;margin-bottom:10px;}
+.step1-label{font-size:0.9rem;font-weight:700;color:var(--p);margin-bottom:8px;display:block;}
+.step1-hint{font-size:0.76rem;color:var(--mu);line-height:1.5;margin-bottom:10px;}
+.anon{display:inline-flex;align-items:center;gap:6px;background:rgba(45,106,79,0.1);color:var(--g);font-size:0.76rem;font-weight:700;padding:6px 14px;border-radius:100px;margin-bottom:18px;border:1px solid rgba(45,106,79,0.2);}
+
+/* SELECTOR GRID */
+.sel-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.sel-btn{padding:8px 14px;border:1.5px solid var(--bd);border-radius:100px;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;color:var(--tx);transition:all 0.18s;white-space:nowrap;}
+.sel-btn:hover{border-color:var(--p);color:var(--p);}
+.sel-btn.active{background:var(--p);color:#fff;border-color:var(--p);}
+.prov-sec-label{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--mu);margin:12px 0 6px;display:block;}
+.prov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;}
+.prov-btn{padding:9px 12px;border:1.5px solid var(--bd);border-radius:8px;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;color:var(--tx);transition:all 0.18s;text-align:center;}
+.prov-btn:hover{border-color:var(--p);color:var(--p);}
+.prov-btn.active{background:var(--p);color:#fff;border-color:var(--p);}
+.form-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:20px;}
+.form-note{font-size:0.76rem;color:var(--mu);}
+
+/* PREVIEW QUESTIONS */
+.preview-card{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:18px;}
+.prev-title{font-weight:700;font-size:0.86rem;margin-bottom:12px;}
+.prev-list{display:flex;flex-direction:column;gap:8px;}
+.prev-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#fff;border-radius:10px;border:1px solid var(--bd);}
+.prev-icon{font-size:1rem;flex-shrink:0;}
+.prev-cat{font-size:0.63rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--g);margin-bottom:2px;}
+.prev-q{font-size:0.78rem;line-height:1.4;}
+
+/* PROGRESS */
+.prog-wrap{margin-bottom:22px;}
+.prog-meta{display:flex;justify-content:space-between;font-size:0.76rem;color:var(--mu);margin-bottom:8px;}
+.prog-track{height:5px;background:var(--bd);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--p),var(--g));border-radius:3px;transition:width 0.4s ease;width:0%;}
+
+/* QUESTION CARD */
+.q-card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:32px 26px 24px;margin-bottom:16px;box-shadow:0 4px 20px rgba(10,77,110,0.06);animation:fadeUp 0.3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.q-label{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--g);background:rgba(45,106,79,0.1);padding:4px 12px;border-radius:100px;margin-bottom:16px;}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,3vw,1.45rem);font-weight:700;line-height:1.3;margin-bottom:24px;text-align:center;}
+.emo-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.emo-btn{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 8px;border:2px solid var(--bd);border-radius:12px;background:#fff;cursor:pointer;transition:all 0.18s;min-width:60px;flex:1;}
+.emo-btn:hover{border-color:var(--p);transform:translateY(-2px);}
+.emo-btn.active{border-color:var(--p);background:#EFF6FF;transform:translateY(-2px);}
+.emo-icon{font-size:1.4rem;line-height:1;}
+.emo-label{font-size:0.6rem;color:var(--mu);text-align:center;font-weight:600;}
+.emo-btn.active .emo-label{color:var(--p);}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:10px;}
+.q-count{font-size:0.78rem;color:var(--mu);}
+
+/* SUBMIT */
+.submit-card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:26px;margin-bottom:16px;}
+.submit-card h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;margin-bottom:16px;}
+.sum-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.sum-item{text-align:center;padding:12px 6px;background:var(--bg);border-radius:10px;border:1px solid var(--bd);}
+.sum-emoji{font-size:1.2rem;}
+.sum-cat{font-size:0.62rem;color:var(--mu);margin:3px 0 2px;font-weight:600;text-transform:uppercase;}
+.sum-score{font-family:'Playfair Display',serif;font-weight:800;font-size:0.95rem;color:var(--p);}
+.submit-row{display:flex;gap:10px;justify-content:flex-end;}
+.wa-card{background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:16px 20px;margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.wa-card p{font-size:0.84rem;color:#166534;font-weight:600;margin:0;}
+
+/* EXPLORAR */
+.explore-input{width:100%;padding:12px 16px;border:1.5px solid var(--bd);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;background:#fff;margin-bottom:14px;}
+.explore-input:focus{border-color:var(--p);}
+.filter-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);margin-bottom:8px;display:block;}
+.filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px;}
+.filter-btn{padding:7px 13px;border-radius:8px;border:1.5px solid var(--bd);background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.74rem;cursor:pointer;color:var(--mu);font-weight:600;transition:all 0.18s;}
+.filter-btn:hover{border-color:var(--p);color:var(--p);}
+.filter-btn.active{background:var(--p);color:#fff;border-color:var(--p);}
+.filter-divider{height:1px;background:var(--bd);margin:12px 0;}
+.explore-count{font-size:0.82rem;color:var(--mu);margin-bottom:14px;}
+.no-results{text-align:center;padding:40px 20px;color:var(--mu);font-size:0.9rem;}
+
+/* RANK CARDS */
+.rank-list{display:flex;flex-direction:column;gap:10px;}
+.rank-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.2s;}
+.rank-card:hover{border-color:var(--p);box-shadow:0 4px 16px rgba(10,77,110,0.1);}
+.rank-pos{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;width:28px;text-align:center;flex-shrink:0;color:var(--bd);}
+.rank-pos.gold{color:var(--o)}.rank-pos.silver{color:#A8A8A8}.rank-pos.bronze{color:#C07840}
+.rank-info{flex:1;}
+.rank-name{font-weight:700;font-size:0.9rem;margin-bottom:4px;}
+.rank-badges{display:flex;gap:5px;flex-wrap:wrap;}
+.bdg{font-size:0.62rem;padding:2px 8px;border-radius:100px;background:var(--bg);color:var(--mu);border:1px solid var(--bd);}
+.bdg.hi{background:rgba(45,106,79,0.1);color:var(--g);border-color:rgba(45,106,79,0.2);}
+.rank-score{text-align:right;flex-shrink:0;}
+.rank-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--p);}
+.rank-pes{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mu);}
+.rank-votes{font-size:0.66rem;color:var(--mu);}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px;}
+.stat-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:var(--p);}
+.stat-lab2{font-size:0.68rem;color:var(--mu);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+
+/* B2B */
+.b2b{background:var(--p);border-radius:18px;padding:36px;color:#fff;margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.b2b h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px;}
+.b2b p{font-size:0.87rem;opacity:0.85;line-height:1.6;max-width:440px;}
+.b2b-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+.b2b-tag{padding:4px 11px;background:rgba(255,255,255,0.15);border-radius:100px;font-size:0.7rem;font-weight:600;}
+
+/* ABOUT */
+.flag{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-bottom:24px;}
+.flag div{flex:1;}
+.f1{background:var(--a)}.f2{background:#ddd}.f3{background:var(--p)}.f4{background:#ddd}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px;}
+.about-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;}
+.about-card .icon{font-size:1.6rem;margin-bottom:10px;}
+.about-card h3{font-family:'Playfair Display',serif;font-weight:700;margin-bottom:6px;font-size:0.9rem;}
+.about-card p{font-size:0.8rem;color:var(--mu);line-height:1.5;}
+.table-wrap{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+th{text-align:left;padding:8px 12px;background:var(--bg);font-weight:700;border-bottom:2px solid var(--bd);}
+td{padding:9px 12px;border-bottom:1px solid var(--bd);}
+tr:last-child td{border-bottom:none;}
+.ck{color:var(--g);font-weight:700;}.cx{color:var(--a);font-weight:700;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg);border-radius:20px 20px 0 0;width:100%;max-width:860px;max-height:88vh;overflow-y:auto;padding:26px 24px 40px;animation:slideUp 0.3s ease;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.modal-handle{width:40px;height:4px;background:var(--bd);border-radius:2px;margin:0 auto 20px;}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:12px;}
+.modal-title{font-family:'Playfair Display',serif;font-weight:800;font-size:1.3rem;line-height:1.2;}
+.modal-close{background:var(--bd);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.modal-pes{font-family:'Playfair Display',serif;font-size:3rem;font-weight:800;color:var(--p);line-height:1;margin-bottom:2px;}
+.modal-pes-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);margin-bottom:22px;}
+.cat-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.cat-bar-row{display:flex;align-items:center;gap:12px;}
+.cat-bar-label{font-size:0.8rem;font-weight:600;width:110px;flex-shrink:0;}
+.cat-bar-track{flex:1;height:8px;background:var(--bd);border-radius:4px;overflow:hidden;}
+.cat-bar-fill{height:100%;border-radius:4px;background:var(--p);transition:width 0.6s ease;}
+.cat-bar-fill.low{background:var(--a)}.cat-bar-fill.mid{background:var(--o)}
+.cat-bar-score{font-weight:700;font-size:0.88rem;width:24px;text-align:right;flex-shrink:0;}
+.compare-title{font-family:'Playfair Display',serif;font-weight:700;font-size:0.92rem;margin-bottom:12px;}
+.compare-list{display:flex;flex-direction:column;gap:8px;}
+.compare-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:1.5px solid var(--bd);border-radius:10px;cursor:pointer;}
+.compare-row:hover{border-color:var(--p);}
+.compare-name{font-size:0.84rem;font-weight:600;}
+.compare-score{font-family:'Playfair Display',serif;font-weight:800;font-size:1rem;}
+.cs-up{color:var(--g)}.cs-dn{color:var(--a)}.cs-eq{color:var(--mu)}
+.compare-diff{font-size:0.68rem;color:var(--mu);margin-top:2px;}
+
+/* ADMIN */
+.admin-overlay{display:none;position:fixed;inset:0;z-index:500;background:linear-gradient(160deg,#0A4D6E,#0d3d52 60%,#1a2a1f);align-items:center;justify-content:center;}
+.admin-overlay.open{display:flex;}
+.login-box{background:#fff;border-radius:18px;padding:36px;width:100%;max-width:360px;text-align:center;}
+.login-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:var(--p);margin-bottom:4px;}
+.login-logo span{color:var(--a);}
+.login-sub{font-size:0.76rem;color:var(--mu);margin-bottom:24px;}
+.login-label{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--mu);margin-bottom:8px;text-align:left;}
+.login-input{width:100%;padding:12px 14px;border:1.5px solid var(--bd);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;outline:none;margin-bottom:14px;}
+.login-input:focus{border-color:var(--p);}
+.login-btn{width:100%;padding:13px;background:var(--p);color:#fff;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:700;cursor:pointer;margin-bottom:10px;}
+.login-err{font-size:0.76rem;color:var(--a);display:none;margin-bottom:10px;}
+.login-back{font-size:0.76rem;color:var(--mu);cursor:pointer;}
+.login-back:hover{color:var(--p);}
+
+/* DASHBOARD */
+.dash-overlay{display:none;position:fixed;inset:0;z-index:400;background:var(--bg);overflow-y:auto;}
+.dash-overlay.open{display:block;}
+.dash-top{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--p);position:sticky;top:0;z-index:10;}
+.dash-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;color:#fff;}
+.dash-logo span{color:var(--o);}
+.dash-top-btns{display:flex;gap:8px;}
+.dash-btn{border:none;border-radius:8px;padding:7px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;}
+.dash-export{background:var(--g);color:#fff;}
+.dash-close{background:rgba(255,255,255,0.15);color:#fff;}
+.dash-content{padding:24px 5%;max-width:1000px;margin:0 auto;}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+.kpi-card{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:20px;position:relative;overflow:hidden;}
+.kpi-card::after{content:'';position:absolute;top:0;right:0;width:4px;height:100%;}
+.kpi-card.k1::after{background:var(--p)}.kpi-card.k2::after{background:var(--g)}.kpi-card.k3::after{background:var(--o)}.kpi-card.k4::after{background:var(--a)}
+.kpi-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);margin-bottom:8px;}
+.kpi-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--tx);line-height:1;}
+.kpi-trend{display:inline-flex;align-items:center;gap:3px;font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-top:8px;}
+.t-up{background:rgba(45,106,79,0.1);color:var(--g)}.t-dn{background:rgba(200,16,46,0.1);color:var(--a)}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.dash-card{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:20px;}
+.dash-card-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;margin-bottom:4px;}
+.dash-card-sub{font-size:0.7rem;color:var(--mu);margin-bottom:16px;}
+.prov-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prov-name{font-size:0.78rem;font-weight:500;width:100px;flex-shrink:0;}
+.prov-track{flex:1;height:7px;background:var(--bd);border-radius:4px;overflow:hidden;}
+.prov-fill{height:100%;background:linear-gradient(90deg,var(--p),var(--g));border-radius:4px;}
+.prov-count{font-size:0.72rem;font-weight:600;color:var(--p);width:32px;text-align:right;}
+.data-table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+.data-table th{text-align:left;font-size:0.66rem;text-transform:uppercase;letter-spacing:1px;color:var(--mu);padding:0 10px 10px;font-weight:600;}
+.data-table td{padding:10px;border-top:1px solid var(--bd);vertical-align:middle;}
+.score-pill{display:inline-flex;align-items:center;justify-content:center;width:36px;height:22px;border-radius:6px;font-weight:700;font-size:0.76rem;}
+.sp-hi{background:rgba(45,106,79,0.1);color:var(--g)}.sp-mid{background:rgba(201,148,58,0.1);color:var(--o)}.sp-lo{background:rgba(200,16,46,0.1);color:var(--a)}
+.pred-card{background:linear-gradient(135deg,var(--p),#1a2a1f);border-radius:14px;padding:24px;color:#fff;margin-bottom:16px;}
+.pred-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;margin-bottom:4px;}
+.pred-sub{font-size:0.74rem;color:rgba(255,255,255,0.5);margin-bottom:16px;}
+.pred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.pred-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px;}
+.pred-year{font-size:0.62rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:5px;}
+.pred-val{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--o);}
+.pred-desc{font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:3px;}
+.ai-card{background:linear-gradient(135deg,#0A4D6E,#1a2a1f);border-radius:14px;padding:24px;color:#fff;margin-top:16px;}
+.ai-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.ai-btn{background:linear-gradient(135deg,var(--p),var(--g));color:#fff;border:none;border-radius:10px;padding:10px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.ai-sub-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:18px;}
+.ai-sub-title{font-size:0.82rem;font-weight:700;color:#fff;margin-bottom:12px;}
+.alert-item{display:flex;gap:10px;padding:10px 12px;border-radius:8px;margin-bottom:8px;}
+.ai-red{background:rgba(200,16,46,0.15);}.ai-gold{background:rgba(201,148,58,0.15);}.ai-green{background:rgba(45,106,79,0.15);}
+.alert-text{font-size:0.76rem;color:rgba(255,255,255,0.85);line-height:1.4;}
+.alert-text strong{display:block;margin-bottom:2px;color:#fff;}
+.sales-item{background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;margin-bottom:8px;}
+.sales-top{display:flex;justify-content:space-between;margin-bottom:5px;}
+.sales-name{font-size:0.82rem;font-weight:700;color:#fff;}
+.sales-price{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--o);}
+.sales-reason{font-size:0.72rem;color:rgba(255,255,255,0.6);line-height:1.4;}
+.conc-box{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;min-height:100px;font-size:0.82rem;line-height:1.7;color:rgba(255,255,255,0.85);}
+.conc-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.conc-btn{padding:8px 14px;border-radius:8px;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.76rem;font-weight:700;cursor:pointer;}
+.conc-p{background:var(--o);color:#fff;}.conc-g{background:rgba(255,255,255,0.1);color:#fff;}
+.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,0.2);border-top-color:var(--o);border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--tx);color:#fff;padding:12px 24px;border-radius:100px;font-size:0.86rem;font-weight:600;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:999;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+@media(max-width:600px){
+  nav{padding:12px 4%;}
+  .pill{padding:7px 10px;font-size:0.74rem;}
+  .live-stats{gap:14px;}.sdiv{display:none;}
+  .stats-bar,.kpi-grid,.charts-row,.ai-grid,.pred-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .kpi-grid{grid-template-columns:1fr 1fr;}
+  .sum-grid{grid-template-columns:repeat(2,1fr);}
+  .b2b{padding:24px 16px;}
+  .modal{padding:20px 16px 36px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" id="logo-btn">Pro<span>mundi</span> 🇵🇦</div>
+  <div class="nav-pills" id="nav-pills">
+    <button class="pill active" data-view="evaluar">Evaluar</button>
+    <button class="pill" data-view="explorar">Explorar</button>
+    <button class="pill" data-view="ranking">Indicadores</button>
+    <button class="pill" data-view="acerca">Metodología</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-badge">🇵🇦 Iniciativa Ciudadana · Panamá</span>
+  <h1>Transformamos experiencias reales en <em>inteligencia de mercado</em></h1>
+  <p>La primera base de datos estructurada que mide la calidad del servicio en Panamá mediante evaluaciones emocionales anónimas.</p>
+  <div class="hero-ctas">
+    <button class="btn btn-p" id="hero-eval-btn">Evaluar un negocio →</button>
+    <button class="btn btn-o" id="hero-rank-btn">Ver Indicadores</button>
+  </div>
+  <div class="live-stats">
+    <div class="stat-item"><span class="stat-val" id="hero-count">0</span><span class="stat-lab">Puntos de Data</span></div>
+    <div class="sdiv"></div>
+    <div class="stat-item"><span class="stat-val" id="hero-places">0</span><span class="stat-lab">Negocios Medidos</span></div>
+    <div class="sdiv"></div>
+    <div class="stat-item"><span class="stat-val">6</span><span class="stat-lab">Dimensiones</span></div>
+    <div class="sdiv"></div>
+    <div class="stat-item"><span class="stat-val">100%</span><span class="stat-lab">Anónimo</span></div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- EVALUAR -->
+<div id="view-evaluar" class="view active">
+  <div id="step-search">
+    <div class="preview-card">
+      <div class="prev-title">📋 Dimensiones del Índice Promundi (PES)</div>
+      <div class="prev-list">
+        <div class="prev-row"><div class="prev-icon">😊</div><div><div class="prev-cat">Atención</div><div class="prev-q">¿Sentiste que te valoraron como persona, no solo como cliente?</div></div></div>
+        <div class="prev-row"><div class="prev-icon">🧹</div><div><div class="prev-cat">Limpieza</div><div class="prev-q">¿El lugar te transmitió cuidado y respeto por el espacio compartido?</div></div></div>
+        <div class="prev-row"><div class="prev-icon">⚡</div><div><div class="prev-cat">Eficiencia</div><div class="prev-q">¿Sentiste que respetaron tu tiempo?</div></div></div>
+        <div class="prev-row"><div class="prev-icon">♿</div><div><div class="prev-cat">Accesibilidad</div><div class="prev-q">¿Cualquier persona podría moverse cómodamente aquí?</div></div></div>
+        <div class="prev-row"><div class="prev-icon">🛡️</div><div><div class="prev-cat">Seguridad</div><div class="prev-q">¿Te sentiste tranquilo/a y protegido/a en todo momento?</div></div></div>
+        <div class="prev-row"><div class="prev-icon">🌿</div><div><div class="prev-cat">Ambiente</div><div class="prev-q">¿El lugar te hizo querer quedarte más tiempo?</div></div></div>
+      </div>
+    </div>
+    <div class="setup-card">
+      <div class="anon">🔒 Tu evaluación es 100% anónima y sin texto</div>
+      <div class="step1">
+        <span class="step1-badge">📍 Paso 1 — Empieza aquí</span>
+        <span class="step1-label">Nombre del negocio + su ubicación exacta</span>
+        <p class="step1-hint">⚠️ <strong>Incluye el barrio o sucursal.</strong> Cada sucursal tiene su propia experiencia — cuéntanos cuál visitaste.</p>
+        <input type="text" class="place-input" id="place-input" placeholder="Nombre del negocio + barrio o sucursal" />
+        <p style="font-size:0.72rem;color:var(--mu);margin-top:8px">✏️ Formato: <strong>Tipo de negocio o nombre + ubicación específica</strong></p>
+      </div>
+      <span class="setup-label">Tipo de negocio <span class="req">* Selecciona uno</span></span>
+      <div class="sel-grid" id="biz-grid"></div>
+      <div id="subcats-wrap" style="display:none;margin-top:16px">
+        <span class="setup-label">Categoría específica</span>
+        <div class="sel-grid" id="subcat-grid"></div>
+      </div>
+      <span class="setup-label" style="margin-top:18px;display:block">Provincia o Comarca <span class="req">* Selecciona una</span></span>
+      <div id="prov-grid"></div>
+      <div class="form-footer">
+        <span class="form-note">* Todos los campos son obligatorios</span>
+        <button class="btn btn-p" id="start-btn">Comenzar evaluación →</button>
+      </div>
+    </div>
+  </div>
+  <div id="step-questions" style="display:none">
+    <div class="prog-wrap">
+      <div class="prog-meta"><span id="prog-place" style="font-weight:700"></span><span id="prog-count"></span></div>
+      <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+    </div>
+    <div id="q-card-wrap"></div>
+    <div class="q-nav">
+      <button class="btn btn-gh" id="btn-back" style="display:none">← Anterior</button>
+      <span class="q-count" id="q-count"></span>
+      <button class="btn btn-p" id="btn-next">Siguiente →</button>
+    </div>
+  </div>
+  <div id="step-submit" style="display:none">
+    <div class="submit-card">
+      <h3>Índice Promundi (PES) — <span id="submit-name"></span></h3>
+      <div class="sum-grid" id="sum-grid"></div>
+      <div class="submit-row">
+        <button class="btn btn-gh" id="btn-reset">Evaluar otro lugar</button>
+        <button class="btn btn-r" id="btn-submit">Enviar evaluación →</button>
+      </div>
+      <div class="wa-card" id="wa-card" style="display:none">
+        <p>¿Conoces a alguien que haya visitado este lugar? Invítalo a evaluarlo.</p>
+        <a class="btn-wa" id="wa-btn" href="#" target="_blank">📲 Compartir por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPLORAR -->
+<div id="view-explorar" class="view">
+  <div class="sec-title">Explorar Negocios</div>
+  <div class="sec-sub">Busca cualquier lugar y consulta su Índice Promundi (PES)</div>
+  <input type="text" class="explore-input" id="explore-input" placeholder="Busca por nombre de negocio…" />
+  <span class="filter-label">🔎 Filtrar por categoría</span>
+  <div class="filter-row" id="cat-filters"></div>
+  <div class="filter-divider"></div>
+  <span class="filter-label">📍 Filtrar por provincia o comarca</span>
+  <div class="filter-row" id="prov-filters"></div>
+  <div class="explore-count" id="explore-count"></div>
+  <div class="rank-list" id="explore-list"></div>
+</div>
+
+<!-- INDICADORES -->
+<div id="view-ranking" class="view">
+  <div class="stats-bar">
+    <div class="stat-card"><div class="stat-num" id="stat-places">0</div><div class="stat-lab2">Negocios</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-votes">0</div><div class="stat-lab2">Evaluaciones</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-avg">—</div><div class="stat-lab2">PES Global</div></div>
+  </div>
+  <div class="sec-title">Índice Nacional de Experiencia al Cliente</div>
+  <div class="sec-sub">Ordenado por Promundi Experience Score (PES) · Escala 1–5</div>
+  <div class="rank-list" id="ranking-list"></div>
+  <div class="b2b">
+    <div>
+      <h2>Promundi Data for Business</h2>
+      <p>Acceda a reportes analíticos, benchmarks sectoriales y datasets de experiencia para optimizar su operación.</p>
+      <div class="b2b-tags">
+        <span class="b2b-tag">📊 Reportes PES</span>
+        <span class="b2b-tag">📈 Benchmarks</span>
+        <span class="b2b-tag">🗺️ Mapas de calor</span>
+        <span class="b2b-tag">📦 Datasets CSV</span>
+        <span class="b2b-tag">🔔 Alertas</span>
+      </div>
+    </div>
+    <button class="btn btn-w" id="b2b-btn">Solicitar Reporte →</button>
+  </div>
+</div>
+
+<!-- METODOLOGÍA -->
+<div id="view-acerca" class="view">
+  <div class="flag"><div class="f1"></div><div class="f2"></div><div class="f3"></div><div class="f4"></div></div>
+  <div class="sec-title" style="margin-bottom:18px">¿Qué es Promundi 🇵🇦?</div>
+  <div class="about-grid">
+    <div class="about-card"><div class="icon">🇵🇦</div><h3>Misión</h3><p>Construir la primera base de datos estructurada sobre la experiencia del cliente en Panamá, generando inteligencia útil para ciudadanos, empresas e instituciones.</p></div>
+    <div class="about-card"><div class="icon">🧠</div><h3>Evaluación Emocional</h3><p>Antes de puntuar, una pregunta activa tu recuerdo emocional real. Sin texto, sin sesgo. Solo emociones convertidas en indicadores.</p></div>
+    <div class="about-card"><div class="icon">📊</div><h3>Índice Promundi (PES)</h3><p>Cada negocio recibe un Promundi Experience Score de 1 a 5 basado en 6 dimensiones estructuradas y comparables.</p></div>
+    <div class="about-card"><div class="icon">🔒</div><h3>Privacidad Total</h3><p>No hay nombre, no hay cuenta, no hay reseñas escritas. Solo datos limpios, anónimos y estadísticamente comparables.</p></div>
+  </div>
+  <div class="sec-title" style="margin-bottom:14px">¿Por qué Promundi es diferente?</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Característica</th><th>Google Reviews</th><th>Promundi 🇵🇦</th></tr></thead>
+      <tbody>
+        <tr><td>Tipo de dato</td><td>Texto libre</td><td class="ck">✅ Indicadores estructurados</td></tr>
+        <tr><td>Comparabilidad</td><td class="cx">❌ Difícil</td><td class="ck">✅ Directa entre negocios</td></tr>
+        <tr><td>Sesgo de texto</td><td class="cx">❌ Alto</td><td class="ck">✅ Eliminado</td></tr>
+        <tr><td>Anonimato</td><td class="cx">❌ Requiere cuenta</td><td class="ck">✅ 100% anónimo</td></tr>
+        <tr><td>Valor para empresas</td><td>Publicidad</td><td class="ck">✅ Inteligencia de mercado</td></tr>
+        <tr><td>Datos vendibles</td><td class="cx">❌ No</td><td class="ck">✅ Datasets y reportes PES</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title"></div>
+      <button class="modal-close" id="modal-close-btn">✕</button>
+    </div>
+    <div class="modal-pes" id="modal-pes"></div>
+    <div class="modal-pes-label" id="modal-label"></div>
+    <div class="cat-bars" id="modal-bars"></div>
+    <div class="compare-title">Comparar con lugares similares</div>
+    <div class="compare-list" id="modal-compare"></div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="admin-overlay" id="admin-overlay">
+  <div class="login-box">
+    <div class="login-logo">Pro<span>mundi</span> 🇵🇦</div>
+    <div class="login-sub">Acceso exclusivo · Administradora</div>
+    <label class="login-label">Contraseña</label>
+    <input class="login-input" type="password" id="admin-pass" placeholder="••••••••" />
+    <div class="login-err" id="login-err">Contraseña incorrecta.</div>
+    <button class="login-btn" id="login-btn">Entrar al Dashboard →</button>
+    <div class="login-back" id="login-back">← Volver</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash-overlay" id="dash-overlay">
+  <div class="dash-top">
+    <div class="dash-logo">Pro<span>mundi</span> 🇵🇦 <span style="font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:400;margin-left:6px">· Data Intelligence</span></div>
+    <div class="dash-top-btns">
+      <button class="dash-btn dash-export" id="dash-export-btn">⬇ CSV</button>
+      <button class="dash-btn dash-close" id="dash-close-btn">✕ Cerrar</button>
+    </div>
+  </div>
+  <div class="dash-content">
+    <div class="kpi-grid">
+      <div class="kpi-card k1"><div class="kpi-label">Evaluaciones</div><div class="kpi-num" id="kpi-evals">0</div><div class="kpi-trend t-up">↑ Total</div></div>
+      <div class="kpi-card k2"><div class="kpi-label">Negocios</div><div class="kpi-num" id="kpi-places">0</div><div class="kpi-trend t-up">↑ Medidos</div></div>
+      <div class="kpi-card k3"><div class="kpi-label">PES Global</div><div class="kpi-num" id="kpi-avg">—</div><div class="kpi-trend t-up">↑ Promedio</div></div>
+      <div class="kpi-card k4"><div class="kpi-label">Dimensión baja</div><div class="kpi-num" id="kpi-low" style="font-size:1.2rem">—</div><div class="kpi-trend t-dn">↓ Oportunidad</div></div>
+    </div>
+    <div class="charts-row">
+      <div class="dash-card"><div class="dash-card-title">PES por dimensión</div><div class="dash-card-sub">Promedio nacional</div><canvas id="chartCats" height="180"></canvas></div>
+      <div class="dash-card"><div class="dash-card-title">Por provincia</div><div class="dash-card-sub">Evaluaciones por región</div><div id="prov-bars"></div></div>
+    </div>
+    <div class="dash-card" style="margin-bottom:16px">
+      <div class="dash-card-title">Tabla PES por sector</div>
+      <div class="dash-card-sub">Base para reportes corporativos</div>
+      <table class="data-table"><thead><tr><th>Sector</th><th>Eval.</th><th>Atención</th><th>Limpieza</th><th>Eficiencia</th><th>Seguridad</th><th>PES</th></tr></thead><tbody id="dash-table"></tbody></table>
+    </div>
+    <div class="pred-card">
+      <div class="pred-title">📊 Proyección Índice Promundi</div>
+      <div class="pred-sub">Basado en tasa de crecimiento actual</div>
+      <div class="pred-grid">
+        <div class="pred-item"><div class="pred-year">Año 1 · 2026</div><div class="pred-val">5,000</div><div class="pred-desc">Primer reporte vendible</div></div>
+        <div class="pred-item"><div class="pred-year">Año 2 · 2027</div><div class="pred-val">25,000</div><div class="pred-desc">Contratos recurrentes</div></div>
+        <div class="pred-item"><div class="pred-year">Año 3 · 2028</div><div class="pred-val">100,000</div><div class="pred-desc">Referencia nacional</div></div>
+      </div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-header">
+        <div><div class="dash-card-title" style="color:#fff">🤖 Decisiones Inteligentes</div><div class="dash-card-sub" style="color:rgba(255,255,255,0.5)">Análisis automático con IA</div></div>
+        <button class="ai-btn" id="ai-btn">✨ Analizar</button>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-sub-card"><div class="ai-sub-title">🔔 Alertas</div><div id="alerts-list" style="font-size:0.76rem;color:rgba(255,255,255,0.5)">Toca "Analizar" para ver alertas.</div></div>
+        <div class="ai-sub-card"><div class="ai-sub-title">💼 ¿A quién vender?</div><div id="sales-list" style="font-size:0.76rem;color:rgba(255,255,255,0.5)">Toca "Analizar" para ver recomendaciones.</div></div>
+      </div>
+      <div class="ai-sub-card" style="margin-top:0">
+        <div class="ai-sub-title">📝 Resumen ejecutivo con IA</div>
+        <div class="conc-box" id="conclusion-box">Toca "Analizar" para generar tu resumen ejecutivo.</div>
+        <div class="conc-actions">
+          <button class="conc-btn conc-p" id="btn-copy" style="display:none">📋 Copiar</button>
+          <button class="conc-btn conc-g" id="btn-regen" style="display:none">↻ Regenerar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+// ── SUPABASE ──────────────────────────────────────────────────────
+const SB_URL = 'https://oiijljmnpeglwrfcamlq.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9paWpsam1ucGVnbHdyZmNhbWxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNzQ3NTAsImV4cCI6MjA5Njk1MDc1MH0.o3cTyedBuYbAXiUR1Q3uZts_UK9V-9Quob4SuGCIYVM';
+
+async function sbInsert(place, tipo, subcat, provincia, scores) {
+  try {
+    const r = await fetch(SB_URL + '/rest/v1/ratings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        place: place, tipo: tipo || '', subcat: subcat || '', provincia: provincia || '',
+        atencion: scores.atencion, limpieza: scores.limpieza, eficiencia: scores.eficiencia,
+        accesibilidad: scores.accesibilidad, seguridad: scores.seguridad, ambiente: scores.ambiente
+      })
+    });
+    return r.ok;
+  } catch(e) { return false; }
+}
+
+// ── DATA ─────────────────────────────────────────────────────────
+const CATS = [
+  {id:'atencion', icon:'😊', name:'Atención', q:'¿Sentiste que te valoraron como persona, no solo como cliente?',
+   emos:[{v:1,e:'😞',l:'Me ignoraron'},{v:2,e:'😐',l:'Fue frío'},{v:3,e:'🙂',l:'Correcto'},{v:4,e:'😊',l:'Bien atendido'},{v:5,e:'🤩',l:'Me sentí especial'}]},
+  {id:'limpieza', icon:'🧹', name:'Limpieza', q:'¿El lugar te transmitió cuidado y respeto por el espacio compartido?',
+   emos:[{v:1,e:'🤢',l:'Me dio asco'},{v:2,e:'😟',l:'Descuidado'},{v:3,e:'😶',l:'Aceptable'},{v:4,e:'😌',l:'Limpio'},{v:5,e:'✨',l:'Impecable'}]},
+  {id:'eficiencia', icon:'⚡', name:'Eficiencia', q:'¿Sentiste que respetaron tu tiempo?',
+   emos:[{v:1,e:'😤',l:'Perdí mi tiempo'},{v:2,e:'😒',l:'Muy lento'},{v:3,e:'🕐',l:'Normal'},{v:4,e:'👍',l:'Fue ágil'},{v:5,e:'🚀',l:'Impresionante'}]},
+  {id:'accesibilidad', icon:'♿', name:'Accesibilidad', q:'¿Cualquier persona podría moverse cómodamente aquí?',
+   emos:[{v:1,e:'🚫',l:'Imposible'},{v:2,e:'😬',l:'Muy difícil'},{v:3,e:'😐',l:'Regular'},{v:4,e:'✅',l:'Bien pensado'},{v:5,e:'🌟',l:'Totalmente inclusivo'}]},
+  {id:'seguridad', icon:'🛡️', name:'Seguridad', q:'¿Te sentiste tranquilo/a y protegido/a en todo momento?',
+   emos:[{v:1,e:'😨',l:'Tuve miedo'},{v:2,e:'😰',l:'Incómodo/a'},{v:3,e:'😶',l:'Neutro'},{v:4,e:'😌',l:'Tranquilo/a'},{v:5,e:'🛡️',l:'Muy seguro/a'}]},
+  {id:'ambiente', icon:'🌿', name:'Ambiente', q:'¿El lugar te hizo querer quedarte más tiempo?',
+   emos:[{v:1,e:'😖',l:'Quería salir'},{v:2,e:'😕',l:'Incómodo'},{v:3,e:'😐',l:'Normal'},{v:4,e:'😎',l:'Agradable'},{v:5,e:'💚',l:'Me encantó'}]}
+];
+
+const NEGOCIOS = [
+  {id:'salud', icon:'🏥', name:'Salud', subs:['Hospital / Clínica','Farmacia','Laboratorio','Odontólogo','Óptica','CSS / Salud pública','Médico especialista']},
+  {id:'comercio', icon:'🛒', name:'Comercio', subs:['Supermercado','Tienda de ropa','Zapatería','Ferretería','Librería','Electrónica','Joyería','Cosméticos']},
+  {id:'alimentos', icon:'🍽️', name:'Restaurantes', subs:['Restaurante familiar','Comida rápida','Cafetería','Panadería','Heladería','Food court','Bar / Cantina']},
+  {id:'bancos', icon:'🏦', name:'Banca y finanzas', subs:['Banco nacional','Banco privado','Caja de ahorros','Cooperativa','Casa de cambio','ATM / Cajero','Aseguradora']},
+  {id:'transporte', icon:'🚌', name:'Transporte', subs:['Aeropuerto','Metro','Metrobús','Terminal de buses','Taxi / Rides','Estacionamiento','Aduana / Migración']},
+  {id:'gobierno', icon:'🏛️', name:'Gobierno', subs:['Municipio','Registro Civil','CSS','Tribunal Electoral','MIVIOT','Ministerio de Salud','Policía','Correos','Juzgado']},
+  {id:'educacion', icon:'🎓', name:'Educación', subs:['Escuela pública','Colegio privado','Universidad pública','Universidad privada','Instituto técnico','Centro de idiomas','Guardería']},
+  {id:'mall', icon:'🏬', name:'Centros comerciales', subs:['Albrook Mall','Multiplaza Pacific','MultiCentro','MetroMall','Los Pueblos','Altaplaza Mall','El Dorado Mall','Panama City Mall','La Chorrera Mall','Chiriquí Mall','City Mall David','Colón Mall','Mall Chitré','Plaza Penonomé','Plaza Santiago','Centro comercial local']},
+  {id:'turismo', icon:'🌎', name:'Turismo y cultura', subs:['Hotel','Hostal','Museo','Parque natural','Playa','Sitio histórico','Tour / Guía','Agencia de viajes']},
+  {id:'belleza', icon:'💈', name:'Belleza y bienestar', subs:['Salón de belleza','Barbería','Spa','Gimnasio','Centro de estética','Masajes']},
+  {id:'servicios', icon:'🔧', name:'Servicios', subs:['Taller mecánico','Gasolinera','Lavandería','Limpieza','Seguridad','Internet / Cable','Notaría']},
+  {id:'familiar', icon:'👨‍👩‍👧', name:'Familiar', subs:['Parque infantil','Restaurante familiar','Plaza con espacio abierto','Piscina pública','Área de juegos','Centro recreativo','Museo para niños']},
+  {id:'petfriendly', icon:'🐾', name:'Pet Friendly', subs:['Parque para mascotas','Veterinaria','Tienda de mascotas','Restaurante pet friendly','Hotel pet friendly','Peluquería canina']},
+  {id:'afterwork', icon:'🍻', name:'After Work', subs:['Bar / Lounge','Restaurante con barra','Rooftop','Karaoke','Terraza','Club nocturno','Vinoteca','Brewery']},
+  {id:'workspace', icon:'💻', name:'Para trabajar', subs:['Coworking','Cafetería con wifi','Biblioteca','Hotel con lobby','Restaurante tranquilo','Centro de negocios','Sala de reuniones']},
+  {id:'otro', icon:'📍', name:'Otro', subs:['Mercado público','Cancha deportiva','Iglesia / Templo','Centro comunitario','Otro']}
+];
+
+const PROVINCIAS = ['Panamá','Panamá Oeste','Colón','Chiriquí','Veraguas','Herrera','Los Santos','Coclé','Darién','Bocas del Toro'];
+const COMARCAS = ['Guna Yala','Ngäbe-Buglé','Emberá-Wounaan','Naso Tjër Di'];
+const BLOCKED = ['test','prueba','jsjsjs','asdfgh','qwerty','123456','demo'];
+
+// ── STATE ────────────────────────────────────────────────────────
+let ratings = [];
+try { ratings = JSON.parse(localStorage.getItem('promundi_v4') || '[]'); } catch(e) {}
+
+let curPlace = '', curQ = 0, answers = {}, curBiz = null, curSub = null, curProv = null;
+let catFilter = null, provFilter = null;
+let logoClicks = 0, logoTimer = null;
+const ADMIN_PASS = 'Promundi2026';
+
+function save() { localStorage.setItem('promundi_v4', JSON.stringify(ratings)); }
+function avg(s) { const v = Object.values(s); return v.reduce((a,b)=>a+b,0)/v.length; }
+
+// ── TOAST ────────────────────────────────────────────────────────
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3500);
+}
+
+// ── NAVIGATION ───────────────────────────────────────────────────
+function showView(v) {
+  document.querySelectorAll('.view').forEach(function(x) { x.classList.remove('active'); });
+  document.querySelectorAll('.pill').forEach(function(x) { x.classList.remove('active'); });
+  var el = document.getElementById('view-' + v);
+  if (el) el.classList.add('active');
+  var btn = document.querySelector('[data-view="' + v + '"]');
+  if (btn) btn.classList.add('active');
+  if (v === 'ranking') renderRanking();
+  if (v === 'explorar') initExplore();
+  setTimeout(function() {
+    if (v === 'evaluar') {
+      var s = document.querySelector('.step1');
+      if (s) s.scrollIntoView({behavior:'smooth', block:'center'});
+    } else {
+      var m = document.querySelector('.main');
+      if (m) m.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }, 150);
+}
+
+// ── SETUP SELECTORS ──────────────────────────────────────────────
+function buildBizGrid() {
+  var grid = document.getElementById('biz-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  NEGOCIOS.forEach(function(b) {
+    var btn = document.createElement('button');
+    btn.className = 'sel-btn';
+    btn.textContent = b.icon + ' ' + b.name;
+    btn.setAttribute('data-id', b.id);
+    grid.appendChild(btn);
+  });
+}
+
+function buildProvGrid() {
+  var grid = document.getElementById('prov-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  var lbl1 = document.createElement('span');
+  lbl1.className = 'prov-sec-label';
+  lbl1.textContent = 'Provincias';
+  grid.appendChild(lbl1);
+  var wrap1 = document.createElement('div');
+  wrap1.className = 'prov-grid';
+  PROVINCIAS.forEach(function(p) {
+    var btn = document.createElement('button');
+    btn.className = 'prov-btn';
+    btn.textContent = p;
+    btn.setAttribute('data-prov', p);
+    wrap1.appendChild(btn);
+  });
+  grid.appendChild(wrap1);
+  var lbl2 = document.createElement('span');
+  lbl2.className = 'prov-sec-label';
+  lbl2.textContent = 'Comarcas';
+  grid.appendChild(lbl2);
+  var wrap2 = document.createElement('div');
+  wrap2.className = 'prov-grid';
+  COMARCAS.forEach(function(p) {
+    var btn = document.createElement('button');
+    btn.className = 'prov-btn';
+    btn.textContent = p;
+    btn.setAttribute('data-prov', p);
+    wrap2.appendChild(btn);
+  });
+  grid.appendChild(wrap2);
+}
+
+function buildSubcats(bizId) {
+  var wrap = document.getElementById('subcats-wrap');
+  var grid = document.getElementById('subcat-grid');
+  if (!wrap || !grid) return;
+  var biz = NEGOCIOS.find(function(b) { return b.id === bizId; });
+  if (!biz) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+  grid.innerHTML = '';
+  biz.subs.forEach(function(s) {
+    var btn = document.createElement('button');
+    btn.className = 'sel-btn';
+    btn.textContent = s;
+    btn.setAttribute('data-sub', s);
+    grid.appendChild(btn);
+  });
+}
+
+// ── ANTI-SPAM ────────────────────────────────────────────────────
+function checkSpam() {
+  try {
+    var today = new Date().toISOString().slice(0,10);
+    var key = 'promundi_voted_' + today;
+    var voted = JSON.parse(localStorage.getItem(key) || '[]');
+    var pk = curPlace.toLowerCase().trim();
+    if (voted.indexOf(pk) > -1) return false;
+    voted.push(pk);
+    localStorage.setItem(key, JSON.stringify(voted));
+    return true;
+  } catch(e) { return true; }
+}
+
+// ── EVALUAR ──────────────────────────────────────────────────────
+function startEval() {
+  var val = document.getElementById('place-input').value.trim();
+  if (!val || val.length < 3) { toast('Escribe el nombre del lugar (mínimo 3 letras)'); return; }
+  if (BLOCKED.some(function(w) { return val.toLowerCase().indexOf(w) > -1; })) { toast('Por favor escribe el nombre real del lugar'); return; }
+  if (!curBiz) { toast('Selecciona el tipo de negocio'); return; }
+  if (!curProv) { toast('Selecciona la provincia o comarca'); return; }
+  curPlace = val; curQ = 0; answers = {};
+  document.getElementById('step-search').style.display = 'none';
+  document.getElementById('step-questions').style.display = 'block';
+  document.getElementById('prog-place').textContent = val;
+  renderQ();
+}
+
+function renderQ() {
+  var cat = CATS[curQ];
+  var total = CATS.length;
+  var pct = (curQ / total) * 100;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-count').textContent = (curQ + 1) + ' de ' + total;
+  document.getElementById('q-count').textContent = (curQ + 1) + ' / ' + total;
+  document.getElementById('btn-back').style.display = curQ > 0 ? 'inline-block' : 'none';
+  document.getElementById('btn-next').textContent = curQ === total - 1 ? 'Ver resumen →' : 'Siguiente →';
+  var sel = answers[cat.id] || null;
+  var html = '<div class="q-card"><div class="q-label">' + cat.icon + ' ' + cat.name + '</div><div class="q-text">' + cat.q + '</div><div class="emo-row">';
+  cat.emos.forEach(function(em) {
+    var ac = sel === em.v ? ' active' : '';
+    html += '<button class="emo-btn' + ac + '" data-cat="' + cat.id + '" data-val="' + em.v + '"><span class="emo-icon">' + em.e + '</span><span class="emo-label">' + em.l + '</span></button>';
+  });
+  html += '</div></div>';
+  document.getElementById('q-card-wrap').innerHTML = html;
+}
+
+function nextQ() {
+  if (!answers[CATS[curQ].id]) { toast('Elige cómo te sentiste antes de continuar'); return; }
+  if (curQ < CATS.length - 1) { curQ++; renderQ(); }
+  else showSubmit();
+}
+function prevQ() { if (curQ > 0) { curQ--; renderQ(); } }
+
+function showSubmit() {
+  document.getElementById('step-questions').style.display = 'none';
+  document.getElementById('step-submit').style.display = 'block';
+  document.getElementById('submit-name').textContent = curPlace;
+  var html = '';
+  CATS.forEach(function(cat) {
+    var v = answers[cat.id];
+    var em = cat.emos.find(function(e) { return e.v === v; });
+    html += '<div class="sum-item"><div class="sum-emoji">' + em.e + '</div><div class="sum-cat">' + cat.name + '</div><div class="sum-score">' + v + '/5</div></div>';
+  });
+  document.getElementById('sum-grid').innerHTML = html;
+}
+
+function submitRating() {
+  if (!checkSpam()) { toast('⚠️ Ya evaluaste este lugar hoy. Vuelve mañana.'); return; }
+  var ex = ratings.find(function(r) { return r.place.toLowerCase() === curPlace.toLowerCase(); });
+  if (ex) {
+    CATS.forEach(function(c) {
+      ex.scores[c.id] = Math.round(((ex.scores[c.id] * ex.count) + answers[c.id]) / (ex.count + 1) * 10) / 10;
+    });
+    ex.count++;
+    ex.lastUpdate = new Date().toISOString();
+  } else {
+    ratings.push({place:curPlace, count:1, tipo:curBiz, subcat:curSub||'', provincia:curProv, scores:Object.assign({},answers), lastUpdate:new Date().toISOString()});
+  }
+  save();
+  updateStats();
+  sbInsert(curPlace, curBiz, curSub, curProv, answers);
+  toast('✅ PES enviado. Tu experiencia ya forma parte del Índice Promundi.');
+  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\nhttps://promundi.com.pa');
+  document.getElementById('wa-btn').href = 'https://wa.me/?text=' + txt;
+  document.getElementById('wa-card').style.display = 'flex';
+}
+
+function resetEval() {
+  curPlace = ''; curQ = 0; answers = {}; curBiz = null; curSub = null; curProv = null;
+  document.getElementById('place-input').value = '';
+  document.getElementById('step-submit').style.display = 'none';
+  document.getElementById('step-questions').style.display = 'none';
+  document.getElementById('step-search').style.display = 'block';
+  document.getElementById('wa-card').style.display = 'none';
+  document.querySelectorAll('#biz-grid .sel-btn, #subcat-grid .sel-btn, .prov-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('subcats-wrap').style.display = 'none';
+}
+
+// ── EXPLORAR ─────────────────────────────────────────────────────
+function initExplore() {
+  var catRow = document.getElementById('cat-filters');
+  catRow.innerHTML = '<button class="filter-btn active" data-cat="">Todos</button>';
+  CATS.forEach(function(c) {
+    var btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.textContent = c.icon + ' ' + c.name;
+    btn.setAttribute('data-cat', c.id);
+    catRow.appendChild(btn);
+  });
+  var provRow = document.getElementById('prov-filters');
+  provRow.innerHTML = '<button class="filter-btn active" data-prov="">Todas</button>';
+  var allProvs = PROVINCIAS.concat(COMARCAS);
+  allProvs.forEach(function(p) {
+    var btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.textContent = '📍 ' + p;
+    btn.setAttribute('data-prov', p);
+    provRow.appendChild(btn);
+  });
+  renderExplore();
+}
+
+function renderExplore() {
+  var q = (document.getElementById('explore-input') ? document.getElementById('explore-input').value : '').toLowerCase().trim();
+  var list = ratings.slice();
+  if (q) list = list.filter(function(r) { return r.place.toLowerCase().indexOf(q) > -1; });
+  if (provFilter) list = list.filter(function(r) { return r.provincia === provFilter; });
+  if (catFilter) list.sort(function(a,b) { return b.scores[catFilter] - a.scores[catFilter]; });
+  else list.sort(function(a,b) { return avg(b.scores) - avg(a.scores); });
+  var countEl = document.getElementById('explore-count');
+  if (countEl) countEl.textContent = list.length ? list.length + ' lugar' + (list.length !== 1 ? 'es' : '') + ' encontrado' + (list.length !== 1 ? 's' : '') : '';
+  var el = document.getElementById('explore-list');
+  if (!list.length) { el.innerHTML = '<div class="no-results">No se encontraron resultados.<br>¡Sé el primero en evaluar este lugar!</div>'; return; }
+  var pos = ['gold','silver','bronze'];
+  el.innerHTML = list.map(function(r, i) {
+    var score = catFilter ? r.scores[catFilter].toFixed(1) : avg(r.scores).toFixed(1);
+    var topCat = CATS.reduce(function(b,c) { return r.scores[c.id] > r.scores[b.id] ? c : b; });
+    var lowCat = CATS.reduce(function(b,c) { return r.scores[c.id] < r.scores[b.id] ? c : b; });
+    return '<div class="rank-card" data-place="' + r.place.replace(/"/g,'&quot;') + '">' +
+      '<div class="rank-pos ' + (pos[i]||'') + '">' + (i+1) + '</div>' +
+      '<div class="rank-info"><div class="rank-name">' + r.place + '</div>' +
+      '<div class="rank-badges">' + (r.provincia ? '<span class="bdg">📍 ' + r.provincia + '</span>' : '') +
+      '<span class="bdg hi">' + topCat.icon + ' ' + topCat.name + '</span>' +
+      '<span class="bdg">' + lowCat.icon + ' mejorar: ' + lowCat.name + '</span></div></div>' +
+      '<div class="rank-score"><div class="rank-num">' + score + '</div><div class="rank-pes">PES</div><div class="rank-votes">' + r.count + ' eval.' + (r.lastUpdate ? ' · ' + new Date(r.lastUpdate).toLocaleDateString('es-PA',{month:'short',year:'numeric'}) : '') + '</div></div></div>';
+  }).join('');
+}
+
+// ── RANKING ──────────────────────────────────────────────────────
+function renderRanking() {
+  var sorted = ratings.slice().sort(function(a,b) { return avg(b.scores) - avg(a.scores); });
+  var totalV = ratings.reduce(function(s,r) { return s + r.count; }, 0);
+  var ga = ratings.length ? (ratings.reduce(function(s,r) { return s + avg(r.scores); }, 0) / ratings.length).toFixed(1) : '—';
+  document.getElementById('stat-places').textContent = ratings.length;
+  document.getElementById('stat-votes').textContent = totalV;
+  document.getElementById('stat-avg').textContent = ga;
+  var pos = ['gold','silver','bronze'];
+  var list = document.getElementById('ranking-list');
+  if (!sorted.length) { list.innerHTML = '<p style="color:var(--mu);font-size:0.9rem">Aún no hay evaluaciones.</p>'; return; }
+  list.innerHTML = sorted.map(function(r,i) {
+    var score = avg(r.scores).toFixed(1);
+    var topCat = CATS.reduce(function(b,c) { return r.scores[c.id] > r.scores[b.id] ? c : b; });
+    var lowCat = CATS.reduce(function(b,c) { return r.scores[c.id] < r.scores[b.id] ? c : b; });
+    var biz = NEGOCIOS.find(function(b) { return b.id === r.tipo; }) || {icon:'📍',name:r.tipo||''};
+    return '<div class="rank-card" data-place="' + r.place.replace(/"/g,'&quot;') + '">' +
+      '<div class="rank-pos ' + (pos[i]||'') + '">' + (i+1) + '</div>' +
+      '<div class="rank-info"><div class="rank-name">' + r.place + '</div>' +
+      '<div class="rank-badges">' + (r.provincia ? '<span class="bdg">📍 ' + r.provincia + '</span>' : '') +
+      (r.subcat ? '<span class="bdg hi">' + r.subcat + '</span>' : '<span class="bdg hi">' + biz.icon + ' ' + biz.name + '</span>') +
+      '<span class="bdg">' + lowCat.icon + ' mejorar: ' + lowCat.name + '</span></div></div>' +
+      '<div class="rank-score"><div class="rank-num">' + score + '</div><div class="rank-pes">PES</div>' +
+      '<div class="rank-votes">' + r.count + ' eval.' + (r.lastUpdate ? ' · ' + new Date(r.lastUpdate).toLocaleDateString('es-PA',{month:'short',year:'numeric'}) : '') + '</div></div></div>';
+  }).join('');
+}
+
+// ── MODAL ────────────────────────────────────────────────────────
+function openModal(placeName) {
+  var r = ratings.find(function(x) { return x.place === placeName; });
+  if (!r) return;
+  var score = avg(r.scores);
+  document.getElementById('modal-title').textContent = r.place;
+  document.getElementById('modal-pes').textContent = score.toFixed(1) + ' / 5';
+  document.getElementById('modal-label').textContent = 'Promundi Experience Score · ' + r.count + ' evaluación' + (r.count !== 1 ? 'es' : '');
+  document.getElementById('modal-bars').innerHTML = CATS.map(function(cat) {
+    var v = r.scores[cat.id], pct = (v/5)*100, cls = v<=2?'low':v<=3.4?'mid':'';
+    return '<div class="cat-bar-row"><div class="cat-bar-label">' + cat.icon + ' ' + cat.name + '</div>' +
+      '<div class="cat-bar-track"><div class="cat-bar-fill ' + cls + '" style="width:' + pct + '%"></div></div>' +
+      '<div class="cat-bar-score">' + v + '</div></div>';
+  }).join('');
+  var others = ratings.filter(function(x) { return x.place !== placeName; }).sort(function(a,b) { return avg(b.scores)-avg(a.scores); }).slice(0,3);
+  document.getElementById('modal-compare').innerHTML = others.map(function(o) {
+    var os = avg(o.scores), diff = os - score, cls = diff>0.2?'cs-up':diff<-0.2?'cs-dn':'cs-eq', sign = diff>0?'+':'';
+    return '<div class="compare-row" data-place="' + o.place.replace(/"/g,'&quot;') + '">' +
+      '<div><div class="compare-name">' + o.place + '</div><div class="compare-diff">' + o.count + ' eval.</div></div>' +
+      '<div class="compare-score ' + cls + '">' + os.toFixed(1) + ' <span style="font-size:0.68rem;font-weight:400">(' + sign + diff.toFixed(1) + ')</span></div></div>';
+  }).join('');
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+// ── STATS ────────────────────────────────────────────────────────
+function updateStats() {
+  var t = ratings.reduce(function(s,r) { return s+r.count; }, 0);
+  var c = document.getElementById('hero-count'), p = document.getElementById('hero-places');
+  if (c) c.textContent = t.toLocaleString();
+  if (p) p.textContent = ratings.length.toLocaleString();
+}
+
+// ── ADMIN ────────────────────────────────────────────────────────
+function openAdmin() { document.getElementById('admin-overlay').classList.add('open'); setTimeout(function() { document.getElementById('admin-pass').focus(); }, 200); }
+function closeAdmin() { document.getElementById('admin-overlay').classList.remove('open'); document.getElementById('admin-pass').value = ''; document.getElementById('login-err').style.display = 'none'; }
+function checkAdmin() {
+  if (document.getElementById('admin-pass').value === ADMIN_PASS) { closeAdmin(); openDash(); }
+  else { document.getElementById('login-err').style.display = 'block'; document.getElementById('admin-pass').value = ''; document.getElementById('admin-pass').focus(); }
+}
+
+var dashInit = false;
+function openDash() {
+  document.getElementById('dash-overlay').classList.add('open');
+  if (!dashInit) { dashInit = true; setTimeout(initDash, 300); }
+}
+function closeDash() { document.getElementById('dash-overlay').classList.remove('open'); }
+
+function initDash() {
+  var t = ratings.reduce(function(s,r) { return s+r.count; }, 0);
+  var ga = ratings.length ? (ratings.reduce(function(s,r) { return s+avg(r.scores); }, 0)/ratings.length).toFixed(1) : '—';
+  var catAvgs = CATS.map(function(c) { return { c:c, a: ratings.length ? ratings.reduce(function(s,r) { return s+(r.scores[c.id]||0); }, 0)/ratings.length : 0 }; });
+  var lowCat = catAvgs.reduce(function(b,x) { return x.a < b.a ? x : b; }, catAvgs[0]);
+  document.getElementById('kpi-evals').textContent = t.toLocaleString();
+  document.getElementById('kpi-places').textContent = ratings.length;
+  document.getElementById('kpi-avg').textContent = ga;
+  document.getElementById('kpi-low').textContent = lowCat.c.name;
+
+  // Chart
+  var ctx = document.getElementById('chartCats');
+  if (ctx) {
+    new Chart(ctx, {
+      type:'bar',
+      data:{ labels:CATS.map(function(c){return c.name;}), datasets:[{ data:catAvgs.map(function(x){return x.a.toFixed(1);}), backgroundColor:['rgba(10,77,110,0.8)','rgba(45,106,79,0.8)','rgba(200,16,46,0.7)','rgba(201,148,58,0.8)','rgba(10,77,110,0.6)','rgba(45,106,79,0.6)'], borderRadius:6, borderSkipped:false }] },
+      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ y:{min:0,max:5,grid:{color:'rgba(0,0,0,0.05)'}}, x:{grid:{display:false}} } }
+    });
+  }
+
+  // Province bars
+  var provCount = {};
+  ratings.forEach(function(r) { if(r.provincia) provCount[r.provincia] = (provCount[r.provincia]||0) + r.count; });
+  var provSorted = Object.entries(provCount).sort(function(a,b){return b[1]-a[1];});
+  var maxP = provSorted[0] ? provSorted[0][1] : 1;
+  document.getElementById('prov-bars').innerHTML = provSorted.map(function(e) {
+    return '<div class="prov-row"><div class="prov-name">' + e[0] + '</div><div class="prov-track"><div class="prov-fill" style="width:' + (e[1]/maxP*100).toFixed(0) + '%"></div></div><div class="prov-count">' + e[1] + '</div></div>';
+  }).join('');
+
+  // Table
+  var ts = {};
+  ratings.forEach(function(r) {
+    var t2 = r.tipo||'otro';
+    if(!ts[t2]) ts[t2]={count:0,at:0,li:0,ef:0,se:0,n:0};
+    ts[t2].count+=r.count; ts[t2].at+=r.scores.atencion||0; ts[t2].li+=r.scores.limpieza||0;
+    ts[t2].ef+=r.scores.eficiencia||0; ts[t2].se+=r.scores.seguridad||0; ts[t2].n++;
+  });
+  function sp(v) { return v>=4?'sp-hi':v>=3?'sp-mid':'sp-lo'; }
+  document.getElementById('dash-table').innerHTML = Object.entries(ts).map(function(e) {
+    var s=e[1], at=(s.at/s.n).toFixed(1), li=(s.li/s.n).toFixed(1), ef=(s.ef/s.n).toFixed(1), se=(s.se/s.n).toFixed(1), av=((+at+ +li+ +ef+ +se)/4).toFixed(1);
+    return '<tr><td><strong>' + e[0] + '</strong></td><td>' + s.count + '</td><td><span class="score-pill ' + sp(at) + '">' + at + '</span></td><td><span class="score-pill ' + sp(li) + '">' + li + '</span></td><td><span class="score-pill ' + sp(ef) + '">' + ef + '</span></td><td><span class="score-pill ' + sp(se) + '">' + se + '</span></td><td><strong style="font-family:Playfair Display,serif;font-size:1rem;color:var(--p)">' + av + '</strong></td></tr>';
+  }).join('');
+}
+
+// ── EXPORT CSV ───────────────────────────────────────────────────
+function exportCSV() {
+  var headers = ['Lugar','Tipo','Subcategoría','Provincia','Atención','Limpieza','Eficiencia','Accesibilidad','Seguridad','Ambiente','PES','Evaluaciones','Última actualización'];
+  var rows = ratings.map(function(r) {
+    return [r.place, r.tipo||'', r.subcat||'', r.provincia||'', r.scores.atencion, r.scores.limpieza, r.scores.eficiencia, r.scores.accesibilidad, r.scores.seguridad, r.scores.ambiente, avg(r.scores).toFixed(2), r.count, r.lastUpdate||''];
+  });
+  var csv = [headers].concat(rows).map(function(r) { return r.join(','); }).join('\n');
+  var blob = new Blob([csv], {type:'text/csv'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'promundi-ipes-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click(); URL.revokeObjectURL(url);
+  toast('✅ CSV exportado correctamente');
+}
+
+// ── AI ANALYSIS ──────────────────────────────────────────────────
+async function runAIAnalysis() {
+  var btn = document.getElementById('ai-btn');
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Analizando...';
+  renderAlerts(); renderSales(); await generateConclusion();
+  btn.disabled = false; btn.innerHTML = '✨ Analizar';
+}
+
+function renderAlerts() {
+  var catAvgs = CATS.map(function(c) { return {c:c, a:ratings.length?ratings.reduce(function(s,r){return s+(r.scores[c.id]||0);},0)/ratings.length:0}; });
+  var low = catAvgs.reduce(function(b,x){return x.a<b.a?x:b;}, catAvgs[0]);
+  var high = catAvgs.reduce(function(b,x){return x.a>b.a?x:b;}, catAvgs[0]);
+  document.getElementById('alerts-list').innerHTML =
+    '<div class="alert-item ai-red"><div>🚨</div><div class="alert-text"><strong>' + low.c.name + ' — PES crítico</strong>Promedio ' + low.a.toFixed(1) + '/5. Oportunidad de reporte.</div></div>' +
+    '<div class="alert-item ai-gold"><div>⚠️</div><div class="alert-text"><strong>Gobierno — sector más débil</strong>Oportunidad de venta de reporte institucional.</div></div>' +
+    '<div class="alert-item ai-green"><div>✅</div><div class="alert-text"><strong>' + high.c.name + ' — destaca positivamente</strong>PES ' + high.a.toFixed(1) + '/5. Usa como caso de éxito.</div></div>';
+}
+
+function renderSales() {
+  document.getElementById('sales-list').innerHTML =
+    '<div class="sales-item"><div class="sales-top"><div class="sales-name">Sector Gobierno</div><div class="sales-price">$200–$500</div></div><div class="sales-reason">PES más bajo del índice. Alta prioridad.</div></div>' +
+    '<div class="sales-item"><div class="sales-top"><div class="sales-name">Sector Salud</div><div class="sales-price">$150–$300</div></div><div class="sales-reason">Clínicas privadas compiten por pacientes.</div></div>' +
+    '<div class="sales-item"><div class="sales-top"><div class="sales-name">ATP — Turismo</div><div class="sales-price">$500–$1,000</div></div><div class="sales-reason">Dataset completo de experiencia turística.</div></div>';
+}
+
+async function generateConclusion() {
+  var box = document.getElementById('conclusion-box');
+  box.innerHTML = '<span class="spin"></span> Generando resumen ejecutivo con IA...';
+  var t = ratings.reduce(function(s,r){return s+r.count;},0);
+  var ga = ratings.length?(ratings.reduce(function(s,r){return s+avg(r.scores);},0)/ratings.length).toFixed(1):'3.7';
+  try {
+    var r = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:'Eres analista experto en experiencia al cliente en Panamá. Con base en estos datos del Índice Promundi (PES), escribe un resumen ejecutivo profesional en español de 3 párrafos cortos. No uses bullets ni headers.\n\nDatos: ' + t + ' evaluaciones totales, PES Global: ' + ga + '/5, Dimensión más baja: Eficiencia, Sector más bajo: Gobierno (2.6 PES), Sector más alto: Centros Comerciales (4.2 PES), Negocios medidos: ' + ratings.length + '.'}]})
+    });
+    var data = await r.json();
+    var text = data.content && data.content[0] ? data.content[0].text : '';
+    if (text) {
+      box.innerHTML = text.split('\n\n').map(function(p){return '<p style="margin-bottom:10px">'+p+'</p>';}).join('');
+      document.getElementById('btn-copy').style.display = 'inline-block';
+      document.getElementById('btn-regen').style.display = 'inline-block';
+    } else { box.innerHTML = fallbackConclusion(); document.getElementById('btn-copy').style.display = 'inline-block'; }
+  } catch(e) { box.innerHTML = fallbackConclusion(); document.getElementById('btn-copy').style.display = 'inline-block'; }
+}
+
+function fallbackConclusion() {
+  return '<p style="margin-bottom:10px">Con base en las evaluaciones del Índice Nacional de Experiencia al Cliente de Promundi, Panamá alcanza un PES promedio de 3.7/5 — con oportunidades claras en el sector gobierno (2.6 PES) y la dimensión de eficiencia.</p><p style="margin-bottom:10px">La oportunidad más urgente está en el respeto al tiempo del ciudadano, que es la dimensión más baja consistentemente en todos los sectores evaluados.</p><p>Al ritmo actual, Promundi se consolidará como la primera referencia de inteligencia de experiencia al cliente en Panamá, abriendo contratos corporativos en salud, retail y turismo.</p>';
+}
+
+function copyConclusion() {
+  var text = document.getElementById('conclusion-box').innerText;
+  navigator.clipboard.writeText(text).then(function(){ toast('✅ Resumen copiado'); });
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+
+  buildBizGrid();
+  buildProvGrid();
+  renderRanking();
+  updateStats();
+
+  // Nav pills
+  document.getElementById('nav-pills').addEventListener('click', function(e) {
+    var btn = e.target.closest('.pill');
+    if (btn && btn.dataset.view) showView(btn.dataset.view);
+  });
+
+  // Hero buttons
+  document.getElementById('hero-eval-btn').addEventListener('click', function() { showView('evaluar'); });
+  document.getElementById('hero-rank-btn').addEventListener('click', function() { showView('ranking'); });
+
+  // Logo — 5 clicks for admin
+  document.getElementById('logo-btn').addEventListener('click', function() {
+    logoClicks++;
+    clearTimeout(logoTimer);
+    logoTimer = setTimeout(function() { logoClicks = 0; }, 3000);
+    if (logoClicks >= 5) { logoClicks = 0; openAdmin(); }
+  });
+
+  // Biz grid clicks
+  document.getElementById('biz-grid').addEventListener('click', function(e) {
+    var btn = e.target.closest('.sel-btn');
+    if (!btn) return;
+    var id = btn.getAttribute('data-id');
+    if (!id) return;
+    curBiz = id; curSub = null;
+    document.querySelectorAll('#biz-grid .sel-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    buildSubcats(id);
+  });
+
+  // Subcat grid clicks
+  document.getElementById('subcat-grid').addEventListener('click', function(e) {
+    var btn = e.target.closest('.sel-btn');
+    if (!btn) return;
+    var sub = btn.getAttribute('data-sub');
+    if (!sub) return;
+    curSub = sub;
+    document.querySelectorAll('#subcat-grid .sel-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+  });
+
+  // Prov grid clicks
+  document.getElementById('prov-grid').addEventListener('click', function(e) {
+    var btn = e.target.closest('.prov-btn');
+    if (!btn) return;
+    var prov = btn.getAttribute('data-prov');
+    if (!prov) return;
+    curProv = prov;
+    document.querySelectorAll('.prov-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+  });
+
+  // Start eval
+  document.getElementById('start-btn').addEventListener('click', startEval);
+  document.getElementById('btn-next').addEventListener('click', nextQ);
+  document.getElementById('btn-back').addEventListener('click', prevQ);
+
+  // Emotion buttons
+  document.getElementById('q-card-wrap').addEventListener('click', function(e) {
+    var btn = e.target.closest('.emo-btn');
+    if (!btn) return;
+    var cat = btn.getAttribute('data-cat');
+    var val = parseInt(btn.getAttribute('data-val'));
+    answers[cat] = val;
+    document.querySelectorAll('.emo-btn[data-cat="' + cat + '"]').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+  });
+
+  // Submit
+  document.getElementById('btn-submit').addEventListener('click', submitRating);
+  document.getElementById('btn-reset').addEventListener('click', resetEval);
+
+  // Modal
+  document.addEventListener('click', function(e) {
+    var card = e.target.closest('.rank-card');
+    if (card && card.getAttribute('data-place')) {
+      if (document.getElementById('modal-overlay').contains(e.target)) return;
+      openModal(card.getAttribute('data-place'));
+    }
+  });
+  document.getElementById('modal-overlay').addEventListener('click', function(e) {
+    if (e.target === document.getElementById('modal-overlay')) document.getElementById('modal-overlay').classList.remove('open');
+  });
+  document.getElementById('modal-close-btn').addEventListener('click', function() { document.getElementById('modal-overlay').classList.remove('open'); });
+  document.getElementById('modal-compare').addEventListener('click', function(e) {
+    var row = e.target.closest('.compare-row');
+    if (row && row.getAttribute('data-place')) { document.getElementById('modal-overlay').classList.remove('open'); setTimeout(function(){ openModal(row.getAttribute('data-place')); }, 200); }
+  });
+
+  // Admin
+  document.getElementById('login-btn').addEventListener('click', checkAdmin);
+  document.getElementById('admin-pass').addEventListener('keydown', function(e) { if(e.key==='Enter') checkAdmin(); });
+  document.getElementById('login-back').addEventListener('click', closeAdmin);
+
+  // Dashboard
+  document.getElementById('dash-close-btn').addEventListener('click', closeDash);
+  document.getElementById('dash-export-btn').addEventListener('click', exportCSV);
+  document.getElementById('ai-btn').addEventListener('click', runAIAnalysis);
+  document.getElementById('btn-copy').addEventListener('click', copyConclusion);
+  document.getElementById('btn-regen').addEventListener('click', function() {
+    document.getElementById('btn-copy').style.display = 'none';
+    document.getElementById('btn-regen').style.display = 'none';
+    generateConclusion();
+  });
+
+  // B2B button
+  document.getElementById('b2b-btn').addEventListener('click', function() { toast('Próximamente: contacto@promundi.com.pa'); });
+
+  // Explore
+  document.getElementById('explore-input').addEventListener('input', renderExplore);
+  document.getElementById('cat-filters').addEventListener('click', function(e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    catFilter = btn.getAttribute('data-cat') || null;
+    document.querySelectorAll('#cat-filters .filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderExplore();
+  });
+  document.getElementById('prov-filters').addEventListener('click', function(e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    provFilter = btn.getAttribute('data-prov') || null;
+    document.querySelectorAll('#prov-filters .filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderExplore();
+  });
+
+});
+</script>
+</body>
+</html>
