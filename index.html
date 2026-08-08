@@ -10,6 +10,12 @@
 <meta property="og:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
 <meta property="og:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
 <meta property="og:locale" content="es_PA" />
+<meta property="og:url" content="https://promundi.com.pa/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Promundi" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
+<meta name="twitter:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Promundi","url":"https://promundi.com.pa","description":"Plataforma de inteligencia de experiencia al cliente en Panamá","applicationCategory":"DataApplication","inLanguage":"es-PA"}
 </script>
@@ -585,6 +591,79 @@ async function sbInsert(place, tipo, subcat, provincia, scores) {
   } catch(e) { return false; }
 }
 
+// Lee la vista PÚBLICA (promedios por lugar, no evaluaciones individuales).
+// Es la única fuente de datos que usan el Ranking y Explorar — 'anon' ya no
+// tiene permiso para leer la tabla cruda 'ratings' directamente.
+async function sbFetchAll() {
+  try {
+    const r = await fetch(SB_URL + '/rest/v1/ratings_public?select=*', {
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch(e) { return null; }
+}
+
+// Convierte las filas ya promediadas de la vista pública al formato
+// {place, count, tipo, subcat, provincia, scores, lastUpdate} que usa la UI.
+function mapPublicRows(rows) {
+  return rows.map(function(row) {
+    var scores = {};
+    CATS.forEach(function(c) { scores[c.id] = row[c.id] || 0; });
+    return { place: row.place, count: row.count, tipo: row.tipo, subcat: row.subcat, provincia: row.provincia, scores: scores, lastUpdate: row.last_update };
+  });
+}
+
+// Lee la tabla CRUDA completa. Solo funciona con una sesión de admin válida
+// (Bearer = tu access_token de Supabase Auth, no la anon key) — la política
+// 'ratings_select_authenticated' rechaza esto para cualquier otro caso.
+async function sbFetchRawAuthenticated() {
+  if (!adminToken) return null;
+  try {
+    const r = await fetch(SB_URL + '/rest/v1/ratings?select=*', {
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + adminToken }
+    });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch(e) { return null; }
+}
+
+// La tabla de Supabase guarda una fila por evaluación individual.
+// Esta función agrupa esas filas por lugar y calcula el promedio por categoría,
+// reproduciendo la misma forma de objeto {place, count, tipo, subcat, provincia, scores, lastUpdate}
+// que el resto de la app (ranking, explorar, modal) ya espera.
+function aggregateRatings(rows) {
+  const byPlace = {};
+  rows.forEach(function(row) {
+    const key = row.place.toLowerCase();
+    if (!byPlace[key]) {
+      byPlace[key] = {
+        place: row.place, count: 0, tipo: row.tipo, subcat: row.subcat, provincia: row.provincia,
+        scores: { atencion:0, limpieza:0, eficiencia:0, accesibilidad:0, seguridad:0, ambiente:0 },
+        lastUpdate: row.created_at
+      };
+    }
+    var g = byPlace[key];
+    CATS.forEach(function(c) { g.scores[c.id] += row[c.id] || 0; });
+    g.count++;
+    if (row.created_at > g.lastUpdate) g.lastUpdate = row.created_at;
+  });
+  return Object.values(byPlace).map(function(g) {
+    CATS.forEach(function(c) { g.scores[c.id] = Math.round((g.scores[c.id] / g.count) * 10) / 10; });
+    return g;
+  });
+}
+
+// Escapa texto para insertarlo de forma segura en innerHTML.
+// Necesario porque 'place' viene de texto escrito por cualquier usuario anónimo;
+// sin esto, alguien podría registrar un negocio con HTML/JS en el nombre (XSS almacenado)
+// y ese código se ejecutaría en el navegador de cada persona que vea el ranking.
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
 // ── DATA ─────────────────────────────────────────────────────────
 const CATS = [
   {id:'atencion', icon:'😊', name:'Atención', q:'¿Sentiste que te valoraron como persona, no solo como cliente?',
@@ -625,16 +704,41 @@ const COMARCAS = ['Guna Yala','Ngäbe-Buglé','Emberá-Wounaan','Naso Tjër Di']
 const BLOCKED = ['test','prueba','jsjsjs','asdfgh','qwerty','123456','demo'];
 
 // ── STATE ────────────────────────────────────────────────────────
+// 'ratings' ahora vive solo en memoria: la fuente de verdad es Supabase.
+// loadFailed distingue "todavía no cargó" de "falló la conexión", para no
+// mostrarle a un visitante un ranking vacío como si de verdad no hubiera datos.
 let ratings = [];
-try { ratings = JSON.parse(localStorage.getItem('promundi_v4') || '[]'); } catch(e) {}
+let ratingsLoaded = false;
+let loadFailed = false;
 
 let curPlace = '', curQ = 0, answers = {}, curBiz = null, curSub = null, curProv = null;
 let catFilter = null, provFilter = null;
 let logoClicks = 0, logoTimer = null;
-const ADMIN_PASS = 'Promundi2026';
 
-function save() { localStorage.setItem('promundi_v4', JSON.stringify(ratings)); }
+// El correo no es secreto (es tu usuario de acceso, como cualquier login);
+// lo que protege el acceso es la contraseña, que ya NO vive en este archivo:
+// se valida contra Supabase Auth, no contra una comparación de texto en JS.
+const ADMIN_EMAIL = 'infopromundi.pa@gmail.com';
+let adminToken = null; // vive solo en memoria; se pierde al recargar o cerrar — a propósito.
+let adminRatings = []; // datos crudos agregados, solo disponibles tras iniciar sesión real.
+
 function avg(s) { const v = Object.values(s); return v.reduce((a,b)=>a+b,0)/v.length; }
+
+// Punto único de carga: pide todas las filas a Supabase y las agrega por lugar.
+// Se llama al iniciar la app y otra vez después de cada evaluación nueva,
+// para que el ranking siempre refleje datos reales, no una copia local desactualizada.
+async function loadRatings() {
+  const rows = await sbFetchAll();
+  if (rows === null) {
+    loadFailed = true;
+    ratingsLoaded = true;
+    return false;
+  }
+  ratings = mapPublicRows(rows);
+  ratingsLoaded = true;
+  loadFailed = false;
+  return true;
+}
 
 // ── TOAST ────────────────────────────────────────────────────────
 function toast(msg) {
@@ -796,21 +900,31 @@ function showSubmit() {
   document.getElementById('sum-grid').innerHTML = html;
 }
 
-function submitRating() {
+async function submitRating() {
   if (!checkSpam()) { toast('⚠️ Ya evaluaste este lugar hoy. Vuelve mañana.'); return; }
-  var ex = ratings.find(function(r) { return r.place.toLowerCase() === curPlace.toLowerCase(); });
-  if (ex) {
-    CATS.forEach(function(c) {
-      ex.scores[c.id] = Math.round(((ex.scores[c.id] * ex.count) + answers[c.id]) / (ex.count + 1) * 10) / 10;
-    });
-    ex.count++;
-    ex.lastUpdate = new Date().toISOString();
-  } else {
-    ratings.push({place:curPlace, count:1, tipo:curBiz, subcat:curSub||'', provincia:curProv, scores:Object.assign({},answers), lastUpdate:new Date().toISOString()});
+
+  var submitBtn = document.getElementById('btn-submit');
+  if (submitBtn) submitBtn.disabled = true;
+
+  // Antes esta función asumía éxito y actualizaba el ranking local sin
+  // confirmar que Supabase realmente guardó el dato. Ahora se espera la
+  // respuesta real: si falla, el usuario lo sabe y puede reintentar,
+  // en vez de creer que su evaluación cuenta cuando no fue así.
+  var ok = await sbInsert(curPlace, curBiz, curSub, curProv, answers);
+
+  if (submitBtn) submitBtn.disabled = false;
+
+  if (!ok) {
+    toast('❌ No se pudo enviar. Revisa tu conexión e intenta de nuevo.');
+    return;
   }
-  save();
+
+  await loadRatings();
   updateStats();
-  sbInsert(curPlace, curBiz, curSub, curProv, answers);
+  var activeView = document.querySelector('.view.active');
+  if (activeView && activeView.id === 'view-ranking') renderRanking();
+  if (activeView && activeView.id === 'view-explorar') renderExplore();
+
   toast('✅ PES enviado. Tu experiencia ya forma parte del Índice Promundi.');
   var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\nhttps://promundi.com.pa');
   document.getElementById('wa-btn').href = 'https://wa.me/?text=' + txt;
@@ -868,10 +982,10 @@ function renderExplore() {
     var score = catFilter ? r.scores[catFilter].toFixed(1) : avg(r.scores).toFixed(1);
     var topCat = CATS.reduce(function(b,c) { return r.scores[c.id] > r.scores[b.id] ? c : b; });
     var lowCat = CATS.reduce(function(b,c) { return r.scores[c.id] < r.scores[b.id] ? c : b; });
-    return '<div class="rank-card" data-place="' + r.place.replace(/"/g,'&quot;') + '">' +
+    return '<div class="rank-card" data-place="' + escapeHtml(r.place) + '">' +
       '<div class="rank-pos ' + (pos[i]||'') + '">' + (i+1) + '</div>' +
-      '<div class="rank-info"><div class="rank-name">' + r.place + '</div>' +
-      '<div class="rank-badges">' + (r.provincia ? '<span class="bdg">📍 ' + r.provincia + '</span>' : '') +
+      '<div class="rank-info"><div class="rank-name">' + escapeHtml(r.place) + '</div>' +
+      '<div class="rank-badges">' + (r.provincia ? '<span class="bdg">📍 ' + escapeHtml(r.provincia) + '</span>' : '') +
       '<span class="bdg hi">' + topCat.icon + ' ' + topCat.name + '</span>' +
       '<span class="bdg">' + lowCat.icon + ' mejorar: ' + lowCat.name + '</span></div></div>' +
       '<div class="rank-score"><div class="rank-num">' + score + '</div><div class="rank-pes">PES</div><div class="rank-votes">' + r.count + ' eval.' + (r.lastUpdate ? ' · ' + new Date(r.lastUpdate).toLocaleDateString('es-PA',{month:'short',year:'numeric'}) : '') + '</div></div></div>';
@@ -888,17 +1002,19 @@ function renderRanking() {
   document.getElementById('stat-avg').textContent = ga;
   var pos = ['gold','silver','bronze'];
   var list = document.getElementById('ranking-list');
+  if (!ratingsLoaded) { list.innerHTML = '<p style="color:var(--mu);font-size:0.9rem">Cargando evaluaciones…</p>'; return; }
+  if (loadFailed) { list.innerHTML = '<p style="color:var(--mu);font-size:0.9rem">⚠️ No se pudo conectar con la base de datos. <button onclick="loadRatings().then(function(){renderRanking();updateStats();})" style="color:inherit;text-decoration:underline;background:none;border:none;cursor:pointer">Reintentar</button></p>'; return; }
   if (!sorted.length) { list.innerHTML = '<p style="color:var(--mu);font-size:0.9rem">Aún no hay evaluaciones.</p>'; return; }
   list.innerHTML = sorted.map(function(r,i) {
     var score = avg(r.scores).toFixed(1);
     var topCat = CATS.reduce(function(b,c) { return r.scores[c.id] > r.scores[b.id] ? c : b; });
     var lowCat = CATS.reduce(function(b,c) { return r.scores[c.id] < r.scores[b.id] ? c : b; });
     var biz = NEGOCIOS.find(function(b) { return b.id === r.tipo; }) || {icon:'📍',name:r.tipo||''};
-    return '<div class="rank-card" data-place="' + r.place.replace(/"/g,'&quot;') + '">' +
+    return '<div class="rank-card" data-place="' + escapeHtml(r.place) + '">' +
       '<div class="rank-pos ' + (pos[i]||'') + '">' + (i+1) + '</div>' +
-      '<div class="rank-info"><div class="rank-name">' + r.place + '</div>' +
-      '<div class="rank-badges">' + (r.provincia ? '<span class="bdg">📍 ' + r.provincia + '</span>' : '') +
-      (r.subcat ? '<span class="bdg hi">' + r.subcat + '</span>' : '<span class="bdg hi">' + biz.icon + ' ' + biz.name + '</span>') +
+      '<div class="rank-info"><div class="rank-name">' + escapeHtml(r.place) + '</div>' +
+      '<div class="rank-badges">' + (r.provincia ? '<span class="bdg">📍 ' + escapeHtml(r.provincia) + '</span>' : '') +
+      (r.subcat ? '<span class="bdg hi">' + escapeHtml(r.subcat) + '</span>' : '<span class="bdg hi">' + biz.icon + ' ' + biz.name + '</span>') +
       '<span class="bdg">' + lowCat.icon + ' mejorar: ' + lowCat.name + '</span></div></div>' +
       '<div class="rank-score"><div class="rank-num">' + score + '</div><div class="rank-pes">PES</div>' +
       '<div class="rank-votes">' + r.count + ' eval.' + (r.lastUpdate ? ' · ' + new Date(r.lastUpdate).toLocaleDateString('es-PA',{month:'short',year:'numeric'}) : '') + '</div></div></div>';
@@ -922,8 +1038,8 @@ function openModal(placeName) {
   var others = ratings.filter(function(x) { return x.place !== placeName; }).sort(function(a,b) { return avg(b.scores)-avg(a.scores); }).slice(0,3);
   document.getElementById('modal-compare').innerHTML = others.map(function(o) {
     var os = avg(o.scores), diff = os - score, cls = diff>0.2?'cs-up':diff<-0.2?'cs-dn':'cs-eq', sign = diff>0?'+':'';
-    return '<div class="compare-row" data-place="' + o.place.replace(/"/g,'&quot;') + '">' +
-      '<div><div class="compare-name">' + o.place + '</div><div class="compare-diff">' + o.count + ' eval.</div></div>' +
+    return '<div class="compare-row" data-place="' + escapeHtml(o.place) + '">' +
+      '<div><div class="compare-name">' + escapeHtml(o.place) + '</div><div class="compare-diff">' + o.count + ' eval.</div></div>' +
       '<div class="compare-score ' + cls + '">' + os.toFixed(1) + ' <span style="font-size:0.68rem;font-weight:400">(' + sign + diff.toFixed(1) + ')</span></div></div>';
   }).join('');
   document.getElementById('modal-overlay').classList.add('open');
@@ -940,25 +1056,61 @@ function updateStats() {
 // ── ADMIN ────────────────────────────────────────────────────────
 function openAdmin() { document.getElementById('admin-overlay').classList.add('open'); setTimeout(function() { document.getElementById('admin-pass').focus(); }, 200); }
 function closeAdmin() { document.getElementById('admin-overlay').classList.remove('open'); document.getElementById('admin-pass').value = ''; document.getElementById('login-err').style.display = 'none'; }
-function checkAdmin() {
-  if (document.getElementById('admin-pass').value === ADMIN_PASS) { closeAdmin(); openDash(); }
-  else { document.getElementById('login-err').style.display = 'block'; document.getElementById('admin-pass').value = ''; document.getElementById('admin-pass').focus(); }
+
+async function checkAdmin() {
+  var pass = document.getElementById('admin-pass').value;
+  var btn = document.getElementById('login-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Verificando…'; }
+  try {
+    const r = await fetch(SB_URL + '/auth/v1/token?grant_type=password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SB_KEY },
+      body: JSON.stringify({ email: ADMIN_EMAIL, password: pass })
+    });
+    const data = await r.json();
+    if (r.ok && data.access_token) {
+      adminToken = data.access_token;
+      closeAdmin();
+      openDash();
+    } else {
+      document.getElementById('login-err').style.display = 'block';
+      document.getElementById('admin-pass').value = '';
+      document.getElementById('admin-pass').focus();
+    }
+  } catch(e) {
+    document.getElementById('login-err').style.display = 'block';
+    document.getElementById('login-err').textContent = 'Error de conexión. Intenta de nuevo.';
+  }
+  if (btn) { btn.disabled = false; btn.textContent = 'Entrar al Dashboard →'; }
 }
 
-var dashInit = false;
 function openDash() {
   document.getElementById('dash-overlay').classList.add('open');
-  if (!dashInit) { dashInit = true; setTimeout(initDash, 300); }
+  initDash(); // se recarga cada vez: los datos del admin son sensibles y deben estar al día
 }
-function closeDash() { document.getElementById('dash-overlay').classList.remove('open'); }
+function closeDash() {
+  document.getElementById('dash-overlay').classList.remove('open');
+  adminToken = null; // cierra la sesión de admin al salir del panel
+  adminRatings = [];
+}
 
-function initDash() {
-  var t = ratings.reduce(function(s,r) { return s+r.count; }, 0);
-  var ga = ratings.length ? (ratings.reduce(function(s,r) { return s+avg(r.scores); }, 0)/ratings.length).toFixed(1) : '—';
-  var catAvgs = CATS.map(function(c) { return { c:c, a: ratings.length ? ratings.reduce(function(s,r) { return s+(r.scores[c.id]||0); }, 0)/ratings.length : 0 }; });
+async function initDash() {
+  var table = document.getElementById('dash-table');
+  table.innerHTML = '<tr><td colspan="7">Cargando…</td></tr>';
+
+  var rawRows = await sbFetchRawAuthenticated();
+  if (rawRows === null) {
+    table.innerHTML = '<tr><td colspan="7">⚠️ No se pudo cargar. Tu sesión pudo expirar — cierra y vuelve a entrar. <button onclick="initDash()" style="text-decoration:underline;background:none;border:none;cursor:pointer;color:inherit">Reintentar</button></td></tr>';
+    return;
+  }
+  adminRatings = aggregateRatings(rawRows);
+
+  var t = adminRatings.reduce(function(s,r) { return s+r.count; }, 0);
+  var ga = adminRatings.length ? (adminRatings.reduce(function(s,r) { return s+avg(r.scores); }, 0)/adminRatings.length).toFixed(1) : '—';
+  var catAvgs = CATS.map(function(c) { return { c:c, a: adminRatings.length ? adminRatings.reduce(function(s,r) { return s+(r.scores[c.id]||0); }, 0)/adminRatings.length : 0 }; });
   var lowCat = catAvgs.reduce(function(b,x) { return x.a < b.a ? x : b; }, catAvgs[0]);
   document.getElementById('kpi-evals').textContent = t.toLocaleString();
-  document.getElementById('kpi-places').textContent = ratings.length;
+  document.getElementById('kpi-places').textContent = adminRatings.length;
   document.getElementById('kpi-avg').textContent = ga;
   document.getElementById('kpi-low').textContent = lowCat.c.name;
 
@@ -974,32 +1126,33 @@ function initDash() {
 
   // Province bars
   var provCount = {};
-  ratings.forEach(function(r) { if(r.provincia) provCount[r.provincia] = (provCount[r.provincia]||0) + r.count; });
+  adminRatings.forEach(function(r) { if(r.provincia) provCount[r.provincia] = (provCount[r.provincia]||0) + r.count; });
   var provSorted = Object.entries(provCount).sort(function(a,b){return b[1]-a[1];});
   var maxP = provSorted[0] ? provSorted[0][1] : 1;
   document.getElementById('prov-bars').innerHTML = provSorted.map(function(e) {
-    return '<div class="prov-row"><div class="prov-name">' + e[0] + '</div><div class="prov-track"><div class="prov-fill" style="width:' + (e[1]/maxP*100).toFixed(0) + '%"></div></div><div class="prov-count">' + e[1] + '</div></div>';
+    return '<div class="prov-row"><div class="prov-name">' + escapeHtml(e[0]) + '</div><div class="prov-track"><div class="prov-fill" style="width:' + (e[1]/maxP*100).toFixed(0) + '%"></div></div><div class="prov-count">' + e[1] + '</div></div>';
   }).join('');
 
   // Table
   var ts = {};
-  ratings.forEach(function(r) {
+  adminRatings.forEach(function(r) {
     var t2 = r.tipo||'otro';
     if(!ts[t2]) ts[t2]={count:0,at:0,li:0,ef:0,se:0,n:0};
     ts[t2].count+=r.count; ts[t2].at+=r.scores.atencion||0; ts[t2].li+=r.scores.limpieza||0;
     ts[t2].ef+=r.scores.eficiencia||0; ts[t2].se+=r.scores.seguridad||0; ts[t2].n++;
   });
   function sp(v) { return v>=4?'sp-hi':v>=3?'sp-mid':'sp-lo'; }
-  document.getElementById('dash-table').innerHTML = Object.entries(ts).map(function(e) {
+  table.innerHTML = Object.entries(ts).map(function(e) {
     var s=e[1], at=(s.at/s.n).toFixed(1), li=(s.li/s.n).toFixed(1), ef=(s.ef/s.n).toFixed(1), se=(s.se/s.n).toFixed(1), av=((+at+ +li+ +ef+ +se)/4).toFixed(1);
-    return '<tr><td><strong>' + e[0] + '</strong></td><td>' + s.count + '</td><td><span class="score-pill ' + sp(at) + '">' + at + '</span></td><td><span class="score-pill ' + sp(li) + '">' + li + '</span></td><td><span class="score-pill ' + sp(ef) + '">' + ef + '</span></td><td><span class="score-pill ' + sp(se) + '">' + se + '</span></td><td><strong style="font-family:Playfair Display,serif;font-size:1rem;color:var(--p)">' + av + '</strong></td></tr>';
+    return '<tr><td><strong>' + escapeHtml(e[0]) + '</strong></td><td>' + s.count + '</td><td><span class="score-pill ' + sp(at) + '">' + at + '</span></td><td><span class="score-pill ' + sp(li) + '">' + li + '</span></td><td><span class="score-pill ' + sp(ef) + '">' + ef + '</span></td><td><span class="score-pill ' + sp(se) + '">' + se + '</span></td><td><strong style="font-family:Playfair Display,serif;font-size:1rem;color:var(--p)">' + av + '</strong></td></tr>';
   }).join('');
 }
 
 // ── EXPORT CSV ───────────────────────────────────────────────────
 function exportCSV() {
+  if (!adminRatings.length) { toast('⚠️ No hay datos cargados. Abre el dashboard primero.'); return; }
   var headers = ['Lugar','Tipo','Subcategoría','Provincia','Atención','Limpieza','Eficiencia','Accesibilidad','Seguridad','Ambiente','PES','Evaluaciones','Última actualización'];
-  var rows = ratings.map(function(r) {
+  var rows = adminRatings.map(function(r) {
     return [r.place, r.tipo||'', r.subcat||'', r.provincia||'', r.scores.atencion, r.scores.limpieza, r.scores.eficiencia, r.scores.accesibilidad, r.scores.seguridad, r.scores.ambiente, avg(r.scores).toFixed(2), r.count, r.lastUpdate||''];
   });
   var csv = [headers].concat(rows).map(function(r) { return r.join(','); }).join('\n');
@@ -1071,8 +1224,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   buildBizGrid();
   buildProvGrid();
-  renderRanking();
+  renderRanking(); // pinta el estado "Cargando…" de inmediato
   updateStats();
+
+  // Carga real desde Supabase. El ranking y las estadísticas se repintan
+  // solos cuando llega la respuesta, sin bloquear el resto de la interfaz.
+  loadRatings().then(function() {
+    renderRanking();
+    updateStats();
+    var activeView = document.querySelector('.view.active');
+    if (activeView && activeView.id === 'view-explorar') renderExplore();
+  });
 
   // Nav pills
   document.getElementById('nav-pills').addEventListener('click', function(e) {
