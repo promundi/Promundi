@@ -310,6 +310,7 @@ tr:last-child td{border-bottom:none;}
   .modal{padding:20px 16px 36px;}
 }
 </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -399,6 +400,7 @@ tr:last-child td{border-bottom:none;}
     <div class="submit-card">
       <h3>Índice Promundi (PES) — <span id="submit-name"></span></h3>
       <div class="sum-grid" id="sum-grid"></div>
+      <div id="turnstile-container" style="margin:16px 0;display:flex;justify-content:center"></div>
       <div class="submit-row">
         <button class="btn btn-gh" id="btn-reset">Evaluar otro lugar</button>
         <button class="btn btn-r" id="btn-submit">Enviar evaluación →</button>
@@ -834,17 +836,26 @@ function buildSubcats(bizId) {
 }
 
 // ── ANTI-SPAM ────────────────────────────────────────────────────
-function checkSpam() {
+// Separado en dos pasos a propósito: antes, se marcaba "ya evaluado" ANTES
+// de saber si el envío a Supabase tuvo éxito. Si fallaba la conexión, la
+// persona quedaba bloqueada para ese lugar el resto del día sin que se
+// hubiera guardado nada.
+function hasVotedToday(place) {
+  try {
+    var today = new Date().toISOString().slice(0,10);
+    var voted = JSON.parse(localStorage.getItem('promundi_voted_' + today) || '[]');
+    return voted.indexOf(place.toLowerCase().trim()) > -1;
+  } catch(e) { return false; }
+}
+function markVotedToday(place) {
   try {
     var today = new Date().toISOString().slice(0,10);
     var key = 'promundi_voted_' + today;
     var voted = JSON.parse(localStorage.getItem(key) || '[]');
-    var pk = curPlace.toLowerCase().trim();
-    if (voted.indexOf(pk) > -1) return false;
-    voted.push(pk);
+    var pk = place.toLowerCase().trim();
+    if (voted.indexOf(pk) === -1) voted.push(pk);
     localStorage.setItem(key, JSON.stringify(voted));
-    return true;
-  } catch(e) { return true; }
+  } catch(e) {}
 }
 
 // ── EVALUAR ──────────────────────────────────────────────────────
@@ -898,26 +909,55 @@ function showSubmit() {
     html += '<div class="sum-item"><div class="sum-emoji">' + em.e + '</div><div class="sum-cat">' + cat.name + '</div><div class="sum-score">' + v + '/5</div></div>';
   });
   document.getElementById('sum-grid').innerHTML = html;
+  renderTurnstile();
+}
+
+const TURNSTILE_SITE_KEY = '0x4AAAAAAEKN2iLzEVNuzVHs';
+let turnstileWidgetId = null;
+
+// Se renderiza cuando el usuario llega a la pantalla de resumen (último paso),
+// no antes — así el token no expira (dura 300s) mientras contesta las preguntas.
+function renderTurnstile() {
+  var container = document.getElementById('turnstile-container');
+  if (!container || !window.turnstile) return;
+  container.innerHTML = '';
+  turnstileWidgetId = window.turnstile.render('#turnstile-container', {
+    sitekey: TURNSTILE_SITE_KEY
+  });
 }
 
 async function submitRating() {
-  if (!checkSpam()) { toast('⚠️ Ya evaluaste este lugar hoy. Vuelve mañana.'); return; }
+  if (hasVotedToday(curPlace)) { toast('⚠️ Ya evaluaste este lugar hoy. Vuelve mañana.'); return; }
+
+  var token = window.turnstile && turnstileWidgetId !== null ? window.turnstile.getResponse(turnstileWidgetId) : null;
+  if (!token) { toast('⚠️ Completa la verificación de seguridad antes de enviar.'); return; }
 
   var submitBtn = document.getElementById('btn-submit');
   if (submitBtn) submitBtn.disabled = true;
 
-  // Antes esta función asumía éxito y actualizaba el ranking local sin
-  // confirmar que Supabase realmente guardó el dato. Ahora se espera la
-  // respuesta real: si falla, el usuario lo sabe y puede reintentar,
-  // en vez de creer que su evaluación cuenta cuando no fue así.
-  var ok = await sbInsert(curPlace, curBiz, curSub, curProv, answers);
+  // El envío ya no llama a Supabase directo: pasa por /api/submit, que verifica
+  // el token con Cloudflare antes de aceptar el dato. Así una evaluación
+  // automatizada (script/bot) no puede llegar a guardarse, aunque conozca
+  // la URL de Supabase y la anon key (que son públicas por diseño).
+  var ok = false;
+  try {
+    var r = await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token, place: curPlace, tipo: curBiz, subcat: curSub, provincia: curProv, scores: answers })
+    });
+    ok = r.ok;
+  } catch (e) { ok = false; }
 
   if (submitBtn) submitBtn.disabled = false;
+  if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
 
   if (!ok) {
     toast('❌ No se pudo enviar. Revisa tu conexión e intenta de nuevo.');
     return;
   }
+
+  markVotedToday(curPlace);
 
   await loadRatings();
   updateStats();
