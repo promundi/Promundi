@@ -6,18 +6,18 @@
 <title>Promundi 🇵🇦 — Inteligencia de Experiencia al Cliente en Panamá</title>
 <meta name="description" content="La primera plataforma ciudadana que mide la experiencia del cliente en Panamá mediante evaluaciones emocionales anónimas." />
 <meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://promundi.com.pa/" />
+<link rel="canonical" href="https://promundi.vercel.app/" />
 <meta property="og:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
 <meta property="og:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
 <meta property="og:locale" content="es_PA" />
-<meta property="og:url" content="https://promundi.com.pa/" />
+<meta property="og:url" content="https://promundi.vercel.app/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Promundi" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
 <meta name="twitter:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Promundi","url":"https://promundi.com.pa","description":"Plataforma de inteligencia de experiencia al cliente en Panamá","applicationCategory":"DataApplication","inLanguage":"es-PA"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Promundi","url":"https://promundi.vercel.app","description":"Plataforma de inteligencia de experiencia al cliente en Panamá","applicationCategory":"DataApplication","inLanguage":"es-PA"}
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
@@ -219,6 +219,32 @@ tr:last-child td{border-bottom:none;}
 
 /* ADMIN */
 .admin-overlay{display:none;position:fixed;inset:0;z-index:500;background:linear-gradient(160deg,#0A4D6E,#0d3d52 60%,#1a2a1f);align-items:center;justify-content:center;}
+.lead-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,20,25,0.55);align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+.lead-overlay.open{display:flex;}
+.lead-card{background:linear-gradient(135deg,var(--p),#08324a);border-radius:18px;padding:26px 22px;color:#fff;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;}
+.lead-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.lead-card>p{font-size:0.84rem;color:rgba(255,255,255,0.75);line-height:1.5;margin-bottom:20px;}
+.lead-field{margin-bottom:13px;}
+.lead-field label{display:block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.65);margin-bottom:6px;}
+.lead-field input,.lead-field select,.lead-field textarea{width:100%;padding:11px 13px;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;outline:none;background:rgba(255,255,255,0.08);color:#fff;}
+.lead-field input::placeholder,.lead-field textarea::placeholder{color:rgba(255,255,255,0.4);}
+.lead-field input:focus,.lead-field select:focus,.lead-field textarea:focus{border-color:var(--o);}
+.lead-field select option{color:#1A1A1A;}
+.lead-field textarea{resize:vertical;min-height:64px;}
+.lead-actions{display:flex;gap:10px;margin-top:6px;}
+.lead-actions button{flex:1;padding:13px;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;}
+.lead-send{background:#fff;color:var(--p);}
+.lead-cancel{background:rgba(255,255,255,0.1);color:#fff;}
+.lead-err{display:none;color:#ffb3b3;font-size:0.78rem;margin-top:4px;}
+.legal-footer{text-align:center;padding:28px 16px 90px;font-size:0.74rem;color:var(--mu);border-top:1px solid var(--bd);margin-top:20px;}
+.legal-footer a{color:var(--p);text-decoration:underline;cursor:pointer;background:none;border:none;font-size:inherit;font-family:inherit;padding:0;}
+.terms-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,20,25,0.6);align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+.terms-overlay.open{display:flex;}
+.terms-card{background:#fff;border-radius:18px;padding:26px 22px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;}
+.terms-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;color:var(--p);margin-bottom:14px;}
+.terms-card p{font-size:0.86rem;line-height:1.6;color:var(--tx);margin-bottom:12px;}
+.terms-card p strong{color:var(--p);}
+.terms-close{width:100%;padding:12px;border:none;border-radius:10px;background:var(--p);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:8px;}
 .admin-overlay.open{display:flex;}
 .login-box{background:#fff;border-radius:18px;padding:36px;width:100%;max-width:360px;text-align:center;}
 .login-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:var(--p);margin-bottom:4px;}
@@ -316,7 +342,7 @@ tr:last-child td{border-bottom:none;}
 
 <!-- NAV -->
 <nav>
-  <div class="logo" id="logo-btn">Pro<span>mundi</span> 🇵🇦</div>
+  <div class="logo notranslate" id="logo-btn" translate="no">Pro<span>mundi</span> 🇵🇦</div>
   <div class="nav-pills" id="nav-pills">
     <button class="pill active" data-view="evaluar">Evaluar</button>
     <button class="pill" data-view="explorar">Explorar</button>
@@ -363,20 +389,23 @@ tr:last-child td{border-bottom:none;}
     </div>
     <div class="setup-card">
       <div class="anon">🔒 Tu evaluación es 100% anónima y sin texto</div>
+      <div style="text-align:right;margin-bottom:8px">
+        <button id="lang-toggle" onclick="toggleLang()" style="background:none;border:1px solid var(--bd);border-radius:20px;padding:5px 12px;font-size:0.74rem;font-weight:700;color:var(--p);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif">🇺🇸 English</button>
+      </div>
       <div class="step1">
         <span class="step1-badge">📍 Paso 1 — Empieza aquí</span>
-        <span class="step1-label">Nombre del negocio + su ubicación exacta</span>
-        <p class="step1-hint">⚠️ <strong>Incluye el barrio o sucursal.</strong> Cada sucursal tiene su propia experiencia — cuéntanos cuál visitaste.</p>
-        <input type="text" class="place-input" id="place-input" placeholder="Nombre del negocio + barrio o sucursal" />
-        <p style="font-size:0.72rem;color:var(--mu);margin-top:8px">✏️ Formato: <strong>Tipo de negocio o nombre + ubicación específica</strong></p>
+        <span class="step1-label" id="step1-label-txt">Nombre del negocio + su ubicación exacta</span>
+        <p class="step1-hint" id="step1-hint-txt">⚠️ <strong>Incluye el barrio o sucursal.</strong> Cada sucursal tiene su propia experiencia — cuéntanos cuál visitaste.</p>
+        <input type="text" class="place-input" id="place-input" placeholder="Ej: Farmacia Arrocha, El Dorado" />
+        <p style="font-size:0.72rem;color:var(--mu);margin-top:8px" id="format-hint-txt">✏️ Formato: <strong>Tipo de negocio o nombre + ubicación específica</strong></p>
       </div>
-      <span class="setup-label">Tipo de negocio <span class="req">* Selecciona uno</span></span>
+      <span class="setup-label"><span id="tipo-label-txt">Tipo de negocio</span> <span class="req" id="tipo-req-txt">* Selecciona uno</span></span>
       <div class="sel-grid" id="biz-grid"></div>
       <div id="subcats-wrap" style="display:none;margin-top:16px">
         <span class="setup-label">Categoría específica</span>
         <div class="sel-grid" id="subcat-grid"></div>
       </div>
-      <span class="setup-label" style="margin-top:18px;display:block">Provincia o Comarca <span class="req">* Selecciona una</span></span>
+      <span class="setup-label" style="margin-top:18px;display:block"><span id="prov-label-txt">Provincia o Comarca</span> <span class="req" id="prov-req-txt">* Selecciona una</span></span>
       <div id="prov-grid"></div>
       <div class="form-footer">
         <span class="form-note">* Todos los campos son obligatorios</span>
@@ -498,9 +527,50 @@ tr:last-child td{border-bottom:none;}
 </div>
 
 <!-- ADMIN LOGIN -->
+<div class="lead-overlay" id="lead-overlay">
+  <div class="lead-card">
+    <h3>Solicitar Reporte PES</h3>
+    <p>Cuéntanos qué necesitas y te contactamos en menos de 48 horas con una propuesta a tu medida.</p>
+
+    <div class="lead-field">
+      <label>Nombre *</label>
+      <input type="text" id="lead-nombre" placeholder="Tu nombre completo">
+    </div>
+    <div class="lead-field">
+      <label>Empresa / organización *</label>
+      <input type="text" id="lead-empresa" placeholder="Ej. Cámara de Comercio de Panamá">
+    </div>
+    <div class="lead-field">
+      <label>Correo *</label>
+      <input type="email" id="lead-correo" placeholder="tu@empresa.com">
+    </div>
+    <div class="lead-field">
+      <label>Sector de interés</label>
+      <select id="lead-sector">
+        <option value="">Selecciona un sector</option>
+        <option>Alimentos y restaurantes</option>
+        <option>Salud</option>
+        <option>Retail / comercio</option>
+        <option>Servicios financieros</option>
+        <option>Gobierno / sector público</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div class="lead-field">
+      <label>¿Qué te interesa?</label>
+      <textarea id="lead-mensaje" placeholder="Ej. Reporte sectorial de restaurantes en Panamá Oeste..."></textarea>
+    </div>
+
+    <div class="lead-err" id="lead-err">⚠️ Completa nombre, empresa y correo antes de enviar.</div>
+    <div class="lead-actions">
+      <button class="lead-cancel" id="lead-cancel-btn">Cancelar</button>
+      <button class="lead-send" id="lead-send-btn">Enviar solicitud →</button>
+    </div>
+  </div>
+</div>
 <div class="admin-overlay" id="admin-overlay">
   <div class="login-box">
-    <div class="login-logo">Pro<span>mundi</span> 🇵🇦</div>
+    <div class="login-logo notranslate" translate="no">Pro<span>mundi</span> 🇵🇦</div>
     <div class="login-sub">Acceso exclusivo · Administradora</div>
     <label class="login-label">Contraseña</label>
     <input class="login-input" type="password" id="admin-pass" placeholder="••••••••" />
@@ -513,7 +583,7 @@ tr:last-child td{border-bottom:none;}
 <!-- DASHBOARD -->
 <div class="dash-overlay" id="dash-overlay">
   <div class="dash-top">
-    <div class="dash-logo">Pro<span>mundi</span> 🇵🇦 <span style="font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:400;margin-left:6px">· Data Intelligence</span></div>
+    <div class="dash-logo notranslate" translate="no">Pro<span>mundi</span> 🇵🇦 <span style="font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:400;margin-left:6px">· Data Intelligence</span></div>
     <div class="dash-top-btns">
       <button class="dash-btn dash-export" id="dash-export-btn">⬇ CSV</button>
       <button class="dash-btn dash-close" id="dash-close-btn">✕ Cerrar</button>
@@ -565,6 +635,25 @@ tr:last-child td{border-bottom:none;}
   </div>
 </div>
 
+<footer class="legal-footer">
+  Los puntajes en Promundi son agregaciones anónimas de opiniones ciudadanas y no reflejan una postura editorial de la plataforma.
+  <br>
+  <button onclick="openTerms()">Términos de Uso</button> · ¿Eres dueño de un negocio? <a href="mailto:infopromundi.pa@gmail.com?subject=Reportar%20evaluaci%C3%B3n">Repórtanos aquí</a>
+</footer>
+
+<div class="terms-overlay" id="terms-overlay">
+  <div class="terms-card">
+    <h3>Términos de Uso — Promundi</h3>
+    <p><strong>1. Qué es Promundi.</strong> Promundi es una iniciativa ciudadana que recopila evaluaciones anónimas sobre la experiencia de servicio en negocios de Panamá. Los puntajes (Promundi Experience Score, PES) son un promedio agregado de opiniones subjetivas enviadas por usuarios anónimos, expresadas mediante categorías estructuradas y emojis — no aceptamos texto libre ni acusaciones de hechos específicos.</p>
+    <p><strong>2. Los resultados por categoría son percepción, no certificación.</strong> Cada categoría (Atención, Limpieza, Eficiencia, Accesibilidad, Seguridad, Ambiente) muestra el promedio de cómo los usuarios <em>percibieron</em> esa experiencia — es subjetivo por naturaleza. Promundi no realiza inspecciones, auditorías, ni evaluaciones técnicas o científicas del negocio. Por ejemplo: un emoji triste en "Limpieza" refleja la experiencia percibida por quien evaluó, no el resultado de una inspección sanitaria oficial; un puntaje bajo en "Seguridad" refleja percepción del usuario, no una auditoría de seguridad certificada.</p>
+    <p><strong>3. No son afirmaciones de Promundi.</strong> Cada puntaje refleja únicamente la percepción promedio de quienes evaluaron ese lugar. Promundi no verifica, respalda, ni afirma como hecho ninguna opinión individual — somos un agregador de datos, no un medio que emite juicios sobre negocios.</p>
+    <p><strong>4. Protección contra manipulación.</strong> Usamos verificación anti-bots (Cloudflare Turnstile) y límites de envío por lugar y día para reducir evaluaciones automatizadas o repetidas. Ningún sistema puede garantizar al 100% que cada evaluación provenga de una visita real — por eso los puntajes deben interpretarse como una tendencia agregada, no como un hecho verificado caso por caso.</p>
+    <p><strong>5. Si eres dueño de un negocio.</strong> Si consideras que una evaluación de tu negocio es maliciosa, falsa, o resultado de manipulación, escríbenos a <strong>infopromundi.pa@gmail.com</strong> con el nombre exacto del negocio. Revisamos cada reporte manualmente.</p>
+    <p><strong>6. Anonimato.</strong> No recopilamos nombres, cuentas, ni datos personales de quienes evalúan. No podemos identificar ni revelar la identidad de ningún evaluador porque, por diseño, no la conocemos.</p>
+    <button class="terms-close" onclick="closeTerms()">Entendido</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -593,8 +682,76 @@ async function sbInsert(place, tipo, subcat, provincia, scores) {
   } catch(e) { return false; }
 }
 
+// Solicitudes B2B: van directo a Supabase con la anon key (igual que las
+// evaluaciones antes de Turnstile). No lleva CAPTCHA a propósito — el riesgo
+// aquí es mucho menor (leads falsos solo hacen perder tiempo, no dañan
+// datos públicos ni la reputación de ningún negocio) y no vale la pena
+// la complejidad extra de un segundo widget + función serverless para eso.
+async function sbInsertLead(nombre, empresa, correo, sector, mensaje) {
+  try {
+    const r = await fetch(SB_URL + '/rest/v1/leads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ nombre: nombre, empresa: empresa, correo: correo, sector: sector || '', mensaje: mensaje || '' })
+    });
+    return r.ok;
+  } catch(e) { return false; }
+}
+
+function openTerms() { document.getElementById('terms-overlay').classList.add('open'); }
+function closeTerms() { document.getElementById('terms-overlay').classList.remove('open'); }
+
+function openLead() {
+  document.getElementById('lead-overlay').classList.add('open');
+  document.getElementById('lead-err').style.display = 'none';
+}
+function closeLead() {
+  document.getElementById('lead-overlay').classList.remove('open');
+  ['lead-nombre','lead-empresa','lead-correo','lead-sector','lead-mensaje'].forEach(function(id) {
+    document.getElementById(id).value = '';
+  });
+}
+
+async function submitLead() {
+  var nombre = document.getElementById('lead-nombre').value.trim();
+  var empresa = document.getElementById('lead-empresa').value.trim();
+  var correo = document.getElementById('lead-correo').value.trim();
+  var sector = document.getElementById('lead-sector').value;
+  var mensaje = document.getElementById('lead-mensaje').value.trim();
+  var err = document.getElementById('lead-err');
+
+  if (!nombre || !empresa || !correo || correo.indexOf('@') === -1) {
+    err.style.display = 'block';
+    return;
+  }
+  err.style.display = 'none';
+
+  var btn = document.getElementById('lead-send-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  var ok = await sbInsertLead(nombre, empresa, correo, sector, mensaje);
+
+  btn.disabled = false;
+  btn.textContent = 'Enviar solicitud →';
+
+  if (!ok) {
+    toast('❌ No se pudo enviar. Intenta de nuevo o escríbenos a infopromundi.pa@gmail.com');
+    return;
+  }
+
+  closeLead();
+  toast('✅ Solicitud enviada. Te contactaremos pronto.');
+}
+
 // Lee la vista PÚBLICA (promedios por lugar, no evaluaciones individuales).
 // Es la única fuente de datos que usan el Ranking y Explorar — 'anon' ya no
+
 // tiene permiso para leer la tabla cruda 'ratings' directamente.
 async function sbFetchAll() {
   try {
@@ -668,37 +825,37 @@ function escapeHtml(str) {
 
 // ── DATA ─────────────────────────────────────────────────────────
 const CATS = [
-  {id:'atencion', icon:'😊', name:'Atención', q:'¿Sentiste que te valoraron como persona, no solo como cliente?',
-   emos:[{v:1,e:'😞',l:'Me ignoraron'},{v:2,e:'😐',l:'Fue frío'},{v:3,e:'🙂',l:'Correcto'},{v:4,e:'😊',l:'Bien atendido'},{v:5,e:'🤩',l:'Me sentí especial'}]},
-  {id:'limpieza', icon:'🧹', name:'Limpieza', q:'¿El lugar te transmitió cuidado y respeto por el espacio compartido?',
-   emos:[{v:1,e:'🤢',l:'Me dio asco'},{v:2,e:'😟',l:'Descuidado'},{v:3,e:'😶',l:'Aceptable'},{v:4,e:'😌',l:'Limpio'},{v:5,e:'✨',l:'Impecable'}]},
-  {id:'eficiencia', icon:'⚡', name:'Eficiencia', q:'¿Sentiste que respetaron tu tiempo?',
-   emos:[{v:1,e:'😤',l:'Perdí mi tiempo'},{v:2,e:'😒',l:'Muy lento'},{v:3,e:'🕐',l:'Normal'},{v:4,e:'👍',l:'Fue ágil'},{v:5,e:'🚀',l:'Impresionante'}]},
-  {id:'accesibilidad', icon:'♿', name:'Accesibilidad', q:'¿Cualquier persona podría moverse cómodamente aquí?',
-   emos:[{v:1,e:'🚫',l:'Imposible'},{v:2,e:'😬',l:'Muy difícil'},{v:3,e:'😐',l:'Regular'},{v:4,e:'✅',l:'Bien pensado'},{v:5,e:'🌟',l:'Totalmente inclusivo'}]},
-  {id:'seguridad', icon:'🛡️', name:'Seguridad', q:'¿Te sentiste tranquilo/a y protegido/a en todo momento?',
-   emos:[{v:1,e:'😨',l:'Tuve miedo'},{v:2,e:'😰',l:'Incómodo/a'},{v:3,e:'😶',l:'Neutro'},{v:4,e:'😌',l:'Tranquilo/a'},{v:5,e:'🛡️',l:'Muy seguro/a'}]},
-  {id:'ambiente', icon:'🌿', name:'Ambiente', q:'¿El lugar te hizo querer quedarte más tiempo?',
-   emos:[{v:1,e:'😖',l:'Quería salir'},{v:2,e:'😕',l:'Incómodo'},{v:3,e:'😐',l:'Normal'},{v:4,e:'😎',l:'Agradable'},{v:5,e:'💚',l:'Me encantó'}]}
+  {id:'atencion', icon:'😊', name:'Atención', name_en:'Attention', q:'¿Sentiste que te valoraron como persona, no solo como cliente?', q_en:'Did you feel valued as a person, not just a customer?',
+   emos:[{v:1,e:'😞',l:'Me ignoraron',l_en:'I was ignored'},{v:2,e:'😐',l:'Fue frío',l_en:'It was cold'},{v:3,e:'🙂',l:'Correcto',l_en:'Fine'},{v:4,e:'😊',l:'Bien atendido',l_en:'Well attended'},{v:5,e:'🤩',l:'Me sentí especial',l_en:'I felt special'}]},
+  {id:'limpieza', icon:'🧹', name:'Limpieza', name_en:'Cleanliness', q:'¿El lugar te transmitió cuidado y respeto por el espacio compartido?', q_en:'Did the place show care and respect for the shared space?',
+   emos:[{v:1,e:'🤢',l:'Me dio asco',l_en:'It disgusted me'},{v:2,e:'😟',l:'Descuidado',l_en:'Neglected'},{v:3,e:'😶',l:'Aceptable',l_en:'Acceptable'},{v:4,e:'😌',l:'Limpio',l_en:'Clean'},{v:5,e:'✨',l:'Impecable',l_en:'Spotless'}]},
+  {id:'eficiencia', icon:'⚡', name:'Eficiencia', name_en:'Efficiency', q:'¿Sentiste que respetaron tu tiempo?', q_en:'Did you feel your time was respected?',
+   emos:[{v:1,e:'😤',l:'Perdí mi tiempo',l_en:'I wasted my time'},{v:2,e:'😒',l:'Muy lento',l_en:'Very slow'},{v:3,e:'🕐',l:'Normal',l_en:'Normal'},{v:4,e:'👍',l:'Fue ágil',l_en:'It was quick'},{v:5,e:'🚀',l:'Impresionante',l_en:'Impressive'}]},
+  {id:'accesibilidad', icon:'♿', name:'Accesibilidad', name_en:'Accessibility', q:'¿Cualquier persona podría moverse cómodamente aquí?', q_en:'Could anyone move around comfortably here?',
+   emos:[{v:1,e:'🚫',l:'Imposible',l_en:'Impossible'},{v:2,e:'😬',l:'Muy difícil',l_en:'Very difficult'},{v:3,e:'😐',l:'Regular',l_en:'Average'},{v:4,e:'✅',l:'Bien pensado',l_en:'Well thought out'},{v:5,e:'🌟',l:'Totalmente inclusivo',l_en:'Fully inclusive'}]},
+  {id:'seguridad', icon:'🛡️', name:'Seguridad', name_en:'Safety', q:'¿Te sentiste tranquilo/a y protegido/a en todo momento?', q_en:'Did you feel calm and safe the whole time?',
+   emos:[{v:1,e:'😨',l:'Tuve miedo',l_en:'I was scared'},{v:2,e:'😰',l:'Incómodo/a',l_en:'Uncomfortable'},{v:3,e:'😶',l:'Neutro',l_en:'Neutral'},{v:4,e:'😌',l:'Tranquilo/a',l_en:'Calm'},{v:5,e:'🛡️',l:'Muy seguro/a',l_en:'Very safe'}]},
+  {id:'ambiente', icon:'🌿', name:'Ambiente', name_en:'Ambiance', q:'¿El lugar te hizo querer quedarte más tiempo?', q_en:'Did the place make you want to stay longer?',
+   emos:[{v:1,e:'😖',l:'Quería salir',l_en:'Wanted to leave'},{v:2,e:'😕',l:'Incómodo',l_en:'Uncomfortable'},{v:3,e:'😐',l:'Normal',l_en:'Normal'},{v:4,e:'😎',l:'Agradable',l_en:'Pleasant'},{v:5,e:'💚',l:'Me encantó',l_en:'Loved it'}]}
 ];
 
 const NEGOCIOS = [
-  {id:'salud', icon:'🏥', name:'Salud', subs:['Hospital / Clínica','Farmacia','Laboratorio','Odontólogo','Óptica','CSS / Salud pública','Médico especialista']},
-  {id:'comercio', icon:'🛒', name:'Comercio', subs:['Supermercado','Tienda de ropa','Zapatería','Ferretería','Librería','Electrónica','Joyería','Cosméticos']},
-  {id:'alimentos', icon:'🍽️', name:'Restaurantes', subs:['Restaurante familiar','Comida rápida','Cafetería','Panadería','Heladería','Food court','Bar / Cantina']},
-  {id:'bancos', icon:'🏦', name:'Banca y finanzas', subs:['Banco nacional','Banco privado','Caja de ahorros','Cooperativa','Casa de cambio','ATM / Cajero','Aseguradora']},
-  {id:'transporte', icon:'🚌', name:'Transporte', subs:['Aeropuerto','Metro','Metrobús','Terminal de buses','Taxi / Rides','Estacionamiento','Aduana / Migración']},
-  {id:'gobierno', icon:'🏛️', name:'Gobierno', subs:['Municipio','Registro Civil','CSS','Tribunal Electoral','MIVIOT','Ministerio de Salud','Policía','Correos','Juzgado']},
-  {id:'educacion', icon:'🎓', name:'Educación', subs:['Escuela pública','Colegio privado','Universidad pública','Universidad privada','Instituto técnico','Centro de idiomas','Guardería']},
-  {id:'mall', icon:'🏬', name:'Centros comerciales', subs:['Albrook Mall','Multiplaza Pacific','MultiCentro','MetroMall','Los Pueblos','Altaplaza Mall','El Dorado Mall','Panama City Mall','La Chorrera Mall','Chiriquí Mall','City Mall David','Colón Mall','Mall Chitré','Plaza Penonomé','Plaza Santiago','Centro comercial local']},
-  {id:'turismo', icon:'🌎', name:'Turismo y cultura', subs:['Hotel','Hostal','Museo','Parque natural','Playa','Sitio histórico','Tour / Guía','Agencia de viajes']},
-  {id:'belleza', icon:'💈', name:'Belleza y bienestar', subs:['Salón de belleza','Barbería','Spa','Gimnasio','Centro de estética','Masajes']},
-  {id:'servicios', icon:'🔧', name:'Servicios', subs:['Taller mecánico','Gasolinera','Lavandería','Limpieza','Seguridad','Internet / Cable','Notaría']},
-  {id:'familiar', icon:'👨‍👩‍👧', name:'Familiar', subs:['Parque infantil','Restaurante familiar','Plaza con espacio abierto','Piscina pública','Área de juegos','Centro recreativo','Museo para niños']},
-  {id:'petfriendly', icon:'🐾', name:'Pet Friendly', subs:['Parque para mascotas','Veterinaria','Tienda de mascotas','Restaurante pet friendly','Hotel pet friendly','Peluquería canina']},
-  {id:'afterwork', icon:'🍻', name:'After Work', subs:['Bar / Lounge','Restaurante con barra','Rooftop','Karaoke','Terraza','Club nocturno','Vinoteca','Brewery']},
-  {id:'workspace', icon:'💻', name:'Para trabajar', subs:['Coworking','Cafetería con wifi','Biblioteca','Hotel con lobby','Restaurante tranquilo','Centro de negocios','Sala de reuniones']},
-  {id:'otro', icon:'📍', name:'Otro', subs:['Mercado público','Cancha deportiva','Iglesia / Templo','Centro comunitario','Otro']}
+  {id:'salud', icon:'🏥', name:'Salud', name_en:'Health', subs:['Hospital / Clínica','Farmacia','Laboratorio','Odontólogo','Óptica','CSS / Salud pública','Médico especialista']},
+  {id:'comercio', icon:'🛒', name:'Comercio', name_en:'Retail', subs:['Supermercado','Tienda de ropa','Zapatería','Ferretería','Librería','Electrónica','Joyería','Cosméticos']},
+  {id:'alimentos', icon:'🍽️', name:'Restaurantes', name_en:'Restaurants', subs:['Restaurante familiar','Comida rápida','Cafetería','Panadería','Heladería','Food court','Bar / Cantina']},
+  {id:'bancos', icon:'🏦', name:'Banca y finanzas', name_en:'Banking & Finance', subs:['Banco nacional','Banco privado','Caja de ahorros','Cooperativa','Casa de cambio','ATM / Cajero','Aseguradora']},
+  {id:'transporte', icon:'🚌', name:'Transporte', name_en:'Transportation', subs:['Aeropuerto','Metro','Metrobús','Terminal de buses','Taxi / Rides','Estacionamiento','Aduana / Migración']},
+  {id:'gobierno', icon:'🏛️', name:'Gobierno', name_en:'Government', subs:['Municipio','Registro Civil','CSS','Tribunal Electoral','MIVIOT','Ministerio de Salud','Policía','Correos','Juzgado']},
+  {id:'educacion', icon:'🎓', name:'Educación', name_en:'Education', subs:['Escuela pública','Colegio privado','Universidad pública','Universidad privada','Instituto técnico','Centro de idiomas','Guardería']},
+  {id:'mall', icon:'🏬', name:'Centros comerciales', name_en:'Shopping Malls', subs:['Albrook Mall','Multiplaza Pacific','MultiCentro','MetroMall','Los Pueblos','Altaplaza Mall','El Dorado Mall','Panama City Mall','La Chorrera Mall','Chiriquí Mall','City Mall David','Colón Mall','Mall Chitré','Plaza Penonomé','Plaza Santiago','Centro comercial local']},
+  {id:'turismo', icon:'🌎', name:'Turismo y cultura', name_en:'Tourism & Culture', subs:['Hotel','Hostal','Museo','Parque natural','Playa','Sitio histórico','Tour / Guía','Agencia de viajes']},
+  {id:'belleza', icon:'💈', name:'Belleza y bienestar', name_en:'Beauty & Wellness', subs:['Salón de belleza','Barbería','Spa','Gimnasio','Centro de estética','Masajes']},
+  {id:'servicios', icon:'🔧', name:'Servicios', name_en:'Services', subs:['Taller mecánico','Gasolinera','Lavandería','Limpieza','Seguridad','Internet / Cable','Notaría']},
+  {id:'familiar', icon:'👨‍👩‍👧', name:'Familiar', name_en:'Family', subs:['Parque infantil','Restaurante familiar','Plaza con espacio abierto','Piscina pública','Área de juegos','Centro recreativo','Museo para niños']},
+  {id:'petfriendly', icon:'🐾', name:'Pet Friendly', name_en:'Pet Friendly', subs:['Parque para mascotas','Veterinaria','Tienda de mascotas','Restaurante pet friendly','Hotel pet friendly','Peluquería canina']},
+  {id:'afterwork', icon:'🍻', name:'After Work', name_en:'After Work', subs:['Bar / Lounge','Restaurante con barra','Rooftop','Karaoke','Terraza','Club nocturno','Vinoteca','Brewery']},
+  {id:'workspace', icon:'💻', name:'Para trabajar', name_en:'Workspace', subs:['Coworking','Cafetería con wifi','Biblioteca','Hotel con lobby','Restaurante tranquilo','Centro de negocios','Sala de reuniones']},
+  {id:'otro', icon:'📍', name:'Otro', name_en:'Other', subs:['Mercado público','Cancha deportiva','Iglesia / Templo','Centro comunitario','Otro']}
 ];
 
 const PROVINCIAS = ['Panamá','Panamá Oeste','Colón','Chiriquí','Veraguas','Herrera','Los Santos','Coclé','Darién','Bocas del Toro'];
@@ -712,6 +869,63 @@ const BLOCKED = ['test','prueba','jsjsjs','asdfgh','qwerty','123456','demo'];
 let ratings = [];
 let ratingsLoaded = false;
 let loadFailed = false;
+let LANG = 'es'; // Solo afecta el flujo de evaluar (Paso 1 en adelante) — el resto del sitio queda en español a propósito.
+
+const UI_TEXT = {
+  es: {
+    step1label:'Nombre del negocio + su ubicación exacta',
+    step1hint:'⚠️ <strong>Incluye el barrio o sucursal.</strong> Cada sucursal tiene su propia experiencia — cuéntanos cuál visitaste.',
+    placeholder:'Ej: Farmacia Arrocha, El Dorado',
+    formatHint:'✏️ Formato: <strong>Tipo de negocio o nombre + ubicación específica</strong>',
+    tipoLabel:'Tipo de negocio',
+    tipoReq:'* Selecciona uno',
+    provLabel:'Provincia o Comarca',
+    provReq:'* Selecciona una',
+    btnBack:'← Anterior',
+    btnNext:'Siguiente →',
+    btnSummary:'Ver resumen →',
+    btnReset:'Evaluar otro lugar',
+    btnSubmit:'Enviar evaluación →'
+  },
+  en: {
+    step1label:'Business name + exact location',
+    step1hint:'⚠️ <strong>Include the neighborhood or branch.</strong> Each branch has its own experience — tell us which one you visited.',
+    placeholder:'Ex: Farmacia Arrocha, El Dorado',
+    formatHint:'✏️ Format: <strong>Business type or name + specific location</strong>',
+    tipoLabel:'Business type',
+    tipoReq:'* Select one',
+    provLabel:'Province or Comarca',
+    provReq:'* Select one',
+    btnBack:'← Back',
+    btnNext:'Next →',
+    btnSummary:'See summary →',
+    btnReset:'Evaluate another place',
+    btnSubmit:'Submit evaluation →'
+  }
+};
+
+function toggleLang() {
+  LANG = LANG === 'es' ? 'en' : 'es';
+  applyLang();
+  buildBizGrid();
+  if (document.getElementById('step-questions').style.display !== 'none') renderQ();
+}
+
+function applyLang() {
+  var t = UI_TEXT[LANG];
+  document.getElementById('lang-toggle').textContent = LANG === 'es' ? '🇺🇸 English' : '🇵🇦 Español';
+  document.getElementById('step1-label-txt').textContent = t.step1label;
+  document.getElementById('step1-hint-txt').innerHTML = t.step1hint;
+  document.getElementById('place-input').placeholder = t.placeholder;
+  document.getElementById('format-hint-txt').innerHTML = t.formatHint;
+  document.getElementById('tipo-label-txt').textContent = t.tipoLabel;
+  document.getElementById('tipo-req-txt').textContent = t.tipoReq;
+  document.getElementById('prov-label-txt').textContent = t.provLabel;
+  document.getElementById('prov-req-txt').textContent = t.provReq;
+  document.getElementById('btn-back').innerHTML = t.btnBack;
+  document.getElementById('btn-reset').textContent = t.btnReset;
+  document.getElementById('btn-submit').textContent = t.btnSubmit;
+}
 
 let curPlace = '', curQ = 0, answers = {}, curBiz = null, curSub = null, curProv = null;
 let catFilter = null, provFilter = null;
@@ -778,7 +992,7 @@ function buildBizGrid() {
   NEGOCIOS.forEach(function(b) {
     var btn = document.createElement('button');
     btn.className = 'sel-btn';
-    btn.textContent = b.icon + ' ' + b.name;
+    btn.textContent = b.icon + ' ' + (LANG === 'en' ? b.name_en : b.name);
     btn.setAttribute('data-id', b.id);
     grid.appendChild(btn);
   });
@@ -880,12 +1094,15 @@ function renderQ() {
   document.getElementById('prog-count').textContent = (curQ + 1) + ' de ' + total;
   document.getElementById('q-count').textContent = (curQ + 1) + ' / ' + total;
   document.getElementById('btn-back').style.display = curQ > 0 ? 'inline-block' : 'none';
-  document.getElementById('btn-next').textContent = curQ === total - 1 ? 'Ver resumen →' : 'Siguiente →';
+  document.getElementById('btn-next').textContent = curQ === total - 1 ? UI_TEXT[LANG].btnSummary : UI_TEXT[LANG].btnNext;
   var sel = answers[cat.id] || null;
-  var html = '<div class="q-card"><div class="q-label">' + cat.icon + ' ' + cat.name + '</div><div class="q-text">' + cat.q + '</div><div class="emo-row">';
+  var catName = LANG === 'en' ? cat.name_en : cat.name;
+  var catQ = LANG === 'en' ? cat.q_en : cat.q;
+  var html = '<div class="q-card"><div class="q-label">' + cat.icon + ' ' + catName + '</div><div class="q-text">' + catQ + '</div><div class="emo-row">';
   cat.emos.forEach(function(em) {
     var ac = sel === em.v ? ' active' : '';
-    html += '<button class="emo-btn' + ac + '" data-cat="' + cat.id + '" data-val="' + em.v + '"><span class="emo-icon">' + em.e + '</span><span class="emo-label">' + em.l + '</span></button>';
+    var emLabel = LANG === 'en' ? em.l_en : em.l;
+    html += '<button class="emo-btn' + ac + '" data-cat="' + cat.id + '" data-val="' + em.v + '"><span class="emo-icon">' + em.e + '</span><span class="emo-label">' + emLabel + '</span></button>';
   });
   html += '</div></div>';
   document.getElementById('q-card-wrap').innerHTML = html;
@@ -966,7 +1183,7 @@ async function submitRating() {
   if (activeView && activeView.id === 'view-explorar') renderExplore();
 
   toast('✅ PES enviado. Tu experiencia ya forma parte del Índice Promundi.');
-  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\nhttps://promundi.com.pa');
+  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\nhttps://promundi.vercel.app');
   document.getElementById('wa-btn').href = 'https://wa.me/?text=' + txt;
   document.getElementById('wa-card').style.display = 'flex';
 }
@@ -1382,7 +1599,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // B2B button
-  document.getElementById('b2b-btn').addEventListener('click', function() { toast('Próximamente: contacto@promundi.com.pa'); });
+  document.getElementById('b2b-btn').addEventListener('click', openLead);
+  document.getElementById('lead-cancel-btn').addEventListener('click', closeLead);
+  document.getElementById('lead-send-btn').addEventListener('click', submitLead);
 
   // Explore
   document.getElementById('explore-input').addEventListener('input', renderExplore);
