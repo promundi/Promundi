@@ -622,6 +622,7 @@ tr:last-child td{border-bottom:none;}
 
 <script>
 // ── SUPABASE ──────────────────────────────────────────────────────
+const SITE_URL = 'https://promundi.tech';
 const SB_URL = 'https://oiijljmnpeglwrfcamlq.supabase.co';
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9paWpsam1ucGVnbHdyZmNhbWxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNzQ3NTAsImV4cCI6MjA5Njk1MDc1MH0.o3cTyedBuYbAXiUR1Q3uZts_UK9V-9Quob4SuGCIYVM';
 
@@ -1098,7 +1099,7 @@ async function submitRating() {
   if (activeView && activeView.id === 'view-explorar') renderExplore();
 
   toast('✅ PES enviado. Tu experiencia ya forma parte del Índice Promundi.');
-  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\nhttps://promundi.vercel.app');
+  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\n' + SITE_URL);
   document.getElementById('wa-btn').href = 'https://wa.me/?text=' + txt;
   document.getElementById('wa-card').style.display = 'flex';
 }
