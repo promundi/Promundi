@@ -309,8 +309,7 @@ tr:last-child td{border-bottom:none;}
 .cs-up{color:var(--g)}.cs-dn{color:var(--a)}.cs-eq{color:var(--mu)}
 .compare-diff{font-size:0.68rem;color:var(--mu);margin-top:2px;}
 
-/* ADMIN */
-.admin-overlay{display:none;position:fixed;inset:0;z-index:500;background:linear-gradient(160deg,#0A4D6E,#0d3d52 60%,#1a2a1f);align-items:center;justify-content:center;}
+/* LEAD / TERMS */
 .lead-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,20,25,0.55);align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .lead-overlay.open{display:flex;}
 .lead-card{background:linear-gradient(135deg,var(--p),#08324a);border-radius:18px;padding:26px 22px;color:#fff;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;}
@@ -337,82 +336,6 @@ tr:last-child td{border-bottom:none;}
 .terms-card p{font-size:0.86rem;line-height:1.6;color:var(--tx);margin-bottom:12px;}
 .terms-card p strong{color:var(--p);}
 .terms-close{width:100%;padding:12px;border:none;border-radius:10px;background:var(--p);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:8px;}
-.admin-overlay.open{display:flex;}
-.login-box{background:#fff;border-radius:18px;padding:36px;width:100%;max-width:360px;text-align:center;}
-.login-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:var(--p);margin-bottom:4px;}
-.login-logo span{color:var(--a);}
-.login-sub{font-size:0.76rem;color:var(--mu);margin-bottom:24px;}
-.login-label{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--mu);margin-bottom:8px;text-align:left;}
-.login-input{width:100%;padding:12px 14px;border:1.5px solid var(--bd);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;outline:none;margin-bottom:14px;}
-.login-input:focus{border-color:var(--p);}
-.login-btn{width:100%;padding:13px;background:var(--p);color:#fff;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:700;cursor:pointer;margin-bottom:10px;}
-.login-err{font-size:0.76rem;color:var(--a);display:none;margin-bottom:10px;}
-.login-back{font-size:0.76rem;color:var(--mu);cursor:pointer;}
-.login-back:hover{color:var(--p);}
-
-/* DASHBOARD */
-.dash-overlay{display:none;position:fixed;inset:0;z-index:400;background:var(--bg);overflow-y:auto;}
-.dash-overlay.open{display:block;}
-.dash-top{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--p);position:sticky;top:0;z-index:10;}
-.dash-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;color:#fff;}
-.dash-logo span{color:var(--o);}
-.dash-top-btns{display:flex;gap:8px;}
-.dash-btn{border:none;border-radius:8px;padding:7px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;}
-.dash-export{background:var(--g);color:#fff;}
-.dash-close{background:rgba(255,255,255,0.15);color:#fff;}
-.dash-content{padding:24px 5%;max-width:1000px;margin:0 auto;}
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
-.kpi-card{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:20px;position:relative;overflow:hidden;}
-.kpi-card::after{content:'';position:absolute;top:0;right:0;width:4px;height:100%;}
-.kpi-card.k1::after{background:var(--p)}.kpi-card.k2::after{background:var(--g)}.kpi-card.k3::after{background:var(--o)}.kpi-card.k4::after{background:var(--a)}
-.kpi-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);margin-bottom:8px;}
-.kpi-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--tx);line-height:1;}
-.kpi-trend{display:inline-flex;align-items:center;gap:3px;font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-top:8px;}
-.t-up{background:rgba(45,106,79,0.1);color:var(--g)}.t-dn{background:rgba(200,16,46,0.1);color:var(--a)}
-.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.dash-card{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:20px;}
-.dash-card-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;margin-bottom:4px;}
-.dash-card-sub{font-size:0.7rem;color:var(--mu);margin-bottom:16px;}
-.prov-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.prov-name{font-size:0.78rem;font-weight:500;width:100px;flex-shrink:0;}
-.prov-track{flex:1;height:7px;background:var(--bd);border-radius:4px;overflow:hidden;}
-.prov-fill{height:100%;background:linear-gradient(90deg,var(--p),var(--g));border-radius:4px;}
-.prov-count{font-size:0.72rem;font-weight:600;color:var(--p);width:32px;text-align:right;}
-.data-table{width:100%;border-collapse:collapse;font-size:0.8rem;}
-.data-table th{text-align:left;font-size:0.66rem;text-transform:uppercase;letter-spacing:1px;color:var(--mu);padding:0 10px 10px;font-weight:600;}
-.data-table td{padding:10px;border-top:1px solid var(--bd);vertical-align:middle;}
-.score-pill{display:inline-flex;align-items:center;justify-content:center;width:36px;height:22px;border-radius:6px;font-weight:700;font-size:0.76rem;}
-.sp-hi{background:rgba(45,106,79,0.1);color:var(--g)}.sp-mid{background:rgba(201,148,58,0.1);color:var(--o)}.sp-lo{background:rgba(200,16,46,0.1);color:var(--a)}
-.pred-card{background:linear-gradient(135deg,var(--p),#1a2a1f);border-radius:14px;padding:24px;color:#fff;margin-bottom:16px;}
-.pred-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;margin-bottom:4px;}
-.pred-sub{font-size:0.74rem;color:rgba(255,255,255,0.5);margin-bottom:16px;}
-.pred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.pred-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px;}
-.pred-year{font-size:0.62rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:5px;}
-.pred-val{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--o);}
-.pred-desc{font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:3px;}
-.ai-card{background:linear-gradient(135deg,#0A4D6E,#1a2a1f);border-radius:14px;padding:24px;color:#fff;margin-top:16px;}
-.ai-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
-.ai-btn{background:linear-gradient(135deg,var(--p),var(--g));color:#fff;border:none;border-radius:10px;padding:10px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;}
-.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
-.ai-sub-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:18px;}
-.ai-sub-title{font-size:0.82rem;font-weight:700;color:#fff;margin-bottom:12px;}
-.alert-item{display:flex;gap:10px;padding:10px 12px;border-radius:8px;margin-bottom:8px;}
-.ai-red{background:rgba(200,16,46,0.15);}.ai-gold{background:rgba(201,148,58,0.15);}.ai-green{background:rgba(45,106,79,0.15);}
-.alert-text{font-size:0.76rem;color:rgba(255,255,255,0.85);line-height:1.4;}
-.alert-text strong{display:block;margin-bottom:2px;color:#fff;}
-.sales-item{background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;margin-bottom:8px;}
-.sales-top{display:flex;justify-content:space-between;margin-bottom:5px;}
-.sales-name{font-size:0.82rem;font-weight:700;color:#fff;}
-.sales-price{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--o);}
-.sales-reason{font-size:0.72rem;color:rgba(255,255,255,0.6);line-height:1.4;}
-.conc-box{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;min-height:100px;font-size:0.82rem;line-height:1.7;color:rgba(255,255,255,0.85);}
-.conc-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
-.conc-btn{padding:8px 14px;border-radius:8px;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.76rem;font-weight:700;cursor:pointer;}
-.conc-p{background:var(--o);color:#fff;}.conc-g{background:rgba(255,255,255,0.1);color:#fff;}
-.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,0.2);border-top-color:var(--o);border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;margin-right:6px;}
-@keyframes spin{to{transform:rotate(360deg);}}
-
 /* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--tx);color:#fff;padding:12px 24px;border-radius:100px;font-size:0.86rem;font-weight:600;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:999;white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
@@ -421,8 +344,7 @@ tr:last-child td{border-bottom:none;}
   nav{padding:12px 4%;}
   .pill{padding:7px 10px;font-size:0.74rem;}
   .live-stats{gap:14px;}.sdiv{display:none;}
-  .stats-bar,.kpi-grid,.charts-row,.ai-grid,.pred-grid{grid-template-columns:1fr 1fr;gap:8px;}
-  .kpi-grid{grid-template-columns:1fr 1fr;}
+  .stats-bar{grid-template-columns:1fr 1fr;gap:8px;}
   .sum-grid{grid-template-columns:repeat(2,1fr);}
   .b2b{padding:24px 16px;}
   .modal{padding:20px 16px 36px;}
@@ -624,7 +546,7 @@ tr:last-child td{border-bottom:none;}
   </div>
 </div>
 
-<!-- ADMIN LOGIN -->
+<!-- LEAD -->
 <div class="lead-overlay" id="lead-overlay">
   <div class="lead-card">
     <h3>Solicitar Reporte PES</h3>
@@ -666,73 +588,6 @@ tr:last-child td{border-bottom:none;}
     </div>
   </div>
 </div>
-<div class="admin-overlay" id="admin-overlay">
-  <div class="login-box">
-    <div class="login-logo notranslate" translate="no">Pro<span>mundi</span> 🇵🇦</div>
-    <div class="login-sub">Acceso exclusivo · Administradora</div>
-    <label class="login-label">Contraseña</label>
-    <input class="login-input" type="password" id="admin-pass" placeholder="••••••••" />
-    <div class="login-err" id="login-err">Contraseña incorrecta.</div>
-    <button class="login-btn" id="login-btn">Entrar al Dashboard →</button>
-    <div class="login-back" id="login-back">← Volver</div>
-  </div>
-</div>
-
-<!-- DASHBOARD -->
-<div class="dash-overlay" id="dash-overlay">
-  <div class="dash-top">
-    <div class="dash-logo notranslate" translate="no">Pro<span>mundi</span> 🇵🇦 <span style="font-size:0.68rem;color:rgba(255,255,255,0.4);font-weight:400;margin-left:6px">· Data Intelligence</span></div>
-    <div class="dash-top-btns">
-      <button class="dash-btn dash-export" id="dash-export-btn">⬇ CSV</button>
-      <button class="dash-btn dash-close" id="dash-close-btn">✕ Cerrar</button>
-    </div>
-  </div>
-  <div class="dash-content">
-    <div class="kpi-grid">
-      <div class="kpi-card k1"><div class="kpi-label">Evaluaciones</div><div class="kpi-num" id="kpi-evals">0</div><div class="kpi-trend t-up">↑ Total</div></div>
-      <div class="kpi-card k2"><div class="kpi-label">Negocios</div><div class="kpi-num" id="kpi-places">0</div><div class="kpi-trend t-up">↑ Medidos</div></div>
-      <div class="kpi-card k3"><div class="kpi-label">PES Global</div><div class="kpi-num" id="kpi-avg">—</div><div class="kpi-trend t-up">↑ Promedio</div></div>
-      <div class="kpi-card k4"><div class="kpi-label">Dimensión baja</div><div class="kpi-num" id="kpi-low" style="font-size:1.2rem">—</div><div class="kpi-trend t-dn">↓ Oportunidad</div></div>
-    </div>
-    <div class="charts-row">
-      <div class="dash-card"><div class="dash-card-title">PES por dimensión</div><div class="dash-card-sub">Promedio nacional</div><canvas id="chartCats" height="180"></canvas></div>
-      <div class="dash-card"><div class="dash-card-title">Por provincia</div><div class="dash-card-sub">Evaluaciones por región</div><div id="prov-bars"></div></div>
-    </div>
-    <div class="dash-card" style="margin-bottom:16px">
-      <div class="dash-card-title">Tabla PES por sector</div>
-      <div class="dash-card-sub">Base para reportes corporativos</div>
-      <table class="data-table"><thead><tr><th>Sector</th><th>Eval.</th><th>Atención</th><th>Limpieza</th><th>Eficiencia</th><th>Seguridad</th><th>PES</th></tr></thead><tbody id="dash-table"></tbody></table>
-    </div>
-    <div class="pred-card">
-      <div class="pred-title">📊 Proyección Índice Promundi</div>
-      <div class="pred-sub">Basado en tasa de crecimiento actual</div>
-      <div class="pred-grid">
-        <div class="pred-item"><div class="pred-year">Año 1 · 2026</div><div class="pred-val">5,000</div><div class="pred-desc">Primer reporte vendible</div></div>
-        <div class="pred-item"><div class="pred-year">Año 2 · 2027</div><div class="pred-val">25,000</div><div class="pred-desc">Contratos recurrentes</div></div>
-        <div class="pred-item"><div class="pred-year">Año 3 · 2028</div><div class="pred-val">100,000</div><div class="pred-desc">Referencia nacional</div></div>
-      </div>
-    </div>
-    <div class="ai-card">
-      <div class="ai-header">
-        <div><div class="dash-card-title" style="color:#fff">🤖 Decisiones Inteligentes</div><div class="dash-card-sub" style="color:rgba(255,255,255,0.5)">Análisis automático con IA</div></div>
-        <button class="ai-btn" id="ai-btn">✨ Analizar</button>
-      </div>
-      <div class="ai-grid">
-        <div class="ai-sub-card"><div class="ai-sub-title">🔔 Alertas</div><div id="alerts-list" style="font-size:0.76rem;color:rgba(255,255,255,0.5)">Toca "Analizar" para ver alertas.</div></div>
-        <div class="ai-sub-card"><div class="ai-sub-title">💼 ¿A quién vender?</div><div id="sales-list" style="font-size:0.76rem;color:rgba(255,255,255,0.5)">Toca "Analizar" para ver recomendaciones.</div></div>
-      </div>
-      <div class="ai-sub-card" style="margin-top:0">
-        <div class="ai-sub-title">📝 Resumen ejecutivo con IA</div>
-        <div class="conc-box" id="conclusion-box">Toca "Analizar" para generar tu resumen ejecutivo.</div>
-        <div class="conc-actions">
-          <button class="conc-btn conc-p" id="btn-copy" style="display:none">📋 Copiar</button>
-          <button class="conc-btn conc-g" id="btn-regen" style="display:none">↻ Regenerar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <section class="faq-sec" id="faq" aria-label="Preguntas frecuentes">
   <h2>Preguntas frecuentes sobre Promundi</h2>
   <details><summary>¿Qué es Promundi?</summary><p>Promundi es una plataforma ciudadana en Panamá donde cualquier persona evalúa de forma anónima su experiencia en un negocio. Con esas evaluaciones se calcula un puntaje comparable entre negocios, llamado PES.</p></details>
@@ -765,7 +620,6 @@ tr:last-child td{border-bottom:none;}
 
 <div class="toast" id="toast"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 // ── SUPABASE ──────────────────────────────────────────────────────
 const SB_URL = 'https://oiijljmnpeglwrfcamlq.supabase.co';
@@ -879,46 +733,6 @@ function mapPublicRows(rows) {
     var scores = {};
     CATS.forEach(function(c) { scores[c.id] = row[c.id] || 0; });
     return { place: row.place, count: row.count, tipo: row.tipo, subcat: row.subcat, provincia: row.provincia, scores: scores, lastUpdate: row.last_update };
-  });
-}
-
-// Lee la tabla CRUDA completa. Solo funciona con una sesión de admin válida
-// (Bearer = tu access_token de Supabase Auth, no la anon key) — la política
-// 'ratings_select_authenticated' rechaza esto para cualquier otro caso.
-async function sbFetchRawAuthenticated() {
-  if (!adminToken) return null;
-  try {
-    const r = await fetch(SB_URL + '/rest/v1/ratings?select=*', {
-      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + adminToken }
-    });
-    if (!r.ok) return null;
-    return await r.json();
-  } catch(e) { return null; }
-}
-
-// La tabla de Supabase guarda una fila por evaluación individual.
-// Esta función agrupa esas filas por lugar y calcula el promedio por categoría,
-// reproduciendo la misma forma de objeto {place, count, tipo, subcat, provincia, scores, lastUpdate}
-// que el resto de la app (ranking, explorar, modal) ya espera.
-function aggregateRatings(rows) {
-  const byPlace = {};
-  rows.forEach(function(row) {
-    const key = row.place.toLowerCase();
-    if (!byPlace[key]) {
-      byPlace[key] = {
-        place: row.place, count: 0, tipo: row.tipo, subcat: row.subcat, provincia: row.provincia,
-        scores: { atencion:0, limpieza:0, eficiencia:0, accesibilidad:0, seguridad:0, ambiente:0 },
-        lastUpdate: row.created_at
-      };
-    }
-    var g = byPlace[key];
-    CATS.forEach(function(c) { g.scores[c.id] += row[c.id] || 0; });
-    g.count++;
-    if (row.created_at > g.lastUpdate) g.lastUpdate = row.created_at;
-  });
-  return Object.values(byPlace).map(function(g) {
-    CATS.forEach(function(c) { g.scores[c.id] = Math.round((g.scores[c.id] / g.count) * 10) / 10; });
-    return g;
   });
 }
 
@@ -1038,14 +852,6 @@ function applyLang() {
 
 let curPlace = '', curQ = 0, answers = {}, curBiz = null, curSub = null, curProv = null;
 let catFilter = null, provFilter = null;
-let logoClicks = 0, logoTimer = null;
-
-// El correo no es secreto (es tu usuario de acceso, como cualquier login);
-// lo que protege el acceso es la contraseña, que ya NO vive en este archivo:
-// se valida contra Supabase Auth, no contra una comparación de texto en JS.
-const ADMIN_EMAIL = 'infopromundi.pa@gmail.com';
-let adminToken = null; // vive solo en memoria; se pierde al recargar o cerrar — a propósito.
-let adminRatings = []; // datos crudos agregados, solo disponibles tras iniciar sesión real.
 
 function avg(s) { const v = Object.values(s); return v.reduce((a,b)=>a+b,0)/v.length; }
 
@@ -1419,172 +1225,6 @@ function updateStats() {
   if (p) p.textContent = ratings.length.toLocaleString();
 }
 
-// ── ADMIN ────────────────────────────────────────────────────────
-function openAdmin() { document.getElementById('admin-overlay').classList.add('open'); setTimeout(function() { document.getElementById('admin-pass').focus(); }, 200); }
-function closeAdmin() { document.getElementById('admin-overlay').classList.remove('open'); document.getElementById('admin-pass').value = ''; document.getElementById('login-err').style.display = 'none'; }
-
-async function checkAdmin() {
-  var pass = document.getElementById('admin-pass').value;
-  var btn = document.getElementById('login-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Verificando…'; }
-  try {
-    const r = await fetch(SB_URL + '/auth/v1/token?grant_type=password', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': SB_KEY },
-      body: JSON.stringify({ email: ADMIN_EMAIL, password: pass })
-    });
-    const data = await r.json();
-    if (r.ok && data.access_token) {
-      adminToken = data.access_token;
-      closeAdmin();
-      openDash();
-    } else {
-      document.getElementById('login-err').style.display = 'block';
-      document.getElementById('admin-pass').value = '';
-      document.getElementById('admin-pass').focus();
-    }
-  } catch(e) {
-    document.getElementById('login-err').style.display = 'block';
-    document.getElementById('login-err').textContent = 'Error de conexión. Intenta de nuevo.';
-  }
-  if (btn) { btn.disabled = false; btn.textContent = 'Entrar al Dashboard →'; }
-}
-
-function openDash() {
-  document.getElementById('dash-overlay').classList.add('open');
-  initDash(); // se recarga cada vez: los datos del admin son sensibles y deben estar al día
-}
-function closeDash() {
-  document.getElementById('dash-overlay').classList.remove('open');
-  adminToken = null; // cierra la sesión de admin al salir del panel
-  adminRatings = [];
-}
-
-async function initDash() {
-  var table = document.getElementById('dash-table');
-  table.innerHTML = '<tr><td colspan="7">Cargando…</td></tr>';
-
-  var rawRows = await sbFetchRawAuthenticated();
-  if (rawRows === null) {
-    table.innerHTML = '<tr><td colspan="7">⚠️ No se pudo cargar. Tu sesión pudo expirar — cierra y vuelve a entrar. <button onclick="initDash()" style="text-decoration:underline;background:none;border:none;cursor:pointer;color:inherit">Reintentar</button></td></tr>';
-    return;
-  }
-  adminRatings = aggregateRatings(rawRows);
-
-  var t = adminRatings.reduce(function(s,r) { return s+r.count; }, 0);
-  var ga = adminRatings.length ? (adminRatings.reduce(function(s,r) { return s+avg(r.scores); }, 0)/adminRatings.length).toFixed(1) : '—';
-  var catAvgs = CATS.map(function(c) { return { c:c, a: adminRatings.length ? adminRatings.reduce(function(s,r) { return s+(r.scores[c.id]||0); }, 0)/adminRatings.length : 0 }; });
-  var lowCat = catAvgs.reduce(function(b,x) { return x.a < b.a ? x : b; }, catAvgs[0]);
-  document.getElementById('kpi-evals').textContent = t.toLocaleString();
-  document.getElementById('kpi-places').textContent = adminRatings.length;
-  document.getElementById('kpi-avg').textContent = ga;
-  document.getElementById('kpi-low').textContent = lowCat.c.name;
-
-  // Chart
-  var ctx = document.getElementById('chartCats');
-  if (ctx) {
-    new Chart(ctx, {
-      type:'bar',
-      data:{ labels:CATS.map(function(c){return c.name;}), datasets:[{ data:catAvgs.map(function(x){return x.a.toFixed(1);}), backgroundColor:['rgba(10,77,110,0.8)','rgba(45,106,79,0.8)','rgba(200,16,46,0.7)','rgba(201,148,58,0.8)','rgba(10,77,110,0.6)','rgba(45,106,79,0.6)'], borderRadius:6, borderSkipped:false }] },
-      options:{ responsive:true, plugins:{legend:{display:false}}, scales:{ y:{min:0,max:5,grid:{color:'rgba(0,0,0,0.05)'}}, x:{grid:{display:false}} } }
-    });
-  }
-
-  // Province bars
-  var provCount = {};
-  adminRatings.forEach(function(r) { if(r.provincia) provCount[r.provincia] = (provCount[r.provincia]||0) + r.count; });
-  var provSorted = Object.entries(provCount).sort(function(a,b){return b[1]-a[1];});
-  var maxP = provSorted[0] ? provSorted[0][1] : 1;
-  document.getElementById('prov-bars').innerHTML = provSorted.map(function(e) {
-    return '<div class="prov-row"><div class="prov-name">' + escapeHtml(e[0]) + '</div><div class="prov-track"><div class="prov-fill" style="width:' + (e[1]/maxP*100).toFixed(0) + '%"></div></div><div class="prov-count">' + e[1] + '</div></div>';
-  }).join('');
-
-  // Table
-  var ts = {};
-  adminRatings.forEach(function(r) {
-    var t2 = r.tipo||'otro';
-    if(!ts[t2]) ts[t2]={count:0,at:0,li:0,ef:0,se:0,n:0};
-    ts[t2].count+=r.count; ts[t2].at+=r.scores.atencion||0; ts[t2].li+=r.scores.limpieza||0;
-    ts[t2].ef+=r.scores.eficiencia||0; ts[t2].se+=r.scores.seguridad||0; ts[t2].n++;
-  });
-  function sp(v) { return v>=4?'sp-hi':v>=3?'sp-mid':'sp-lo'; }
-  table.innerHTML = Object.entries(ts).map(function(e) {
-    var s=e[1], at=(s.at/s.n).toFixed(1), li=(s.li/s.n).toFixed(1), ef=(s.ef/s.n).toFixed(1), se=(s.se/s.n).toFixed(1), av=((+at+ +li+ +ef+ +se)/4).toFixed(1);
-    return '<tr><td><strong>' + escapeHtml(e[0]) + '</strong></td><td>' + s.count + '</td><td><span class="score-pill ' + sp(at) + '">' + at + '</span></td><td><span class="score-pill ' + sp(li) + '">' + li + '</span></td><td><span class="score-pill ' + sp(ef) + '">' + ef + '</span></td><td><span class="score-pill ' + sp(se) + '">' + se + '</span></td><td><strong style="font-family:Playfair Display,serif;font-size:1rem;color:var(--p)">' + av + '</strong></td></tr>';
-  }).join('');
-}
-
-// ── EXPORT CSV ───────────────────────────────────────────────────
-function exportCSV() {
-  if (!adminRatings.length) { toast('⚠️ No hay datos cargados. Abre el dashboard primero.'); return; }
-  var headers = ['Lugar','Tipo','Subcategoría','Provincia','Atención','Limpieza','Eficiencia','Accesibilidad','Seguridad','Ambiente','PES','Evaluaciones','Última actualización'];
-  var rows = adminRatings.map(function(r) {
-    return [r.place, r.tipo||'', r.subcat||'', r.provincia||'', r.scores.atencion, r.scores.limpieza, r.scores.eficiencia, r.scores.accesibilidad, r.scores.seguridad, r.scores.ambiente, avg(r.scores).toFixed(2), r.count, r.lastUpdate||''];
-  });
-  var csv = [headers].concat(rows).map(function(r) { return r.join(','); }).join('\n');
-  var blob = new Blob([csv], {type:'text/csv'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url; a.download = 'promundi-ipes-' + new Date().toISOString().slice(0,10) + '.csv';
-  a.click(); URL.revokeObjectURL(url);
-  toast('✅ CSV exportado correctamente');
-}
-
-// ── AI ANALYSIS ──────────────────────────────────────────────────
-async function runAIAnalysis() {
-  var btn = document.getElementById('ai-btn');
-  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Analizando...';
-  renderAlerts(); renderSales(); await generateConclusion();
-  btn.disabled = false; btn.innerHTML = '✨ Analizar';
-}
-
-function renderAlerts() {
-  var catAvgs = CATS.map(function(c) { return {c:c, a:ratings.length?ratings.reduce(function(s,r){return s+(r.scores[c.id]||0);},0)/ratings.length:0}; });
-  var low = catAvgs.reduce(function(b,x){return x.a<b.a?x:b;}, catAvgs[0]);
-  var high = catAvgs.reduce(function(b,x){return x.a>b.a?x:b;}, catAvgs[0]);
-  document.getElementById('alerts-list').innerHTML =
-    '<div class="alert-item ai-red"><div>🚨</div><div class="alert-text"><strong>' + low.c.name + ' — PES crítico</strong>Promedio ' + low.a.toFixed(1) + '/5. Oportunidad de reporte.</div></div>' +
-    '<div class="alert-item ai-gold"><div>⚠️</div><div class="alert-text"><strong>Gobierno — sector más débil</strong>Oportunidad de venta de reporte institucional.</div></div>' +
-    '<div class="alert-item ai-green"><div>✅</div><div class="alert-text"><strong>' + high.c.name + ' — destaca positivamente</strong>PES ' + high.a.toFixed(1) + '/5. Usa como caso de éxito.</div></div>';
-}
-
-function renderSales() {
-  document.getElementById('sales-list').innerHTML =
-    '<div class="sales-item"><div class="sales-top"><div class="sales-name">Sector Gobierno</div><div class="sales-price">$200–$500</div></div><div class="sales-reason">PES más bajo del índice. Alta prioridad.</div></div>' +
-    '<div class="sales-item"><div class="sales-top"><div class="sales-name">Sector Salud</div><div class="sales-price">$150–$300</div></div><div class="sales-reason">Clínicas privadas compiten por pacientes.</div></div>' +
-    '<div class="sales-item"><div class="sales-top"><div class="sales-name">ATP — Turismo</div><div class="sales-price">$500–$1,000</div></div><div class="sales-reason">Dataset completo de experiencia turística.</div></div>';
-}
-
-async function generateConclusion() {
-  var box = document.getElementById('conclusion-box');
-  box.innerHTML = '<span class="spin"></span> Generando resumen ejecutivo con IA...';
-  var t = ratings.reduce(function(s,r){return s+r.count;},0);
-  var ga = ratings.length?(ratings.reduce(function(s,r){return s+avg(r.scores);},0)/ratings.length).toFixed(1):'3.7';
-  try {
-    var r = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:'Eres analista experto en experiencia al cliente en Panamá. Con base en estos datos del Índice Promundi (PES), escribe un resumen ejecutivo profesional en español de 3 párrafos cortos. No uses bullets ni headers.\n\nDatos: ' + t + ' evaluaciones totales, PES Global: ' + ga + '/5, Dimensión más baja: Eficiencia, Sector más bajo: Gobierno (2.6 PES), Sector más alto: Centros Comerciales (4.2 PES), Negocios medidos: ' + ratings.length + '.'}]})
-    });
-    var data = await r.json();
-    var text = data.content && data.content[0] ? data.content[0].text : '';
-    if (text) {
-      box.innerHTML = text.split('\n\n').map(function(p){return '<p style="margin-bottom:10px">'+p+'</p>';}).join('');
-      document.getElementById('btn-copy').style.display = 'inline-block';
-      document.getElementById('btn-regen').style.display = 'inline-block';
-    } else { box.innerHTML = fallbackConclusion(); document.getElementById('btn-copy').style.display = 'inline-block'; }
-  } catch(e) { box.innerHTML = fallbackConclusion(); document.getElementById('btn-copy').style.display = 'inline-block'; }
-}
-
-function fallbackConclusion() {
-  return '<p style="margin-bottom:10px">Con base en las evaluaciones del Índice Nacional de Experiencia al Cliente de Promundi, Panamá alcanza un PES promedio de 3.7/5 — con oportunidades claras en el sector gobierno (2.6 PES) y la dimensión de eficiencia.</p><p style="margin-bottom:10px">La oportunidad más urgente está en el respeto al tiempo del ciudadano, que es la dimensión más baja consistentemente en todos los sectores evaluados.</p><p>Al ritmo actual, Promundi se consolidará como la primera referencia de inteligencia de experiencia al cliente en Panamá, abriendo contratos corporativos en salud, retail y turismo.</p>';
-}
-
-function copyConclusion() {
-  var text = document.getElementById('conclusion-box').innerText;
-  navigator.clipboard.writeText(text).then(function(){ toast('✅ Resumen copiado'); });
-}
-
 // ── INIT ─────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -1611,14 +1251,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Hero buttons
   document.getElementById('hero-eval-btn').addEventListener('click', function() { showView('evaluar'); });
   document.getElementById('hero-rank-btn').addEventListener('click', function() { showView('ranking'); });
-
-  // Logo — 5 clicks for admin
-  document.getElementById('logo-btn').addEventListener('click', function() {
-    logoClicks++;
-    clearTimeout(logoTimer);
-    logoTimer = setTimeout(function() { logoClicks = 0; }, 3000);
-    if (logoClicks >= 5) { logoClicks = 0; openAdmin(); }
-  });
 
   // Biz grid clicks
   document.getElementById('biz-grid').addEventListener('click', function(e) {
@@ -1689,22 +1321,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('modal-compare').addEventListener('click', function(e) {
     var row = e.target.closest('.compare-row');
     if (row && row.getAttribute('data-place')) { document.getElementById('modal-overlay').classList.remove('open'); setTimeout(function(){ openModal(row.getAttribute('data-place')); }, 200); }
-  });
-
-  // Admin
-  document.getElementById('login-btn').addEventListener('click', checkAdmin);
-  document.getElementById('admin-pass').addEventListener('keydown', function(e) { if(e.key==='Enter') checkAdmin(); });
-  document.getElementById('login-back').addEventListener('click', closeAdmin);
-
-  // Dashboard
-  document.getElementById('dash-close-btn').addEventListener('click', closeDash);
-  document.getElementById('dash-export-btn').addEventListener('click', exportCSV);
-  document.getElementById('ai-btn').addEventListener('click', runAIAnalysis);
-  document.getElementById('btn-copy').addEventListener('click', copyConclusion);
-  document.getElementById('btn-regen').addEventListener('click', function() {
-    document.getElementById('btn-copy').style.display = 'none';
-    document.getElementById('btn-regen').style.display = 'none';
-    generateConclusion();
   });
 
   // B2B button
