@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Promundi 🇵🇦 — Inteligencia de Experiencia al Cliente en Panamá</title>
-<meta name="description" content="La primera plataforma ciudadana que mide la experiencia del cliente en Panamá mediante evaluaciones emocionales anónimas." />
+<meta name="description" content="Evalúa de forma anónima y gratis la experiencia en restaurantes, farmacias, bancos, hospitales y otros negocios de Panamá. Promundi calcula el PES, un puntaje de 1 a 5 basado en 6 dimensiones del servicio." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://promundi.tech/" />
 <meta property="og:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
@@ -17,7 +17,99 @@
 <meta name="twitter:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
 <meta name="twitter:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Promundi","url":"https://promundi.tech","description":"Plataforma de inteligencia de experiencia al cliente en Panamá","applicationCategory":"DataApplication","inLanguage":"es-PA"}
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://promundi.tech/#website",
+   "url": "https://promundi.tech/",
+   "name": "Promundi",
+   "inLanguage": "es-PA",
+   "description": "Evaluaciones anónimas de la experiencia de clientes en negocios de Panamá."
+  },
+  {
+   "@type": "WebApplication",
+   "@id": "https://promundi.tech/#app",
+   "name": "Promundi",
+   "url": "https://promundi.tech/",
+   "description": "Plataforma ciudadana para evaluar de forma anónima la experiencia en negocios de Panamá y consultar el puntaje PES.",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Web",
+   "inLanguage": "es-PA",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Panamá"
+   },
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "¿Qué es Promundi?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Promundi es una plataforma ciudadana en Panamá donde cualquier persona evalúa de forma anónima su experiencia en un negocio. Con esas evaluaciones se calcula un puntaje comparable entre negocios, llamado PES."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Qué es el PES (Promundi Experience Score)?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Es un puntaje de 1 a 5 que resume la experiencia de los clientes en un negocio. Se calcula a partir de 6 dimensiones: Atención, Limpieza, Eficiencia, Accesibilidad, Seguridad y Ambiente."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Cómo evalúo un negocio en Panamá con Promundi?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Entra a promundi.tech, elige o escribe el negocio que visitaste, indica su tipo y provincia y responde las preguntas de cada dimensión eligiendo una carita. No necesitas crear cuenta ni escribir una reseña."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Mi evaluación es anónima?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sí. Promundi no pide nombre ni cuenta y no hay reseñas escritas. Solo se guardan indicadores estructurados sobre el negocio evaluado."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Promundi tiene costo?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Evaluar un negocio en Promundi es gratis."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Los puntajes son una certificación o inspección?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Los puntajes son agregaciones de la percepción de los usuarios. Promundi no realiza inspecciones, auditorías ni evaluaciones técnicas de los negocios."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Soy dueño de un negocio y quiero reportar una evaluación, qué hago?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Escribe a infopromundi.pa@gmail.com indicando el negocio y el motivo del reporte."
+     }
+    }
+   ]
+  }
+ ]
+}
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
@@ -335,6 +427,12 @@ tr:last-child td{border-bottom:none;}
   .b2b{padding:24px 16px;}
   .modal{padding:20px 16px 36px;}
 }
+
+.faq-sec{max-width:720px;margin:28px auto 0;padding:0 16px;}
+.faq-sec h2{font-size:1.05rem;margin-bottom:10px;}
+.faq-sec details{border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin-bottom:8px;}
+.faq-sec summary{cursor:pointer;font-weight:600;font-size:0.9rem;}
+.faq-sec details p{margin-top:8px;font-size:0.85rem;line-height:1.5;color:var(--mu);}
 </style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -435,7 +533,7 @@ tr:last-child td{border-bottom:none;}
         <button class="btn btn-r" id="btn-submit">Enviar evaluación →</button>
       </div>
       <div class="wa-card" id="wa-card" style="display:none">
-        <p>✅ ¡Gracias! ¿Conoces a alguien que haya visitado este lugar? Compártelo por WhatsApp e invítalo a evaluarlo.</p>
+        <p>¿Conoces a alguien que haya visitado este lugar? Invítalo a evaluarlo.</p>
         <a class="btn-wa" id="wa-btn" href="#" target="_blank">📲 Compartir por WhatsApp</a>
       </div>
     </div>
@@ -635,6 +733,17 @@ tr:last-child td{border-bottom:none;}
   </div>
 </div>
 
+<section class="faq-sec" id="faq" aria-label="Preguntas frecuentes">
+  <h2>Preguntas frecuentes sobre Promundi</h2>
+  <details><summary>¿Qué es Promundi?</summary><p>Promundi es una plataforma ciudadana en Panamá donde cualquier persona evalúa de forma anónima su experiencia en un negocio. Con esas evaluaciones se calcula un puntaje comparable entre negocios, llamado PES.</p></details>
+  <details><summary>¿Qué es el PES (Promundi Experience Score)?</summary><p>Es un puntaje de 1 a 5 que resume la experiencia de los clientes en un negocio. Se calcula a partir de 6 dimensiones: Atención, Limpieza, Eficiencia, Accesibilidad, Seguridad y Ambiente.</p></details>
+  <details><summary>¿Cómo evalúo un negocio en Panamá con Promundi?</summary><p>Entra a promundi.tech, elige o escribe el negocio que visitaste, indica su tipo y provincia y responde las preguntas de cada dimensión eligiendo una carita. No necesitas crear cuenta ni escribir una reseña.</p></details>
+  <details><summary>¿Mi evaluación es anónima?</summary><p>Sí. Promundi no pide nombre ni cuenta y no hay reseñas escritas. Solo se guardan indicadores estructurados sobre el negocio evaluado.</p></details>
+  <details><summary>¿Promundi tiene costo?</summary><p>Evaluar un negocio en Promundi es gratis.</p></details>
+  <details><summary>¿Los puntajes son una certificación o inspección?</summary><p>No. Los puntajes son agregaciones de la percepción de los usuarios. Promundi no realiza inspecciones, auditorías ni evaluaciones técnicas de los negocios.</p></details>
+  <details><summary>¿Soy dueño de un negocio y quiero reportar una evaluación, qué hago?</summary><p>Escribe a infopromundi.pa@gmail.com indicando el negocio y el motivo del reporte.</p></details>
+</section>
+
 <footer class="legal-footer">
   Los puntajes en Promundi son agregaciones anónimas de opiniones ciudadanas y no reflejan una postura editorial de la plataforma.
   <br>
@@ -659,7 +768,6 @@ tr:last-child td{border-bottom:none;}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 // ── SUPABASE ──────────────────────────────────────────────────────
-const SITE_URL = 'https://promundi.tech';
 const SB_URL = 'https://oiijljmnpeglwrfcamlq.supabase.co';
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9paWpsam1ucGVnbHdyZmNhbWxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNzQ3NTAsImV4cCI6MjA5Njk1MDc1MH0.o3cTyedBuYbAXiUR1Q3uZts_UK9V-9Quob4SuGCIYVM';
 
@@ -1184,7 +1292,7 @@ async function submitRating() {
   if (activeView && activeView.id === 'view-explorar') renderExplore();
 
   toast('✅ PES enviado. Tu experiencia ya forma parte del Índice Promundi.');
-  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\n' + SITE_URL);
+  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\nhttps://promundi.vercel.app');
   document.getElementById('wa-btn').href = 'https://wa.me/?text=' + txt;
   document.getElementById('wa-card').style.display = 'flex';
 }
