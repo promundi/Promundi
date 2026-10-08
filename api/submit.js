@@ -13,9 +13,6 @@
 const crypto = require('crypto');
 
 const SB_URL = 'https://oiijljmnpeglwrfcamlq.supabase.co';
-// Clave pública (anon). Solo se usa si falta la clave privada (transición).
-const SB_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9paWpsam1ucGVnbHdyZmNhbWxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNzQ3NTAsImV4cCI6MjA5Njk1MDc1MH0.o3cTyedBuYbAXiUR1Q3uZts_UK9V-9Quob4SuGCIYVM';
-
 // Dominios desde los que se acepta el formulario (Turnstile devuelve el hostname).
 const ALLOWED_HOSTNAMES = ['promundi.tech', 'www.promundi.tech', 'promundi.vercel.app'];
 
@@ -111,8 +108,9 @@ module.exports = async function handler(req, res) {
   // ── 3. Límite por huella anónima ──
   // La IP nunca se guarda: se guarda un HMAC irreversible (con la clave secreta como llave).
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY || '';
-  const key = serviceKey || SB_ANON_KEY;
-  if (!serviceKey) console.warn('[submit] Falta SUPABASE_SERVICE_ROLE_KEY: usando clave anon (modo transición).');
+  // Sin clave privada no se guarda nada: es más seguro fallar que guardar sin límites.
+  if (!serviceKey) { console.error('[submit] Falta SUPABASE_SERVICE_ROLE_KEY.'); return fail(res, 500, 'server_misconfigured'); }
+  const key = serviceKey;
 
   const placeKey = normKey(place);
   const ipHash = ip
