@@ -624,7 +624,7 @@ tr:last-child td{border-bottom:none;}
 // ── SUPABASE ──────────────────────────────────────────────────────
 const SITE_URL = 'https://promundi.tech';
 const SB_URL = 'https://oiijljmnpeglwrfcamlq.supabase.co';
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9paWpsam1ucGVnbHdyZmNhbWxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNzQ3NTAsImV4cCI6MjA5Njk1MDc1MH0.o3cTyedBuYbAXiUR1Q3uZts_UK9V-9Quob4SuGCIYVM';
+const SB_KEY = 'sb_publishable_RJHINMyzk1WePybdSJ-ikQ_4xp2ofMq';
 
 async function sbInsert(place, tipo, subcat, provincia, scores) {
   try {
@@ -633,7 +633,6 @@ async function sbInsert(place, tipo, subcat, provincia, scores) {
       headers: {
         'Content-Type': 'application/json',
         'apikey': SB_KEY,
-        'Authorization': 'Bearer ' + SB_KEY,
         'Prefer': 'return=minimal'
       },
       body: JSON.stringify({
@@ -658,7 +657,6 @@ async function sbInsertLead(nombre, empresa, correo, sector, mensaje) {
       headers: {
         'Content-Type': 'application/json',
         'apikey': SB_KEY,
-        'Authorization': 'Bearer ' + SB_KEY,
         'Prefer': 'return=minimal'
       },
       body: JSON.stringify({ nombre: nombre, empresa: empresa, correo: correo, sector: sector || '', mensaje: mensaje || '' })
@@ -720,7 +718,7 @@ async function submitLead() {
 async function sbFetchAll() {
   try {
     const r = await fetch(SB_URL + '/rest/v1/ratings_public?select=*', {
-      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+      headers: { 'apikey': SB_KEY }
     });
     if (!r.ok) return null;
     return await r.json();
