@@ -613,7 +613,7 @@ tr:last-child td{border-bottom:none;}
     <p><strong>3. No son afirmaciones de Promundi.</strong> Cada puntaje refleja únicamente la percepción promedio de quienes evaluaron ese lugar. Promundi no verifica, respalda, ni afirma como hecho ninguna opinión individual — somos un agregador de datos, no un medio que emite juicios sobre negocios.</p>
     <p><strong>4. Protección contra manipulación.</strong> Usamos verificación anti-bots (Cloudflare Turnstile) y límites de envío por lugar y día para reducir evaluaciones automatizadas o repetidas. Ningún sistema puede garantizar al 100% que cada evaluación provenga de una visita real — por eso los puntajes deben interpretarse como una tendencia agregada, no como un hecho verificado caso por caso.</p>
     <p><strong>5. Si eres dueño de un negocio.</strong> Si consideras que una evaluación de tu negocio es maliciosa, falsa, o resultado de manipulación, escríbenos a <strong>infopromundi.pa@gmail.com</strong> con el nombre exacto del negocio. Revisamos cada reporte manualmente.</p>
-    <p><strong>6. Anonimato.</strong> No recopilamos nombres, cuentas, ni datos personales de quienes evalúan. No podemos identificar ni revelar la identidad de ningún evaluador porque, por diseño, no la conocemos.</p>
+    <p><strong>6. Anonimato.</strong> No recopilamos nombres, cuentas, ni datos personales de quienes evalúan. Para limitar envíos repetidos guardamos, por pocos días, una huella técnica irreversible derivada de la conexión (nunca tu dirección IP) que no permite identificar a la persona. No podemos identificar ni revelar la identidad de ningún evaluador porque, por diseño, no la conocemos.</p>
     <button class="terms-close" onclick="closeTerms()">Entendido</button>
   </div>
 </div>
@@ -1072,21 +1072,22 @@ async function submitRating() {
   // el token con Cloudflare antes de aceptar el dato. Así una evaluación
   // automatizada (script/bot) no puede llegar a guardarse, aunque conozca
   // la URL de Supabase y la anon key (que son públicas por diseño).
-  var ok = false;
+  var ok = false, httpStatus = 0;
   try {
     var r = await fetch('/api/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: token, place: curPlace, tipo: curBiz, subcat: curSub, provincia: curProv, scores: answers })
     });
-    ok = r.ok;
+    ok = r.ok; httpStatus = r.status;
   } catch (e) { ok = false; }
 
   if (submitBtn) submitBtn.disabled = false;
   if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
 
   if (!ok) {
-    toast('❌ No se pudo enviar. Revisa tu conexión e intenta de nuevo.');
+    if (httpStatus === 429) toast('⚠️ Ya alcanzaste el límite de evaluaciones de hoy para este lugar. Vuelve mañana.');
+    else toast('❌ No se pudo enviar. Revisa tu conexión e intenta de nuevo.');
     return;
   }
 
