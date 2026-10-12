@@ -336,6 +336,94 @@ tr:last-child td{border-bottom:none;}
 .terms-card p{font-size:0.86rem;line-height:1.6;color:var(--tx);margin-bottom:12px;}
 .terms-card p strong{color:var(--p);}
 .terms-close{width:100%;padding:12px;border:none;border-radius:10px;background:var(--p);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:8px;}
+
+/* EXPLORAR v2 */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+.xp-head h2{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--p);line-height:1.15;}
+.xp-head p{font-size:0.86rem;color:var(--mu);margin:4px 0 16px;}
+.xp-search{display:flex;align-items:center;gap:10px;height:50px;padding:0 14px;background:#fff;border:1.5px solid var(--bd);border-radius:14px;}
+.xp-search:focus-within{border-color:var(--p);}
+.xp-search input{flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:16px;color:var(--tx);}
+.xp-lbl{display:block;font-size:0.7rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--mu);margin:16px 0 8px;}
+.xp-chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+.xp-chips::-webkit-scrollbar{display:none;}
+.xp-chip{flex:none;min-height:40px;padding:8px 14px;border:1.5px solid var(--bd);border-radius:100px;background:#fff;font-family:inherit;font-size:0.84rem;font-weight:600;color:var(--tx);cursor:pointer;}
+.xp-chip[aria-pressed="true"]{background:var(--p);border-color:var(--p);color:#fff;}
+.xp-selects{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;}
+.xp-selects select{width:100%;min-height:44px;padding:8px 10px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;font-family:inherit;font-size:0.82rem;color:var(--tx);}
+.xp-selects select:disabled{opacity:.55;}
+.xp-active{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;}
+.xp-active:empty{display:none;}
+.xp-rm{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 10px 6px 14px;border:none;border-radius:100px;background:var(--p);color:#fff;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;}
+.xp-clear{background:none;border:none;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--p);cursor:pointer;padding:8px 4px;min-height:36px;}
+.xp-sec{margin-top:26px;}
+.xp-sec h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;}
+.xp-sec .xp-sub{font-size:0.78rem;color:var(--mu);margin:2px 0 12px;}
+.xp-sec-top{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;}
+.xp-link{background:none;border:none;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--p);cursor:pointer;min-height:36px;padding:6px 0;}
+.xp-hscroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;scrollbar-width:none;}
+.xp-hscroll::-webkit-scrollbar{display:none;}
+.rank-card.xp-feat{flex:none;width:210px;display:block;padding:14px;border-radius:16px;scroll-snap-align:start;}
+.rank-card.xp-card{display:block;padding:14px;border-radius:16px;}
+.xp-list{display:flex;flex-direction:column;gap:10px;}
+.xp-top{display:flex;gap:12px;align-items:flex-start;}
+.xp-info{flex:1;min-width:0;}
+.xp-name{font-weight:700;font-size:0.98rem;line-height:1.25;overflow-wrap:anywhere;}
+.xp-meta{font-size:0.8rem;color:var(--mu);margin-top:3px;}
+.xp-score{text-align:right;flex:none;}
+.xp-num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.7rem;line-height:1;color:var(--p);}
+.xp-pes{font-size:0.62rem;font-weight:800;letter-spacing:1px;color:var(--mu);margin-top:2px;}
+.xp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.xp-tags:empty{display:none;}
+.xp-str,.xp-focus,.xp-few{font-size:0.74rem;font-weight:700;padding:4px 10px;border-radius:100px;}
+.xp-str{background:#E7F3EC;color:#1F5A41;}
+.xp-focus{background:#E6F0F5;color:#083D58;font-weight:800;}
+.xp-few{background:#FBF3E2;color:#7A5A14;}
+.xp-foot{font-size:0.74rem;color:var(--mu);margin-top:10px;}
+.rank-card.xp-few-card{border-style:dashed;}
+.rank-card.xp-few-card .xp-num{color:var(--mu);}
+.rank-card:focus-visible,.xp-chip:focus-visible,.xp-rm:focus-visible,.xp-link:focus-visible{outline:3px solid var(--p);outline-offset:2px;}
+.xp-resh{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:18px 0 12px;}
+.xp-resh h3{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--p);}
+.xp-resh p{font-size:0.8rem;color:var(--mu);margin-top:2px;}
+.xp-sort{flex:none;min-height:40px;padding:6px 8px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;font-family:inherit;font-size:0.8rem;font-weight:600;color:var(--tx);}
+.xp-more{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;font-size:0.82rem;color:var(--mu);}
+.xp-btn{min-height:44px;padding:10px 18px;border-radius:12px;border:1.5px solid var(--p);background:#fff;color:var(--p);font-family:inherit;font-weight:700;font-size:0.9rem;cursor:pointer;}
+.xp-btn.fill{background:var(--p);color:#fff;}
+.xp-cta{margin-top:22px;background:#EAF2F6;border-radius:16px;padding:18px;}
+.xp-cta h4{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--p);margin-bottom:6px;}
+.xp-cta p{font-size:0.88rem;line-height:1.5;margin-bottom:12px;}
+.xp-note{margin-top:22px;font-size:0.76rem;line-height:1.5;color:var(--mu);}
+.xp-empty{background:#fff;border:1px dashed #CBD5E1;border-radius:16px;padding:18px;font-size:0.88rem;line-height:1.5;color:var(--mu);margin-top:22px;}
+/* DETALLE */
+.md-kicker{font-size:0.7rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--g);margin-bottom:4px;}
+.md-meta{font-size:0.86rem;color:var(--mu);margin:-8px 0 14px;}
+.md-card{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:18px;margin-bottom:18px;}
+.md-line{font-size:0.82rem;color:var(--mu);margin-top:6px;}
+.md-seal{display:inline-block;margin-top:12px;padding:5px 12px;border-radius:100px;font-size:0.76rem;font-weight:700;background:#E7F3EC;color:#1F5A41;}
+.md-seal.warn{background:#FBF3E2;color:#7A5A14;}
+.md-str{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--bd);font-size:0.84rem;font-weight:700;}
+.md-str span.c{background:#E6F0F5;color:#083D58;font-weight:800;font-size:0.78rem;padding:5px 12px;border-radius:100px;}
+.md-h{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;margin-bottom:2px;}
+.md-hs{font-size:0.8rem;color:var(--mu);margin-bottom:12px;}
+.md-actions{display:flex;flex-direction:column;gap:10px;margin:20px 0 14px;}
+.md-actions .xp-btn{text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;}
+.md-disc{background:#EAF2F6;border-radius:14px;padding:14px 16px;font-size:0.82rem;line-height:1.55;margin-bottom:12px;}
+.md-report{font-size:0.82rem;color:var(--mu);margin-bottom:22px;}
+.md-report a{color:var(--p);font-weight:700;}
+/* NAV INFERIOR (móvil) */
+.bottom-nav{display:none;}
+@media(max-width:640px){
+  .nav-pills{display:none;}
+  body{padding-bottom:78px;}
+  .bottom-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:150;background:#fff;border-top:1px solid var(--bd);justify-content:space-around;padding:6px 4px calc(8px + env(safe-area-inset-bottom));}
+  .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;padding:6px 2px;background:none;border:none;font-family:inherit;font-size:0.72rem;font-weight:600;color:var(--mu);cursor:pointer;}
+  .bn-item svg{stroke:currentColor;}
+  .bn-item.active{color:var(--p);font-weight:800;}
+  .toast{bottom:92px;white-space:normal;max-width:88vw;text-align:center;}
+  .xp-selects{grid-template-columns:1fr;}
+  .legal-footer{padding-bottom:30px;}
+}
 /* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--tx);color:#fff;padding:12px 24px;border-radius:100px;font-size:0.86rem;font-weight:600;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:999;white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
@@ -355,6 +443,18 @@ tr:last-child td{border-bottom:none;}
 .faq-sec details{border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin-bottom:8px;}
 .faq-sec summary{cursor:pointer;font-weight:600;font-size:0.9rem;}
 .faq-sec details p{margin-top:8px;font-size:0.85rem;line-height:1.5;color:var(--mu);}
+
+.rule-line{font-size:0.8rem;color:var(--tx);background:#FFF7E6;border:1px solid #F5D9A8;border-radius:10px;padding:8px 12px;margin:0 0 14px;line-height:1.5;}
+.submit-note{font-size:0.74rem;color:var(--mu);margin-top:10px;text-align:right;line-height:1.5;}
+.linklike{background:none;border:none;padding:0;color:var(--p);text-decoration:underline;cursor:pointer;font:inherit;}
+/* GUIA PANTALLA PREVIA (12) */
+.guide-target{scroll-margin-top:84px;}
+.guide-tip{display:none;margin-left:8px;font-size:0.72rem;font-weight:700;color:var(--g);text-transform:none;letter-spacing:0;}
+.guide-tip.on{display:inline;}
+@keyframes guidePulse{0%{box-shadow:0 0 0 0 rgba(10,77,110,0.45);}100%{box-shadow:0 0 0 14px rgba(10,77,110,0);}}
+.guide-pulse{animation:guidePulse 1.1s ease-out 1;border-radius:12px;}
+#start-btn.not-ready{opacity:0.5;}
+@media (prefers-reduced-motion: reduce){.guide-pulse{animation:none;outline:2px solid var(--p);}}
 </style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -409,6 +509,7 @@ tr:last-child td{border-bottom:none;}
     </div>
     <div class="setup-card">
       <div class="anon">🔒 Tu evaluación es 100% anónima y sin texto</div>
+      <p class="rule-line" id="rule-txt">Evalúa solo lugares que visitaste <strong>en persona</strong>. Para personas <strong>mayores de 18 años</strong>.</p>
       <div style="text-align:right;margin-bottom:8px">
         <button id="lang-toggle" onclick="toggleLang()" style="background:none;border:1px solid var(--bd);border-radius:20px;padding:5px 12px;font-size:0.74rem;font-weight:700;color:var(--p);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif">🇺🇸 English</button>
       </div>
@@ -419,17 +520,17 @@ tr:last-child td{border-bottom:none;}
         <input type="text" class="place-input" id="place-input" placeholder="Ej: Farmacia Arrocha, El Dorado" />
         <p style="font-size:0.72rem;color:var(--mu);margin-top:8px" id="format-hint-txt">✏️ Formato: <strong>Tipo de negocio o nombre + ubicación específica</strong></p>
       </div>
-      <span class="setup-label"><span id="tipo-label-txt">Tipo de negocio</span> <span class="req" id="tipo-req-txt">* Selecciona uno</span></span>
+      <span class="setup-label guide-target" id="sec-tipo"><span id="tipo-label-txt">Tipo de negocio</span> <span class="req" id="tipo-req-txt">* Selecciona uno</span><span class="guide-tip" id="tip-tipo"></span></span>
       <div class="sel-grid" id="biz-grid"></div>
-      <div id="subcats-wrap" style="display:none;margin-top:16px">
-        <span class="setup-label">Categoría específica</span>
+      <div id="subcats-wrap" class="guide-target" style="display:none;margin-top:16px">
+        <span class="setup-label"><span id="sub-label-txt">Categoría específica</span> <span class="req" id="sub-req-txt">* Selecciona una</span><span class="guide-tip" id="tip-sub"></span></span>
         <div class="sel-grid" id="subcat-grid"></div>
       </div>
-      <span class="setup-label" style="margin-top:18px;display:block"><span id="prov-label-txt">Provincia o Comarca</span> <span class="req" id="prov-req-txt">* Selecciona una</span></span>
+      <span class="setup-label guide-target" id="sec-prov" style="margin-top:18px;display:block"><span id="prov-label-txt">Provincia o Comarca</span> <span class="req" id="prov-req-txt">* Selecciona una</span><span class="guide-tip" id="tip-prov"></span></span>
       <div id="prov-grid"></div>
       <div class="form-footer">
         <span class="form-note">* Todos los campos son obligatorios</span>
-        <button class="btn btn-p" id="start-btn">Comenzar evaluación →</button>
+        <button class="btn btn-p not-ready guide-target" id="start-btn">Comenzar evaluación →</button>
       </div>
     </div>
   </div>
@@ -454,6 +555,7 @@ tr:last-child td{border-bottom:none;}
         <button class="btn btn-gh" id="btn-reset">Evaluar otro lugar</button>
         <button class="btn btn-r" id="btn-submit">Enviar evaluación →</button>
       </div>
+      <p class="submit-note" id="submit-note">Al enviar aceptas los <button type="button" class="linklike" onclick="openTerms()">Términos</button> y declaras que tienes 18 años o más.</p>
       <div class="wa-card" id="wa-card" style="display:none">
         <p>¿Conoces a alguien que haya visitado este lugar? Invítalo a evaluarlo.</p>
         <a class="btn-wa" id="wa-btn" href="#" target="_blank">📲 Compartir por WhatsApp</a>
@@ -464,16 +566,23 @@ tr:last-child td{border-bottom:none;}
 
 <!-- EXPLORAR -->
 <div id="view-explorar" class="view">
-  <div class="sec-title">Explorar Negocios</div>
-  <div class="sec-sub">Busca cualquier lugar y consulta su Índice Promundi (PES)</div>
-  <input type="text" class="explore-input" id="explore-input" placeholder="Busca por nombre de negocio…" />
-  <span class="filter-label">🔎 Filtrar por categoría</span>
-  <div class="filter-row" id="cat-filters"></div>
-  <div class="filter-divider"></div>
-  <span class="filter-label">📍 Filtrar por provincia o comarca</span>
-  <div class="filter-row" id="prov-filters"></div>
-  <div class="explore-count" id="explore-count"></div>
-  <div class="rank-list" id="explore-list"></div>
+  <div class="xp-head">
+    <h2>Explora lugares con buena experiencia</h2>
+    <p>Puntajes basados en la percepción de usuarios que dicen haber visitado cada lugar.</p>
+  </div>
+  <label for="xp-q" class="sr-only">Buscar un lugar</label>
+  <div class="xp-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#566275" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><input id="xp-q" type="text" autocomplete="off" maxlength="80" placeholder="Busca un lugar, tipo o barrio" /></div>
+  <span class="xp-lbl" id="xp-intent-lbl">Lo que más te importa</span>
+  <div class="xp-chips" id="xp-intents" role="group" aria-labelledby="xp-intent-lbl"></div>
+  <div class="xp-selects">
+    <div><label for="xp-tipo" class="sr-only">Tipo de lugar</label><select id="xp-tipo"></select></div>
+    <div><label for="xp-sub" class="sr-only">Categoría</label><select id="xp-sub"></select></div>
+    <div><label for="xp-prov" class="sr-only">Provincia o comarca</label><select id="xp-prov"></select></div>
+  </div>
+  <div class="xp-active" id="xp-active"></div>
+  <div id="xp-home"></div>
+  <div id="xp-results" style="display:none"></div>
+  <p class="xp-note">Los puntajes reflejan la percepción de usuarios. No son una certificación ni una inspección. El orden tiene en cuenta cuántas evaluaciones tiene cada lugar.</p>
 </div>
 
 <!-- INDICADORES -->
@@ -535,13 +644,27 @@ tr:last-child td{border-bottom:none;}
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title" id="modal-title"></div>
-      <button class="modal-close" id="modal-close-btn">✕</button>
+      <div><div class="md-kicker" id="modal-kicker"></div><div class="modal-title" id="modal-title"></div></div>
+      <button class="modal-close" id="modal-close-btn" aria-label="Cerrar">✕</button>
     </div>
-    <div class="modal-pes" id="modal-pes"></div>
-    <div class="modal-pes-label" id="modal-label"></div>
+    <div class="md-meta" id="modal-meta"></div>
+    <div class="md-card">
+      <div class="modal-pes" id="modal-pes"></div>
+      <div class="modal-pes-label" id="modal-label" style="margin-bottom:0"></div>
+      <div class="md-line" id="modal-last"></div>
+      <span class="md-seal" id="modal-seal" style="display:none"></span>
+      <div class="md-str" id="modal-strengths" style="display:none"></div>
+    </div>
+    <div class="md-h">Cómo lo evaluaron</div>
+    <div class="md-hs">Promedio de cada dimensión, de 1 a 5.</div>
     <div class="cat-bars" id="modal-bars"></div>
-    <div class="compare-title">Comparar con lugares similares</div>
+    <div class="md-actions">
+      <button class="xp-btn fill" id="modal-eval-btn" type="button">Evaluar este lugar</button>
+      <a class="xp-btn" id="modal-wa-btn" href="#" target="_blank" rel="noopener noreferrer">Compartir por WhatsApp</a>
+    </div>
+    <div class="md-disc">Puntaje basado en la percepción de usuarios que dicen haber visitado el lugar. No es una certificación ni una inspección.</div>
+    <div class="md-report">¿Eres el dueño de este lugar? <a id="modal-report" href="mailto:infopromundi.pa@gmail.com?subject=Reportar%20evaluaci%C3%B3n">Reportar una evaluación</a></div>
+    <div class="compare-title" id="modal-compare-title">Lugares similares</div>
     <div class="compare-list" id="modal-compare"></div>
   </div>
 </div>
@@ -614,10 +737,17 @@ tr:last-child td{border-bottom:none;}
     <p><strong>4. Protección contra manipulación.</strong> Usamos verificación anti-bots (Cloudflare Turnstile) y límites de envío por lugar y día para reducir evaluaciones automatizadas o repetidas. Ningún sistema puede garantizar al 100% que cada evaluación provenga de una visita real — por eso los puntajes deben interpretarse como una tendencia agregada, no como un hecho verificado caso por caso.</p>
     <p><strong>5. Si eres dueño de un negocio.</strong> Si consideras que una evaluación de tu negocio es maliciosa, falsa, o resultado de manipulación, escríbenos a <strong>infopromundi.pa@gmail.com</strong> con el nombre exacto del negocio. Revisamos cada reporte manualmente.</p>
     <p><strong>6. Anonimato.</strong> No recopilamos nombres, cuentas, ni datos personales de quienes evalúan. Para limitar envíos repetidos guardamos, por pocos días, una huella técnica irreversible derivada de la conexión (nunca tu dirección IP) que no permite identificar a la persona. No podemos identificar ni revelar la identidad de ningún evaluador porque, por diseño, no la conocemos.</p>
+    <p><strong>7. Edad mínima.</strong> Promundi está dirigido a personas mayores de 18 años. Al enviar una evaluación declaras tener 18 años o más.</p>
     <button class="terms-close" onclick="closeTerms()">Entendido</button>
   </div>
 </div>
 
+<div class="bottom-nav" id="bottom-nav" role="navigation" aria-label="Navegación principal">
+  <button class="bn-item active" data-bn="evaluar" type="button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z"></path></svg>Evaluar</button>
+  <button class="bn-item" data-bn="explorar" type="button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M16.2 7.8l-2.1 6.3-6.3 2.1 2.1-6.3z"></path></svg>Explorar</button>
+  <button class="bn-item" data-bn="ranking" type="button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20V10M12 20V4M18 20v-7"></path></svg>Indicadores</button>
+  <button class="bn-item" data-bn="acerca" type="button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></svg>Acerca</button>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -807,7 +937,16 @@ const UI_TEXT = {
     btnNext:'Siguiente →',
     btnSummary:'Ver resumen →',
     btnReset:'Evaluar otro lugar',
-    btnSubmit:'Enviar evaluación →'
+    btnSubmit:'Enviar evaluación →',
+    ruleTxt:'Evalúa solo lugares que visitaste <strong>en persona</strong>. Para personas <strong>mayores de 18 años</strong>.',
+    submitNote:'Al enviar aceptas los <button type="button" class="linklike" onclick="openTerms()">Términos</button> y declaras que tienes 18 años o más.',
+    subLabel:'Categoría específica',
+    subReq:'* Selecciona una',
+    tipTipo:'👇 Elige el tipo de negocio',
+    tipSub:'👇 Ahora elige la categoría',
+    tipProv:'👇 Ahora elige la provincia',
+    toastName:'Escribe el nombre del lugar (mínimo 3 letras)',
+    toastSub:'Selecciona la categoría específica'
   },
   en: {
     step1label:'Business name + exact location',
@@ -822,7 +961,16 @@ const UI_TEXT = {
     btnNext:'Next →',
     btnSummary:'See summary →',
     btnReset:'Evaluate another place',
-    btnSubmit:'Submit evaluation →'
+    btnSubmit:'Submit evaluation →',
+    ruleTxt:'Only evaluate places you visited <strong>in person</strong>. For people <strong>18 or older</strong>.',
+    submitNote:'By submitting you accept the <button type="button" class="linklike" onclick="openTerms()">Terms</button> and declare that you are 18 or older.',
+    subLabel:'Specific category',
+    subReq:'* Select one',
+    tipTipo:'👇 Choose the business type',
+    tipSub:'👇 Now choose the category',
+    tipProv:'👇 Now choose the province',
+    toastName:'Type the place name (at least 3 letters)',
+    toastSub:'Select the specific category'
   }
 };
 
@@ -847,6 +995,10 @@ function applyLang() {
   document.getElementById('btn-back').innerHTML = t.btnBack;
   document.getElementById('btn-reset').textContent = t.btnReset;
   document.getElementById('btn-submit').textContent = t.btnSubmit;
+  document.getElementById('rule-txt').innerHTML = t.ruleTxt;
+  document.getElementById('submit-note').innerHTML = t.submitNote;
+  document.getElementById('sub-label-txt').textContent = t.subLabel;
+  document.getElementById('sub-req-txt').textContent = t.subReq;
 }
 
 let curPlace = '', curQ = 0, answers = {}, curBiz = null, curSub = null, curProv = null;
@@ -883,8 +1035,9 @@ function showView(v) {
   document.querySelectorAll('.pill').forEach(function(x) { x.classList.remove('active'); });
   var el = document.getElementById('view-' + v);
   if (el) el.classList.add('active');
-  var btn = document.querySelector('[data-view="' + v + '"]');
+  var btn = document.querySelector('.pill[data-view="' + v + '"]');
   if (btn) btn.classList.add('active');
+  document.querySelectorAll('.bn-item').forEach(function(x) { x.classList.toggle('active', x.getAttribute('data-bn') === v); });
   if (v === 'ranking') renderRanking();
   if (v === 'explorar') initExplore();
   setTimeout(function() {
@@ -908,6 +1061,7 @@ function buildBizGrid() {
     btn.className = 'sel-btn';
     btn.textContent = b.icon + ' ' + (LANG === 'en' ? b.name_en : b.name);
     btn.setAttribute('data-id', b.id);
+    if (curBiz === b.id) btn.classList.add('active');
     grid.appendChild(btn);
   });
 }
@@ -963,6 +1117,56 @@ function buildSubcats(bizId) {
   });
 }
 
+// ── GUÍA DE LA PANTALLA PREVIA ───────────────────────────────────
+// Solo orienta la vista (scroll + resaltado). No cambia lo que se guarda ni lo que se envía.
+function placeLooksValid() {
+  var v = (document.getElementById('place-input').value || '').trim();
+  if (v.length < 3) return false;
+  return !BLOCKED.some(function(w) { return v.toLowerCase().indexOf(w) > -1; });
+}
+function setupReady() { return placeLooksValid() && !!curBiz && !!curSub && !!curProv; }
+function updateReady() {
+  var b = document.getElementById('start-btn');
+  if (b) b.classList.toggle('not-ready', !setupReady());
+}
+function showTip(id, text) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = text; el.classList.add('on');
+  clearTimeout(el._t);
+  el._t = setTimeout(function() { el.classList.remove('on'); }, 5000);
+}
+function hideTips() {
+  ['tip-tipo','tip-sub','tip-prov'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('on');
+  });
+}
+function guideTo(el, block) {
+  if (!el) return;
+  var r = el.getBoundingClientRect();
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  if (r.top < 70 || r.bottom > vh - 8) {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: block || 'start' });
+  }
+  el.classList.remove('guide-pulse'); void el.offsetWidth; el.classList.add('guide-pulse');
+  setTimeout(function() { el.classList.remove('guide-pulse'); }, 1400);
+}
+// Lleva al primer paso que falta. skipName=true cuando el usuario viene de elegir
+// una opción: no lo subimos al nombre salvo que sea lo único que falte.
+function guideNext(skipName) {
+  updateReady();
+  hideTips();
+  var t = UI_TEXT[LANG];
+  if (!skipName && !placeLooksValid()) { guideTo(document.querySelector('.step1')); return; }
+  if (!curBiz) { showTip('tip-tipo', t.tipTipo); guideTo(document.getElementById('sec-tipo')); return; }
+  if (!curSub) { showTip('tip-sub', t.tipSub); guideTo(document.getElementById('subcats-wrap')); return; }
+  if (!curProv) { showTip('tip-prov', t.tipProv); guideTo(document.getElementById('sec-prov')); return; }
+  if (!placeLooksValid()) { guideTo(document.querySelector('.step1')); return; }
+  guideTo(document.getElementById('start-btn'), 'center');
+}
+
 // ── ANTI-SPAM ────────────────────────────────────────────────────
 // Separado en dos pasos a propósito: antes, se marcaba "ya evaluado" ANTES
 // de saber si el envío a Supabase tuvo éxito. Si fallaba la conexión, la
@@ -991,8 +1195,9 @@ function startEval() {
   var val = document.getElementById('place-input').value.trim();
   if (!val || val.length < 3) { toast('Escribe el nombre del lugar (mínimo 3 letras)'); return; }
   if (BLOCKED.some(function(w) { return val.toLowerCase().indexOf(w) > -1; })) { toast('Por favor escribe el nombre real del lugar'); return; }
-  if (!curBiz) { toast('Selecciona el tipo de negocio'); return; }
-  if (!curProv) { toast('Selecciona la provincia o comarca'); return; }
+  if (!curBiz) { toast('Selecciona el tipo de negocio'); guideNext(true); return; }
+  if (!curSub) { toast(UI_TEXT[LANG].toastSub); guideNext(true); return; }
+  if (!curProv) { toast('Selecciona la provincia o comarca'); guideNext(true); return; }
   curPlace = val; curQ = 0; answers = {};
   document.getElementById('step-search').style.display = 'none';
   document.getElementById('step-questions').style.display = 'block';
@@ -1112,56 +1317,223 @@ function resetEval() {
   document.getElementById('wa-card').style.display = 'none';
   document.querySelectorAll('#biz-grid .sel-btn, #subcat-grid .sel-btn, .prov-btn').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById('subcats-wrap').style.display = 'none';
+  hideTips();
+  updateReady();
 }
 
 // ── EXPLORAR ─────────────────────────────────────────────────────
-function initExplore() {
-  var catRow = document.getElementById('cat-filters');
-  catRow.innerHTML = '<button class="filter-btn active" data-cat="">Todos</button>';
-  CATS.forEach(function(c) {
-    var btn = document.createElement('button');
-    btn.className = 'filter-btn';
-    btn.textContent = c.icon + ' ' + c.name;
-    btn.setAttribute('data-cat', c.id);
-    catRow.appendChild(btn);
+// Reglas de orden (todo en el navegador, sobre la vista pública ratings_public):
+//  - MIN_EVALS: mínimo de evaluaciones para entrar en "Destacados" y "Mejor evaluados".
+//  - Puntaje de orden = promedio ajustado: (n*promedio + M*promedio_global) / (n + M).
+//    Evita que un lugar con 1 evaluación de 5.0 quede por encima de uno con 40 evaluaciones de 4.7.
+//    El puntaje que se MUESTRA es siempre el promedio real (PES) y su número de evaluaciones.
+var MIN_EVALS = 5;
+var SHRINK_M = 5;
+var XP_PAGE = 8;
+var RECENT_DAYS = 60;
+var INTENTS = [
+  {id:'eficiencia', label:'Rápido'},
+  {id:'limpieza', label:'Limpio'},
+  {id:'atencion', label:'Buen trato'},
+  {id:'seguridad', label:'Seguro'},
+  {id:'accesibilidad', label:'Accesible'},
+  {id:'ambiente', label:'Buen ambiente'}
+];
+var xp = {q:'', tipo:'', sub:'', prov:'', intent:'', sort:'best', shown:XP_PAGE, browse:false};
+var xpG = null, xpReady = false;
+
+function normTxt(s) { return String(s == null ? '' : s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); }
+function bizName(id) { var b = NEGOCIOS.find(function(x) { return x.id === id; }); return b ? b.name : ''; }
+function intentLabel(id) { var i = INTENTS.find(function(x) { return x.id === id; }); return i ? i.label : ''; }
+function gmean(key) {
+  if (!xpG) xpG = {};
+  var k = key || '_';
+  if (xpG[k] === undefined) {
+    var t = 0;
+    ratings.forEach(function(r) { t += key ? r.scores[key] : avg(r.scores); });
+    xpG[k] = ratings.length ? t / ratings.length : 0;
+  }
+  return xpG[k];
+}
+function adjScore(r, key) {
+  var n = r.count || 0, v = key ? r.scores[key] : avg(r.scores);
+  return (n * v + SHRINK_M * gmean(key)) / (n + SHRINK_M);
+}
+function isRanked(r) { return (r.count || 0) >= MIN_EVALS; }
+function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+function xpTs(r) { var t = r.lastUpdate ? new Date(r.lastUpdate).getTime() : 0; return isNaN(t) ? 0 : t; }
+function xpLast(r) {
+  if (!xpTs(r)) return '';
+  return new Date(r.lastUpdate).toLocaleDateString('es-PA', {month:'short', year:'numeric'});
+}
+function xpMeta(r) { return [r.subcat || bizName(r.tipo), r.provincia].filter(Boolean).join(' · '); }
+function xpTopDims(r, n) {
+  return CATS.slice().sort(function(a, b) { return r.scores[b.id] - r.scores[a.id]; })
+    .filter(function(c) { return r.scores[c.id] >= 4; }).slice(0, n);
+}
+function xpHasFilters() { return !!(xp.q.trim() || xp.tipo || xp.sub || xp.prov || xp.intent); }
+
+function xpFilter() {
+  var toks = normTxt(xp.q).split(/\s+/).filter(Boolean);
+  return ratings.filter(function(r) {
+    if (xp.tipo && r.tipo !== xp.tipo) return false;
+    if (xp.sub && r.subcat !== xp.sub) return false;
+    if (xp.prov && r.provincia !== xp.prov) return false;
+    if (toks.length) {
+      var hay = normTxt(r.place + ' ' + (r.subcat || '') + ' ' + (r.provincia || '') + ' ' + bizName(r.tipo));
+      for (var i = 0; i < toks.length; i++) if (hay.indexOf(toks[i]) < 0) return false;
+    }
+    return true;
   });
-  var provRow = document.getElementById('prov-filters');
-  provRow.innerHTML = '<button class="filter-btn active" data-prov="">Todas</button>';
-  var allProvs = PROVINCIAS.concat(COMARCAS);
-  allProvs.forEach(function(p) {
-    var btn = document.createElement('button');
-    btn.className = 'filter-btn';
-    btn.textContent = '📍 ' + p;
-    btn.setAttribute('data-prov', p);
-    provRow.appendChild(btn);
-  });
-  renderExplore();
+}
+function xpSorted(list) {
+  var key = xp.intent || null;
+  var arr = list.map(function(r) { return {r:r, a:adjScore(r, key), k:isRanked(r) ? 1 : 0}; });
+  if (xp.sort === 'many') arr.sort(function(x, y) { return (y.r.count || 0) - (x.r.count || 0) || y.a - x.a; });
+  else if (xp.sort === 'recent') arr.sort(function(x, y) { return xpTs(y.r) - xpTs(x.r); });
+  else arr.sort(function(x, y) { return y.k - x.k || y.a - x.a; });
+  return arr.map(function(x) { return x.r; });
+}
+
+function xpCard(r) {
+  var n = r.count || 0, few = !isRanked(r), tags = '';
+  if (xp.intent) tags += '<span class="xp-focus">' + escapeHtml(intentLabel(xp.intent)) + ' ' + r.scores[xp.intent].toFixed(1) + '</span>';
+  if (few) tags += '<span class="xp-few">Pocas evaluaciones</span>';
+  else xpTopDims(r, 2).forEach(function(c) { tags += '<span class="xp-str">' + escapeHtml(c.name) + '</span>'; });
+  var last = xpLast(r);
+  var foot = few ? 'Según ' + plural(n, 'evaluación', 'evaluaciones') + ' de usuarios · el puntaje aún puede cambiar mucho.'
+                 : 'Según ' + n + ' evaluaciones de usuarios' + (last ? ' · última: ' + escapeHtml(last) : '');
+  return '<div class="rank-card xp-card' + (few ? ' xp-few-card' : '') + '" data-place="' + escapeHtml(r.place) + '" tabindex="0" role="button" aria-label="Ver detalle de ' + escapeHtml(r.place) + '">' +
+    '<div class="xp-top"><div class="xp-info"><div class="xp-name">' + escapeHtml(r.place) + '</div><div class="xp-meta">' + escapeHtml(xpMeta(r)) + '</div></div>' +
+    '<div class="xp-score"><div class="xp-num">' + avg(r.scores).toFixed(1) + '</div><div class="xp-pes">PES</div></div></div>' +
+    '<div class="xp-tags">' + tags + '</div><div class="xp-foot">' + foot + '</div></div>';
+}
+function xpFeat(r) {
+  var tags = '';
+  xpTopDims(r, 2).forEach(function(c) { tags += '<span class="xp-str">' + escapeHtml(c.name) + '</span>'; });
+  return '<div class="rank-card xp-feat" data-place="' + escapeHtml(r.place) + '" tabindex="0" role="button" aria-label="Ver detalle de ' + escapeHtml(r.place) + '">' +
+    '<div class="xp-top"><div class="xp-info"><div class="xp-name">' + escapeHtml(r.place) + '</div><div class="xp-meta">' + escapeHtml(xpMeta(r)) + '</div></div>' +
+    '<div class="xp-score"><div class="xp-num">' + avg(r.scores).toFixed(1) + '</div><div class="xp-pes">PES</div></div></div>' +
+    '<div class="xp-tags">' + tags + '</div><div class="xp-foot">' + r.count + ' evaluaciones</div></div>';
+}
+
+function renderXpHome() {
+  var el = document.getElementById('xp-home');
+  if (!ratingsLoaded) { el.innerHTML = '<div class="xp-empty">Cargando evaluaciones…</div>'; return; }
+  if (loadFailed) { el.innerHTML = '<div class="xp-empty">⚠️ No se pudo conectar con la base de datos. <button class="xp-link" type="button" data-xp-action="retry">Reintentar</button></div>'; return; }
+  if (!ratings.length) { el.innerHTML = '<div class="xp-empty">Aún no hay evaluaciones. ¡Sé el primero! <button class="xp-link" type="button" data-xp-action="eval">Evaluar un lugar</button></div>'; return; }
+  var ranked = xpSorted(ratings.filter(isRanked));
+  var cutoff = Date.now() - RECENT_DAYS * 86400000;
+  var feats = ranked.filter(function(r) { return xpTs(r) >= cutoff; }).slice(0, 6);
+  var html = '';
+  if (feats.length) {
+    html += '<div class="xp-sec"><div class="xp-sec-top"><div><h3>Destacados</h3><div class="xp-sub">Buen puntaje y evaluaciones en los últimos ' + RECENT_DAYS + ' días</div></div></div>' +
+      '<div class="xp-hscroll">' + feats.map(xpFeat).join('') + '</div></div>';
+  }
+  if (ranked.length) {
+    html += '<div class="xp-sec"><div class="xp-sec-top"><div><h3>Mejor evaluados</h3><div class="xp-sub">Lugares con ' + MIN_EVALS + ' o más evaluaciones</div></div>' +
+      '<button class="xp-link" type="button" data-xp-action="all">Ver todos</button></div><div class="xp-list">' + ranked.slice(0, 5).map(xpCard).join('') + '</div></div>';
+  } else {
+    html += '<div class="xp-empty">Todavía no hay lugares con ' + MIN_EVALS + ' o más evaluaciones. Cuando los haya, aparecerán aquí como "Destacados" y "Mejor evaluados". Mientras tanto, mira los más recientes.</div>';
+  }
+  var recent = ratings.slice().sort(function(a, b) { return xpTs(b) - xpTs(a); }).slice(0, 6);
+  html += '<div class="xp-sec"><div class="xp-sec-top"><div><h3>Recién evaluados</h3><div class="xp-sub">Los lugares con evaluaciones más nuevas</div></div>' +
+    '<button class="xp-link" type="button" data-xp-action="all">Ver todos</button></div><div class="xp-list">' + recent.map(xpCard).join('') + '</div></div>';
+  el.innerHTML = html;
+}
+
+function xpDescribe() {
+  var parts = [];
+  if (xp.sub) parts.push(xp.sub); else if (xp.tipo) parts.push(bizName(xp.tipo));
+  if (xp.prov) parts.push('en ' + xp.prov);
+  var d = parts.length ? parts.join(' ') : 'Todos los lugares';
+  var how = xp.intent ? 'ordenados por ' + intentLabel(xp.intent) : (xp.sort === 'many' ? 'con más evaluaciones primero' : xp.sort === 'recent' ? 'con evaluaciones más recientes primero' : 'ordenados por mejor evaluación');
+  return d + ', ' + how + '.';
+}
+function renderXpResults() {
+  var el = document.getElementById('xp-results');
+  if (!ratingsLoaded) { el.innerHTML = '<div class="xp-empty">Cargando evaluaciones…</div>'; return; }
+  if (loadFailed) { el.innerHTML = '<div class="xp-empty">⚠️ No se pudo conectar con la base de datos. <button class="xp-link" type="button" data-xp-action="retry">Reintentar</button></div>'; return; }
+  var list = xpSorted(xpFilter()), total = list.length, shown = Math.min(xp.shown, total);
+  var html = '<div class="xp-resh"><div><h3>' + plural(total, 'lugar', 'lugares') + '</h3><p>' + escapeHtml(xpDescribe()) + '</p></div>' +
+    '<div><label for="xp-sort" class="sr-only">Ordenar por</label><select id="xp-sort" class="xp-sort">' +
+    '<option value="best"' + (xp.sort === 'best' ? ' selected' : '') + '>Mejor evaluados</option>' +
+    '<option value="many"' + (xp.sort === 'many' ? ' selected' : '') + '>Más evaluaciones</option>' +
+    '<option value="recent"' + (xp.sort === 'recent' ? ' selected' : '') + '>Más recientes</option></select></div></div>';
+  if (!total) html += '<div class="xp-empty">No encontramos lugares con esos filtros. Prueba quitando alguno.</div>';
+  else html += '<div class="xp-list">' + list.slice(0, shown).map(xpCard).join('') + '</div>' +
+    '<div class="xp-more"><span>Mostrando ' + shown + ' de ' + total + '</span>' + (shown < total ? '<button class="xp-btn" type="button" data-xp-action="more">Ver más resultados</button>' : '') + '</div>';
+  html += '<div class="xp-cta"><h4>¿No ves el lugar que buscas?</h4><p>Si lo visitaste, sé el primero en evaluarlo y ayuda a otras personas a decidir.</p>' +
+    '<button class="xp-btn fill" type="button" data-xp-action="eval">Evaluar este lugar</button></div>';
+  el.innerHTML = html;
+}
+
+function renderXpActive() {
+  var chips = [];
+  if (xp.q.trim()) chips.push(['q', '“' + xp.q.trim() + '”']);
+  if (xp.tipo) chips.push(['tipo', bizName(xp.tipo)]);
+  if (xp.sub) chips.push(['sub', xp.sub]);
+  if (xp.prov) chips.push(['prov', xp.prov]);
+  if (xp.intent) chips.push(['intent', intentLabel(xp.intent)]);
+  var el = document.getElementById('xp-active');
+  if (!chips.length && !xp.browse) { el.innerHTML = ''; return; }
+  el.innerHTML = chips.map(function(c) {
+    return '<button class="xp-rm" type="button" data-xp-rm="' + c[0] + '" aria-label="Quitar filtro ' + escapeHtml(c[1]) + '">' + escapeHtml(c[1]) +
+      ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>';
+  }).join('') + '<button class="xp-clear" type="button" data-xp-action="clear">Limpiar filtros</button>';
+}
+
+function xpFillSelects() {
+  var t = document.getElementById('xp-tipo'), s = document.getElementById('xp-sub'), p = document.getElementById('xp-prov');
+  if (!xpReady) {
+    t.innerHTML = '<option value="">Todos los tipos</option>' + NEGOCIOS.map(function(b) { return '<option value="' + b.id + '">' + escapeHtml(b.icon + ' ' + b.name) + '</option>'; }).join('');
+    p.innerHTML = '<option value="">Todo Panamá</option>' + PROVINCIAS.concat(COMARCAS).map(function(x) { return '<option value="' + escapeHtml(x) + '">' + escapeHtml(x) + '</option>'; }).join('');
+    document.getElementById('xp-intents').innerHTML = INTENTS.map(function(i) {
+      return '<button class="xp-chip" type="button" data-intent="' + i.id + '" aria-pressed="false">' + i.label + '</button>';
+    }).join('');
+    xpReady = true;
+  }
+  var biz = NEGOCIOS.find(function(b) { return b.id === xp.tipo; });
+  s.innerHTML = biz ? '<option value="">Todas las categorías</option>' + biz.subs.map(function(x) { return '<option value="' + escapeHtml(x) + '">' + escapeHtml(x) + '</option>'; }).join('')
+                    : '<option value="">Elige primero el tipo</option>';
+  s.disabled = !biz;
+  t.value = xp.tipo; s.value = xp.sub; p.value = xp.prov;
+  document.querySelectorAll('#xp-intents .xp-chip').forEach(function(c) { c.setAttribute('aria-pressed', c.getAttribute('data-intent') === xp.intent ? 'true' : 'false'); });
+  var q = document.getElementById('xp-q');
+  if (document.activeElement !== q) q.value = xp.q;
 }
 
 function renderExplore() {
-  var q = (document.getElementById('explore-input') ? document.getElementById('explore-input').value : '').toLowerCase().trim();
-  var list = ratings.slice();
-  if (q) list = list.filter(function(r) { return r.place.toLowerCase().indexOf(q) > -1; });
-  if (provFilter) list = list.filter(function(r) { return r.provincia === provFilter; });
-  if (catFilter) list.sort(function(a,b) { return b.scores[catFilter] - a.scores[catFilter]; });
-  else list.sort(function(a,b) { return avg(b.scores) - avg(a.scores); });
-  var countEl = document.getElementById('explore-count');
-  if (countEl) countEl.textContent = list.length ? list.length + ' lugar' + (list.length !== 1 ? 'es' : '') + ' encontrado' + (list.length !== 1 ? 's' : '') : '';
-  var el = document.getElementById('explore-list');
-  if (!list.length) { el.innerHTML = '<div class="no-results">No se encontraron resultados.<br>¡Sé el primero en evaluar este lugar!</div>'; return; }
-  var pos = ['gold','silver','bronze'];
-  el.innerHTML = list.map(function(r, i) {
-    var score = catFilter ? r.scores[catFilter].toFixed(1) : avg(r.scores).toFixed(1);
-    var topCat = CATS.reduce(function(b,c) { return r.scores[c.id] > r.scores[b.id] ? c : b; });
-    var lowCat = CATS.reduce(function(b,c) { return r.scores[c.id] < r.scores[b.id] ? c : b; });
-    return '<div class="rank-card" data-place="' + escapeHtml(r.place) + '">' +
-      '<div class="rank-pos ' + (pos[i]||'') + '">' + (i+1) + '</div>' +
-      '<div class="rank-info"><div class="rank-name">' + escapeHtml(r.place) + '</div>' +
-      '<div class="rank-badges">' + (r.provincia ? '<span class="bdg">📍 ' + escapeHtml(r.provincia) + '</span>' : '') +
-      '<span class="bdg hi">' + topCat.icon + ' ' + topCat.name + '</span>' +
-      '<span class="bdg">' + lowCat.icon + ' mejorar: ' + lowCat.name + '</span></div></div>' +
-      '<div class="rank-score"><div class="rank-num">' + score + '</div><div class="rank-pes">PES</div><div class="rank-votes">' + r.count + ' eval.' + (r.lastUpdate ? ' · ' + new Date(r.lastUpdate).toLocaleDateString('es-PA',{month:'short',year:'numeric'}) : '') + '</div></div></div>';
-  }).join('');
+  xpG = null;
+  xpFillSelects();
+  renderXpActive();
+  var showRes = xpHasFilters() || xp.browse;
+  document.getElementById('xp-home').style.display = showRes ? 'none' : 'block';
+  document.getElementById('xp-results').style.display = showRes ? 'block' : 'none';
+  if (showRes) renderXpResults(); else renderXpHome();
+}
+function initExplore() { renderExplore(); }
+
+// Lleva a "Evaluar" con los datos que ya conocemos; la persona solo completa lo que falte.
+function prefillEval(o) {
+  showView('evaluar');
+  resetEval();
+  o = o || {};
+  document.getElementById('place-input').value = o.place || '';
+  var biz = NEGOCIOS.find(function(b) { return b.id === o.tipo; });
+  if (biz) {
+    curBiz = biz.id; buildBizGrid(); buildSubcats(biz.id);
+    if (o.subcat && biz.subs.indexOf(o.subcat) > -1) {
+      curSub = o.subcat;
+      document.querySelectorAll('#subcat-grid .sel-btn').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-sub') === curSub); });
+    }
+  }
+  if (o.provincia && PROVINCIAS.concat(COMARCAS).indexOf(o.provincia) > -1) {
+    curProv = o.provincia;
+    document.querySelectorAll('.prov-btn').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-prov') === curProv); });
+  }
+  updateReady();
+  setTimeout(function() { guideNext(false); }, 450);
 }
 
 // ── RANKING ──────────────────────────────────────────────────────
@@ -1197,17 +1569,39 @@ function renderRanking() {
 function openModal(placeName) {
   var r = ratings.find(function(x) { return x.place === placeName; });
   if (!r) return;
-  var score = avg(r.scores);
+  xpG = null;
+  var score = avg(r.scores), n = r.count || 0;
+  document.getElementById('modal-kicker').textContent = (r.subcat || bizName(r.tipo) || '').toUpperCase();
   document.getElementById('modal-title').textContent = r.place;
-  document.getElementById('modal-pes').textContent = score.toFixed(1) + ' / 5';
-  document.getElementById('modal-label').textContent = 'Promundi Experience Score · ' + r.count + ' evaluación' + (r.count !== 1 ? 'es' : '');
+  document.getElementById('modal-meta').textContent = xpMeta(r);
+  document.getElementById('modal-pes').textContent = score.toFixed(1);
+  document.getElementById('modal-label').textContent = 'PES · escala 1 a 5 · según ' + plural(n, 'evaluación', 'evaluaciones') + ' de usuarios';
+  var last = xpLast(r);
+  document.getElementById('modal-last').textContent = last ? 'Última evaluación: ' + last : '';
+  var seal = document.getElementById('modal-seal');
+  if (n > 10) { seal.textContent = 'Más de 10 evaluaciones'; seal.className = 'md-seal'; seal.style.display = 'inline-block'; }
+  else if (n < MIN_EVALS) { seal.textContent = 'Pocas evaluaciones: el puntaje aún puede cambiar mucho'; seal.className = 'md-seal warn'; seal.style.display = 'inline-block'; }
+  else seal.style.display = 'none';
+  var st = document.getElementById('modal-strengths'), tops = xpTopDims(r, 3);
+  if (tops.length) {
+    st.innerHTML = '<span>Destaca en</span>' + tops.map(function(c) { return '<span class="c">' + escapeHtml(c.name) + ' ' + r.scores[c.id].toFixed(1) + '</span>'; }).join('');
+    st.style.display = 'flex';
+  } else st.style.display = 'none';
   document.getElementById('modal-bars').innerHTML = CATS.map(function(cat) {
     var v = r.scores[cat.id], pct = (v/5)*100, cls = v<=2?'low':v<=3.4?'mid':'';
     return '<div class="cat-bar-row"><div class="cat-bar-label">' + cat.icon + ' ' + cat.name + '</div>' +
       '<div class="cat-bar-track"><div class="cat-bar-fill ' + cls + '" style="width:' + pct + '%"></div></div>' +
-      '<div class="cat-bar-score">' + v + '</div></div>';
+      '<div class="cat-bar-score">' + v.toFixed(1) + '</div></div>';
   }).join('');
-  var others = ratings.filter(function(x) { return x.place !== placeName; }).sort(function(a,b) { return avg(b.scores)-avg(a.scores); }).slice(0,3);
+  var wa = 'Mira cómo evalúan a ' + r.place + ' en Promundi 🇵🇦: PES ' + score.toFixed(1) + ' según ' + plural(n, 'evaluación', 'evaluaciones') + ' de usuarios.\n' + SITE_URL;
+  document.getElementById('modal-wa-btn').href = 'https://wa.me/?text=' + encodeURIComponent(wa);
+  var ev = document.getElementById('modal-eval-btn');
+  ev.setAttribute('data-place', r.place);
+  var same = ratings.filter(function(x) { return x.place !== placeName && (!r.tipo || x.tipo === r.tipo); });
+  var saveF = xp.intent; xp.intent = '';
+  var others = xpSorted(same).slice(0, 3);
+  xp.intent = saveF;
+  document.getElementById('modal-compare-title').style.display = others.length ? 'block' : 'none';
   document.getElementById('modal-compare').innerHTML = others.map(function(o) {
     var os = avg(o.scores), diff = os - score, cls = diff>0.2?'cs-up':diff<-0.2?'cs-dn':'cs-eq', sign = diff>0?'+':'';
     return '<div class="compare-row" data-place="' + escapeHtml(o.place) + '">' +
@@ -1215,6 +1609,7 @@ function openModal(placeName) {
       '<div class="compare-score ' + cls + '">' + os.toFixed(1) + ' <span style="font-size:0.68rem;font-weight:400">(' + sign + diff.toFixed(1) + ')</span></div></div>';
   }).join('');
   document.getElementById('modal-overlay').classList.add('open');
+  var cb = document.getElementById('modal-close-btn'); if (cb) cb.focus();
 }
 
 // ── STATS ────────────────────────────────────────────────────────
@@ -1262,6 +1657,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('#biz-grid .sel-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
     buildSubcats(id);
+    guideNext(true);
   });
 
   // Subcat grid clicks
@@ -1273,6 +1669,7 @@ document.addEventListener('DOMContentLoaded', function() {
     curSub = sub;
     document.querySelectorAll('#subcat-grid .sel-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
+    guideNext(true);
   });
 
   // Prov grid clicks
@@ -1284,7 +1681,18 @@ document.addEventListener('DOMContentLoaded', function() {
     curProv = prov;
     document.querySelectorAll('.prov-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
+    guideNext(true);
   });
+
+  // Nombre: Enter / "Ir" del teclado lleva al siguiente paso; escribir solo actualiza el estado del botón
+  document.getElementById('place-input').addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    if (!placeLooksValid()) { toast(UI_TEXT[LANG].toastName); return; }
+    this.blur();
+    guideNext(false);
+  });
+  document.getElementById('place-input').addEventListener('input', updateReady);
 
   // Start eval
   document.getElementById('start-btn').addEventListener('click', startEval);
@@ -1328,25 +1736,51 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('lead-cancel-btn').addEventListener('click', closeLead);
   document.getElementById('lead-send-btn').addEventListener('click', submitLead);
 
-  // Explore
-  document.getElementById('explore-input').addEventListener('input', renderExplore);
-  document.getElementById('cat-filters').addEventListener('click', function(e) {
-    var btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    catFilter = btn.getAttribute('data-cat') || null;
-    document.querySelectorAll('#cat-filters .filter-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    renderExplore();
+  // Explorar
+  var xpView = document.getElementById('view-explorar');
+  function xpRefresh(resetPage) { if (resetPage) xp.shown = XP_PAGE; renderExplore(); }
+  document.getElementById('xp-q').addEventListener('input', function() { xp.q = this.value; xpRefresh(true); });
+  document.getElementById('xp-tipo').addEventListener('change', function() { xp.tipo = this.value; xp.sub = ''; xpRefresh(true); });
+  document.getElementById('xp-sub').addEventListener('change', function() { xp.sub = this.value; xpRefresh(true); });
+  document.getElementById('xp-prov').addEventListener('change', function() { xp.prov = this.value; xpRefresh(true); });
+  xpView.addEventListener('change', function(e) { if (e.target && e.target.id === 'xp-sort') { xp.sort = e.target.value; xpRefresh(true); } });
+  xpView.addEventListener('click', function(e) {
+    var chip = e.target.closest('.xp-chip');
+    if (chip) { var id = chip.getAttribute('data-intent'); xp.intent = xp.intent === id ? '' : id; xpRefresh(true); return; }
+    var rm = e.target.closest('[data-xp-rm]');
+    if (rm) {
+      var k = rm.getAttribute('data-xp-rm');
+      if (k === 'q') xp.q = ''; else if (k === 'tipo') { xp.tipo = ''; xp.sub = ''; } else if (k === 'sub') xp.sub = ''; else if (k === 'prov') xp.prov = ''; else if (k === 'intent') xp.intent = '';
+      xpRefresh(true); return;
+    }
+    var act = e.target.closest('[data-xp-action]');
+    if (!act) return;
+    var a = act.getAttribute('data-xp-action');
+    if (a === 'all') { xp.browse = true; xp.sort = 'best'; xpRefresh(true); window.scrollTo(0, 0); }
+    else if (a === 'clear') { xp.q = ''; xp.tipo = ''; xp.sub = ''; xp.prov = ''; xp.intent = ''; xp.browse = false; xpRefresh(true); }
+    else if (a === 'more') { xp.shown += XP_PAGE; xpRefresh(false); }
+    else if (a === 'eval') { prefillEval({place: xp.q.trim().length >= 3 ? xp.q.trim() : '', tipo: xp.tipo, subcat: xp.sub, provincia: xp.prov}); }
+    else if (a === 'retry') { loadRatings().then(function() { renderExplore(); renderRanking(); updateStats(); }); }
   });
-  document.getElementById('prov-filters').addEventListener('click', function(e) {
-    var btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    provFilter = btn.getAttribute('data-prov') || null;
-    document.querySelectorAll('#prov-filters .filter-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    renderExplore();
+  // Tarjetas con teclado (Enter / Espacio)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { document.getElementById('modal-overlay').classList.remove('open'); return; }
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var card = e.target.closest && e.target.closest('.rank-card');
+    if (card && card.getAttribute('data-place') && card === e.target) { e.preventDefault(); openModal(card.getAttribute('data-place')); }
   });
-
+  // Detalle: evaluar este lugar
+  document.getElementById('modal-eval-btn').addEventListener('click', function() {
+    var name = this.getAttribute('data-place');
+    var r = ratings.find(function(x) { return x.place === name; });
+    document.getElementById('modal-overlay').classList.remove('open');
+    if (r) prefillEval({place: r.place, tipo: r.tipo, subcat: r.subcat, provincia: r.provincia});
+  });
+  // Barra inferior (móvil)
+  document.getElementById('bottom-nav').addEventListener('click', function(e) {
+    var b = e.target.closest('.bn-item');
+    if (b && b.getAttribute('data-bn')) showView(b.getAttribute('data-bn'));
+  });
 });
 </script>
 </body>
