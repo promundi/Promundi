@@ -846,12 +846,22 @@ async function submitLead() {
 
 // tiene permiso para leer la tabla cruda 'ratings' directamente.
 async function sbFetchAll() {
+  // Supabase devuelve como máximo 1000 filas por petición. Pedimos por páginas
+  // con orden fijo para que ninguna fila se repita ni se salte entre páginas.
+  // Si cualquier página falla, devolvemos null (error) en vez de datos incompletos.
+  var PAGE = 1000, MAX_PAGES = 50, all = [];
   try {
-    const r = await fetch(SB_URL + '/rest/v1/ratings_public?select=*', {
-      headers: { 'apikey': SB_KEY }
-    });
-    if (!r.ok) return null;
-    return await r.json();
+    for (var p = 0; p < MAX_PAGES; p++) {
+      const r = await fetch(SB_URL + '/rest/v1/ratings_public?select=*&order=place.asc,provincia.asc&limit=' + PAGE + '&offset=' + (p * PAGE), {
+        headers: { 'apikey': SB_KEY }
+      });
+      if (!r.ok) return null;
+      const rows = await r.json();
+      if (!Array.isArray(rows)) return null;
+      all = all.concat(rows);
+      if (rows.length < PAGE) return all;
+    }
+    return all;
   } catch(e) { return null; }
 }
 
