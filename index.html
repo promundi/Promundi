@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Promundi 🇵🇦 — Inteligencia de Experiencia al Cliente en Panamá</title>
-<meta name="description" content="Evalúa de forma anónima y gratis la experiencia en restaurantes, farmacias, bancos, hospitales y otros negocios de Panamá. Promundi calcula el PES, un puntaje de 1 a 5 basado en 6 dimensiones del servicio." />
+<meta name="description" content="Evalúa gratis y sin crear cuenta la experiencia en restaurantes, farmacias, bancos, hospitales y otros negocios de Panamá. Promundi calcula el PES, un puntaje de 1 a 5 basado en 6 dimensiones del servicio." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://promundi.tech/" />
 <meta property="og:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
-<meta property="og:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
+<meta property="og:description" content="Evalúa negocios de Panamá sin cuenta y sin escribir reseñas." />
 <meta property="og:locale" content="es_PA" />
 <meta property="og:url" content="https://promundi.tech/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Promundi" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Promundi 🇵🇦 — Experiencia al Cliente en Panamá" />
-<meta name="twitter:description" content="Evalúa negocios de Panamá de forma anónima. Sin texto, sin cuenta." />
+<meta name="twitter:description" content="Evalúa negocios de Panamá sin cuenta y sin escribir reseñas." />
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -26,14 +26,14 @@
    "url": "https://promundi.tech/",
    "name": "Promundi",
    "inLanguage": "es-PA",
-   "description": "Evaluaciones anónimas de la experiencia de clientes en negocios de Panamá."
+   "description": "Evaluaciones ciudadanas de la experiencia de clientes en negocios de Panamá."
   },
   {
    "@type": "WebApplication",
    "@id": "https://promundi.tech/#app",
    "name": "Promundi",
    "url": "https://promundi.tech/",
-   "description": "Plataforma ciudadana para evaluar de forma anónima la experiencia en negocios de Panamá y consultar el puntaje PES.",
+   "description": "Plataforma ciudadana para evaluar, sin crear cuenta, la experiencia en negocios de Panamá y consultar el puntaje PES.",
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Web",
    "inLanguage": "es-PA",
@@ -55,7 +55,7 @@
      "name": "¿Qué es Promundi?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Promundi es una plataforma ciudadana en Panamá donde cualquier persona evalúa de forma anónima su experiencia en un negocio. Con esas evaluaciones se calcula un puntaje comparable entre negocios, llamado PES."
+      "text": "Promundi es una plataforma ciudadana en Panamá donde cualquier persona evalúa su experiencia en un negocio sin crear cuenta. Con esas evaluaciones se calcula un puntaje comparable entre negocios, llamado PES."
      }
     },
     {
@@ -76,10 +76,10 @@
     },
     {
      "@type": "Question",
-     "name": "¿Mi evaluación es anónima?",
+     "name": "¿Qué datos guarda Promundi?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Sí. Promundi no pide nombre ni cuenta y no hay reseñas escritas. Solo se guardan indicadores estructurados sobre el negocio evaluado."
+      "text": "Promundi no pide nombre, cuenta ni correo, y no hay reseñas escritas. Se guardan indicadores estructurados sobre el negocio evaluado. Para limitar el spam se guarda por unos días una huella técnica irreversible derivada de la conexión (no tu dirección IP), que no permite identificarte."
      }
     },
     {
@@ -112,7 +112,9 @@
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+/* Letras alojadas en el propio sitio (licencia SIL OFL, ver OFL-*.txt): no se piden a servidores de Google. */
+@font-face{font-family:'Fraunces';src:url('fraunces-var.woff') format('woff');font-weight:600 900;font-style:normal;font-display:swap;}
+@font-face{font-family:'Plus Jakarta Sans';src:url('plus-jakarta-sans-var.woff') format('woff');font-weight:400 800;font-style:normal;font-display:swap;}
 :root{
   --p:#0A4D6E;--a:#C8102E;--g:#2D6A4F;--o:#C9943A;
   --bg:#F8F9FA;--card:#fff;--tx:#1A1A1A;--mu:#64748B;--bd:#E2E8F0;
@@ -122,7 +124,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 
 /* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:var(--card);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;}
-.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:var(--p);cursor:default;user-select:none;}
+.logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.4rem;color:var(--p);cursor:default;user-select:none;}
 .logo span{color:var(--a);}
 .nav-pills{display:flex;gap:6px;}
 .pill{padding:8px 16px;border-radius:8px;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;background:transparent;color:var(--mu);transition:all 0.2s;}
@@ -132,7 +134,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5
 /* HERO */
 .hero{padding:60px 5% 44px;text-align:center;background:radial-gradient(ellipse at top right,#dbeafe 0%,var(--bg) 70%);border-bottom:1px solid var(--bd);}
 .hero-badge{display:inline-block;padding:5px 16px;background:rgba(10,77,110,0.1);color:var(--p);border-radius:100px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;color:var(--p);max-width:640px;margin:0 auto 14px;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;color:var(--p);max-width:640px;margin:0 auto 14px;}
 .hero h1 em{color:var(--a);font-style:normal;}
 .hero p{max-width:520px;margin:0 auto 28px;color:var(--mu);font-size:0.95rem;line-height:1.7;}
 .hero-ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
@@ -154,7 +156,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5
 /* MAIN */
 .main{max-width:860px;margin:0 auto;padding:36px 5% 80px;}
 .view{display:none;}.view.active{display:block;}
-.sec-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:6px;}
+.sec-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;margin-bottom:6px;}
 .sec-sub{font-size:0.78rem;color:var(--mu);margin-bottom:20px;}
 
 /* SETUP CARD */
@@ -202,7 +204,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5
 .q-card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:32px 26px 24px;margin-bottom:16px;box-shadow:0 4px 20px rgba(10,77,110,0.06);animation:fadeUp 0.3s ease;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .q-label{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--g);background:rgba(45,106,79,0.1);padding:4px 12px;border-radius:100px;margin-bottom:16px;}
-.q-text{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,3vw,1.45rem);font-weight:700;line-height:1.3;margin-bottom:24px;text-align:center;}
+.q-text{font-family:'Fraunces',serif;font-size:clamp(1.1rem,3vw,1.45rem);font-weight:700;line-height:1.3;margin-bottom:24px;text-align:center;}
 .emo-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
 .emo-btn{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 8px;border:2px solid var(--bd);border-radius:12px;background:#fff;cursor:pointer;transition:all 0.18s;min-width:60px;flex:1;}
 .emo-btn:hover{border-color:var(--p);transform:translateY(-2px);}
@@ -215,12 +217,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5
 
 /* SUBMIT */
 .submit-card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:26px;margin-bottom:16px;}
-.submit-card h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;margin-bottom:16px;}
+.submit-card h3{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;margin-bottom:16px;}
 .sum-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
 .sum-item{text-align:center;padding:12px 6px;background:var(--bg);border-radius:10px;border:1px solid var(--bd);}
 .sum-emoji{font-size:1.2rem;}
 .sum-cat{font-size:0.62rem;color:var(--mu);margin:3px 0 2px;font-weight:600;text-transform:uppercase;}
-.sum-score{font-family:'Playfair Display',serif;font-weight:800;font-size:0.95rem;color:var(--p);}
+.sum-score{font-family:'Fraunces',serif;font-weight:800;font-size:0.95rem;color:var(--p);}
 .submit-row{display:flex;gap:10px;justify-content:flex-end;}
 .wa-card{background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:16px 20px;margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
 .wa-card p{font-size:0.84rem;color:#166534;font-weight:600;margin:0;}
@@ -241,7 +243,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5
 .rank-list{display:flex;flex-direction:column;gap:10px;}
 .rank-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.2s;}
 .rank-card:hover{border-color:var(--p);box-shadow:0 4px 16px rgba(10,77,110,0.1);}
-.rank-pos{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;width:28px;text-align:center;flex-shrink:0;color:var(--bd);}
+.rank-pos{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:800;width:28px;text-align:center;flex-shrink:0;color:var(--bd);}
 .rank-pos.gold{color:var(--o)}.rank-pos.silver{color:#A8A8A8}.rank-pos.bronze{color:#C07840}
 .rank-info{flex:1;}
 .rank-name{font-weight:700;font-size:0.9rem;margin-bottom:4px;}
@@ -249,19 +251,19 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5
 .bdg{font-size:0.62rem;padding:2px 8px;border-radius:100px;background:var(--bg);color:var(--mu);border:1px solid var(--bd);}
 .bdg.hi{background:rgba(45,106,79,0.1);color:var(--g);border-color:rgba(45,106,79,0.2);}
 .rank-score{text-align:right;flex-shrink:0;}
-.rank-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--p);}
+.rank-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:800;color:var(--p);}
 .rank-pes{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mu);}
 .rank-votes{font-size:0.66rem;color:var(--mu);}
 
 /* STATS BAR */
 .stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px;}
 .stat-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;text-align:center;}
-.stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:var(--p);}
+.stat-num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:800;color:var(--p);}
 .stat-lab2{font-size:0.68rem;color:var(--mu);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
 
 /* B2B */
 .b2b{background:var(--p);border-radius:18px;padding:36px;color:#fff;margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.b2b h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px;}
+.b2b h2{font-family:'Fraunces',serif;font-size:1.5rem;margin-bottom:10px;}
 .b2b p{font-size:0.87rem;opacity:0.85;line-height:1.6;max-width:440px;}
 .b2b-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
 .b2b-tag{padding:4px 11px;background:rgba(255,255,255,0.15);border-radius:100px;font-size:0.7rem;font-weight:600;}
@@ -273,7 +275,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 5
 .about-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px;}
 .about-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;}
 .about-card .icon{font-size:1.6rem;margin-bottom:10px;}
-.about-card h3{font-family:'Playfair Display',serif;font-weight:700;margin-bottom:6px;font-size:0.9rem;}
+.about-card h3{font-family:'Fraunces',serif;font-weight:700;margin-bottom:6px;font-size:0.9rem;}
 .about-card p{font-size:0.8rem;color:var(--mu);line-height:1.5;}
 .table-wrap{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;}
 table{width:100%;border-collapse:collapse;font-size:0.8rem;}
@@ -289,9 +291,9 @@ tr:last-child td{border-bottom:none;}
 @keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
 .modal-handle{width:40px;height:4px;background:var(--bd);border-radius:2px;margin:0 auto 20px;}
 .modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:12px;}
-.modal-title{font-family:'Playfair Display',serif;font-weight:800;font-size:1.3rem;line-height:1.2;}
+.modal-title{font-family:'Fraunces',serif;font-weight:800;font-size:1.3rem;line-height:1.2;}
 .modal-close{background:var(--bd);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.modal-pes{font-family:'Playfair Display',serif;font-size:3rem;font-weight:800;color:var(--p);line-height:1;margin-bottom:2px;}
+.modal-pes{font-family:'Fraunces',serif;font-size:3rem;font-weight:800;color:var(--p);line-height:1;margin-bottom:2px;}
 .modal-pes-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);margin-bottom:22px;}
 .cat-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
 .cat-bar-row{display:flex;align-items:center;gap:12px;}
@@ -300,12 +302,12 @@ tr:last-child td{border-bottom:none;}
 .cat-bar-fill{height:100%;border-radius:4px;background:var(--p);transition:width 0.6s ease;}
 .cat-bar-fill.low{background:var(--a)}.cat-bar-fill.mid{background:var(--o)}
 .cat-bar-score{font-weight:700;font-size:0.88rem;width:24px;text-align:right;flex-shrink:0;}
-.compare-title{font-family:'Playfair Display',serif;font-weight:700;font-size:0.92rem;margin-bottom:12px;}
+.compare-title{font-family:'Fraunces',serif;font-weight:700;font-size:0.92rem;margin-bottom:12px;}
 .compare-list{display:flex;flex-direction:column;gap:8px;}
 .compare-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fff;border:1.5px solid var(--bd);border-radius:10px;cursor:pointer;}
 .compare-row:hover{border-color:var(--p);}
 .compare-name{font-size:0.84rem;font-weight:600;}
-.compare-score{font-family:'Playfair Display',serif;font-weight:800;font-size:1rem;}
+.compare-score{font-family:'Fraunces',serif;font-weight:800;font-size:1rem;}
 .cs-up{color:var(--g)}.cs-dn{color:var(--a)}.cs-eq{color:var(--mu)}
 .compare-diff{font-size:0.68rem;color:var(--mu);margin-top:2px;}
 
@@ -313,7 +315,7 @@ tr:last-child td{border-bottom:none;}
 .lead-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,20,25,0.55);align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .lead-overlay.open{display:flex;}
 .lead-card{background:linear-gradient(135deg,var(--p),#08324a);border-radius:18px;padding:26px 22px;color:#fff;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;}
-.lead-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.lead-card h3{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;margin-bottom:6px;}
 .lead-card>p{font-size:0.84rem;color:rgba(255,255,255,0.75);line-height:1.5;margin-bottom:20px;}
 .lead-field{margin-bottom:13px;}
 .lead-field label{display:block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.65);margin-bottom:6px;}
@@ -332,14 +334,14 @@ tr:last-child td{border-bottom:none;}
 .terms-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,20,25,0.6);align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .terms-overlay.open{display:flex;}
 .terms-card{background:#fff;border-radius:18px;padding:26px 22px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;}
-.terms-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;color:var(--p);margin-bottom:14px;}
+.terms-card h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--p);margin-bottom:14px;}
 .terms-card p{font-size:0.86rem;line-height:1.6;color:var(--tx);margin-bottom:12px;}
 .terms-card p strong{color:var(--p);}
 .terms-close{width:100%;padding:12px;border:none;border-radius:10px;background:var(--p);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:8px;}
 
 /* EXPLORAR v2 */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
-.xp-head h2{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--p);line-height:1.15;}
+.xp-head h2{font-family:'Fraunces',serif;font-weight:800;font-size:1.5rem;color:var(--p);line-height:1.15;}
 .xp-head p{font-size:0.86rem;color:var(--mu);margin:4px 0 16px;}
 .xp-search{display:flex;align-items:center;gap:10px;height:50px;padding:0 14px;background:#fff;border:1.5px solid var(--bd);border-radius:14px;}
 .xp-search:focus-within{border-color:var(--p);}
@@ -357,7 +359,7 @@ tr:last-child td{border-bottom:none;}
 .xp-rm{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 10px 6px 14px;border:none;border-radius:100px;background:var(--p);color:#fff;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;}
 .xp-clear{background:none;border:none;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--p);cursor:pointer;padding:8px 4px;min-height:36px;}
 .xp-sec{margin-top:26px;}
-.xp-sec h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;}
+.xp-sec h3{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;}
 .xp-sec .xp-sub{font-size:0.78rem;color:var(--mu);margin:2px 0 12px;}
 .xp-sec-top{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;}
 .xp-link{background:none;border:none;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--p);cursor:pointer;min-height:36px;padding:6px 0;}
@@ -371,7 +373,7 @@ tr:last-child td{border-bottom:none;}
 .xp-name{font-weight:700;font-size:0.98rem;line-height:1.25;overflow-wrap:anywhere;}
 .xp-meta{font-size:0.8rem;color:var(--mu);margin-top:3px;}
 .xp-score{text-align:right;flex:none;}
-.xp-num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.7rem;line-height:1;color:var(--p);}
+.xp-num{font-family:'Fraunces',serif;font-weight:800;font-size:1.7rem;line-height:1;color:var(--p);}
 .xp-pes{font-size:0.62rem;font-weight:800;letter-spacing:1px;color:var(--mu);margin-top:2px;}
 .xp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
 .xp-tags:empty{display:none;}
@@ -384,14 +386,14 @@ tr:last-child td{border-bottom:none;}
 .rank-card.xp-few-card .xp-num{color:var(--mu);}
 .rank-card:focus-visible,.xp-chip:focus-visible,.xp-rm:focus-visible,.xp-link:focus-visible{outline:3px solid var(--p);outline-offset:2px;}
 .xp-resh{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:18px 0 12px;}
-.xp-resh h3{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;color:var(--p);}
+.xp-resh h3{font-family:'Fraunces',serif;font-weight:800;font-size:1.5rem;color:var(--p);}
 .xp-resh p{font-size:0.8rem;color:var(--mu);margin-top:2px;}
 .xp-sort{flex:none;min-height:40px;padding:6px 8px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;font-family:inherit;font-size:0.8rem;font-weight:600;color:var(--tx);}
 .xp-more{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;font-size:0.82rem;color:var(--mu);}
 .xp-btn{min-height:44px;padding:10px 18px;border-radius:12px;border:1.5px solid var(--p);background:#fff;color:var(--p);font-family:inherit;font-weight:700;font-size:0.9rem;cursor:pointer;}
 .xp-btn.fill{background:var(--p);color:#fff;}
 .xp-cta{margin-top:22px;background:#EAF2F6;border-radius:16px;padding:18px;}
-.xp-cta h4{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--p);margin-bottom:6px;}
+.xp-cta h4{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;color:var(--p);margin-bottom:6px;}
 .xp-cta p{font-size:0.88rem;line-height:1.5;margin-bottom:12px;}
 .xp-note{margin-top:22px;font-size:0.76rem;line-height:1.5;color:var(--mu);}
 .xp-empty{background:#fff;border:1px dashed #CBD5E1;border-radius:16px;padding:18px;font-size:0.88rem;line-height:1.5;color:var(--mu);margin-top:22px;}
@@ -404,7 +406,7 @@ tr:last-child td{border-bottom:none;}
 .md-seal.warn{background:#FBF3E2;color:#7A5A14;}
 .md-str{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--bd);font-size:0.84rem;font-weight:700;}
 .md-str span.c{background:#E6F0F5;color:#083D58;font-weight:800;font-size:0.78rem;padding:5px 12px;border-radius:100px;}
-.md-h{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;margin-bottom:2px;}
+.md-h{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;margin-bottom:2px;}
 .md-hs{font-size:0.8rem;color:var(--mu);margin-bottom:12px;}
 .md-actions{display:flex;flex-direction:column;gap:10px;margin:20px 0 14px;}
 .md-actions .xp-btn{text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;}
@@ -420,10 +422,31 @@ tr:last-child td{border-bottom:none;}
   .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:52px;padding:6px 2px;background:none;border:none;font-family:inherit;font-size:0.72rem;font-weight:600;color:var(--mu);cursor:pointer;}
   .bn-item svg{stroke:currentColor;}
   .bn-item.active{color:var(--p);font-weight:800;}
-  .toast{bottom:92px;white-space:normal;max-width:88vw;text-align:center;}
+  body .toast{bottom:92px;white-space:normal;max-width:88vw;text-align:center;}
   .xp-selects{grid-template-columns:1fr;}
   .legal-footer{padding-bottom:30px;}
 }
+#step-questions{scroll-margin-top:72px;}
+
+/* DISEÑO v3: botones táctiles, color por dimensión, anillo PES, logo */
+.btn,.xp-btn.fill,.terms-close,.btn-wa{box-shadow:0 3px 0 rgba(0,0,0,.28);transition:transform .08s,box-shadow .08s,background .2s;}
+.btn{border-radius:8px;}
+.btn:active,.xp-btn.fill:active,.terms-close:active,.btn-wa:active{transform:translateY(3px);box-shadow:0 0 0 rgba(0,0,0,0);}
+.sel-btn,.xp-chip,.xp-rm{border-radius:10px;}
+.sel-btn.active::before,.prov-btn.active::before,.xp-chip[aria-pressed="true"]::before{content:'\2713\00a0';font-weight:800;}
+.q-card{border-top:5px solid var(--dim,var(--p));}
+.q-label{color:var(--dim,var(--g));background:rgba(45,106,79,0.1);background:color-mix(in srgb,var(--dim,var(--g)) 12%,#fff);}
+.emo-btn:hover,.emo-btn.active{border-color:var(--dim,var(--p));}
+.emo-btn.active{background:color-mix(in srgb,var(--dim,var(--p)) 10%,#fff);}
+.emo-btn.active .emo-label{color:var(--dim,var(--p));}
+.dimdot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+.md-ring{--pct:0;width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:conic-gradient(var(--p) calc(var(--pct) * 1%),#E2E8F0 0);margin-bottom:10px;}
+.md-ring span{width:82px;height:82px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:800;font-size:2rem;color:var(--p);}
+.logo{display:inline-flex;align-items:center;gap:8px;}
+.logo-mark{flex:none;}
+.cat-bar-label{width:132px;white-space:nowrap;}
+.logo .logo-txt{color:var(--p);}
+.logo .logo-txt span{color:var(--a);}
 /* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--tx);color:#fff;padding:12px 24px;border-radius:100px;font-size:0.86rem;font-weight:600;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:999;white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
@@ -462,7 +485,7 @@ tr:last-child td{border-bottom:none;}
 
 <!-- NAV -->
 <nav>
-  <div class="logo notranslate" id="logo-btn" translate="no">Pro<span>mundi</span> 🇵🇦</div>
+  <div class="logo notranslate" id="logo-btn" translate="no"><span class="logo-txt">Pro<span>mundi</span></span><span aria-hidden="true">🇵🇦</span></div>
   <div class="nav-pills" id="nav-pills">
     <button class="pill active" data-view="evaluar">Evaluar</button>
     <button class="pill" data-view="explorar">Explorar</button>
@@ -475,7 +498,7 @@ tr:last-child td{border-bottom:none;}
 <div class="hero">
   <span class="hero-badge">🇵🇦 Iniciativa Ciudadana · Panamá</span>
   <h1>Transformamos experiencias reales en <em>inteligencia de mercado</em></h1>
-  <p>La primera base de datos estructurada que mide la calidad del servicio en Panamá mediante evaluaciones emocionales anónimas.</p>
+  <p>Evaluaciones ciudadanas, estructuradas y comparables, sobre la experiencia de servicio en negocios de Panamá. Sin cuenta y sin reseñas escritas.</p>
   <div class="hero-ctas">
     <button class="btn btn-p" id="hero-eval-btn">Evaluar un negocio →</button>
     <button class="btn btn-o" id="hero-rank-btn">Ver Indicadores</button>
@@ -487,7 +510,7 @@ tr:last-child td{border-bottom:none;}
     <div class="sdiv"></div>
     <div class="stat-item"><span class="stat-val">6</span><span class="stat-lab">Dimensiones</span></div>
     <div class="sdiv"></div>
-    <div class="stat-item"><span class="stat-val">100%</span><span class="stat-lab">Anónimo</span></div>
+    <div class="stat-item"><span class="stat-val">0</span><span class="stat-lab">Cuentas requeridas</span></div>
   </div>
 </div>
 
@@ -508,7 +531,7 @@ tr:last-child td{border-bottom:none;}
       </div>
     </div>
     <div class="setup-card">
-      <div class="anon">🔒 Tu evaluación es 100% anónima y sin texto</div>
+      <div class="anon">🔒 Sin cuenta, sin nombre, sin correo y sin texto</div>
       <p class="rule-line" id="rule-txt">Evalúa solo lugares que visitaste <strong>en persona</strong>. Para personas <strong>mayores de 18 años</strong>.</p>
       <div style="text-align:right;margin-bottom:8px">
         <button id="lang-toggle" onclick="toggleLang()" style="background:none;border:1px solid var(--bd);border-radius:20px;padding:5px 12px;font-size:0.74rem;font-weight:700;color:var(--p);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif">🇺🇸 English</button>
@@ -592,19 +615,16 @@ tr:last-child td{border-bottom:none;}
     <div class="stat-card"><div class="stat-num" id="stat-votes">0</div><div class="stat-lab2">Evaluaciones</div></div>
     <div class="stat-card"><div class="stat-num" id="stat-avg">—</div><div class="stat-lab2">PES Global</div></div>
   </div>
-  <div class="sec-title">Índice Nacional de Experiencia al Cliente</div>
+  <div class="sec-title">Indicadores de experiencia al cliente</div>
   <div class="sec-sub">Ordenado por Promundi Experience Score (PES) · Escala 1–5</div>
   <div class="rank-list" id="ranking-list"></div>
   <div class="b2b">
     <div>
       <h2>Promundi Data for Business</h2>
-      <p>Acceda a reportes analíticos, benchmarks sectoriales y datasets de experiencia para optimizar su operación.</p>
+      <p>Solicita un reporte con los resultados agregados de tu negocio y su comparación con lugares similares.</p>
       <div class="b2b-tags">
         <span class="b2b-tag">📊 Reportes PES</span>
-        <span class="b2b-tag">📈 Benchmarks</span>
-        <span class="b2b-tag">🗺️ Mapas de calor</span>
-        <span class="b2b-tag">📦 Datasets CSV</span>
-        <span class="b2b-tag">🔔 Alertas</span>
+        <span class="b2b-tag">📈 Comparación con similares</span>
       </div>
     </div>
     <button class="btn btn-w" id="b2b-btn">Solicitar Reporte →</button>
@@ -616,22 +636,22 @@ tr:last-child td{border-bottom:none;}
   <div class="flag"><div class="f1"></div><div class="f2"></div><div class="f3"></div><div class="f4"></div></div>
   <div class="sec-title" style="margin-bottom:18px">¿Qué es Promundi 🇵🇦?</div>
   <div class="about-grid">
-    <div class="about-card"><div class="icon">🇵🇦</div><h3>Misión</h3><p>Construir la primera base de datos estructurada sobre la experiencia del cliente en Panamá, generando inteligencia útil para ciudadanos, empresas e instituciones.</p></div>
+    <div class="about-card"><div class="icon">🇵🇦</div><h3>Misión</h3><p>Construir, poco a poco, una base de datos estructurada sobre la experiencia del cliente en Panamá, con información útil para ciudadanos, empresas e instituciones.</p></div>
     <div class="about-card"><div class="icon">🧠</div><h3>Evaluación Emocional</h3><p>Antes de puntuar, una pregunta activa tu recuerdo emocional real. Sin texto, sin sesgo. Solo emociones convertidas en indicadores.</p></div>
     <div class="about-card"><div class="icon">📊</div><h3>Índice Promundi (PES)</h3><p>Cada negocio recibe un Promundi Experience Score de 1 a 5 basado en 6 dimensiones estructuradas y comparables.</p></div>
-    <div class="about-card"><div class="icon">🔒</div><h3>Privacidad Total</h3><p>No hay nombre, no hay cuenta, no hay reseñas escritas. Solo datos limpios, anónimos y estadísticamente comparables.</p></div>
+    <div class="about-card"><div class="icon">🔒</div><h3>Privacidad por diseño</h3><p>No pedimos nombre, cuenta ni reseñas escritas. Para limitar el spam guardamos por unos días una huella técnica irreversible de la conexión (nunca tu IP), y la verificación anti-bots de Cloudflare procesa tu conexión.</p></div>
   </div>
-  <div class="sec-title" style="margin-bottom:14px">¿Por qué Promundi es diferente?</div>
+  <div class="sec-title" style="margin-bottom:14px">¿Cómo se calcula el PES?</div>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Característica</th><th>Google Reviews</th><th>Promundi 🇵🇦</th></tr></thead>
+      <thead><tr><th>Aspecto</th><th>Cómo funciona</th></tr></thead>
       <tbody>
-        <tr><td>Tipo de dato</td><td>Texto libre</td><td class="ck">✅ Indicadores estructurados</td></tr>
-        <tr><td>Comparabilidad</td><td class="cx">❌ Difícil</td><td class="ck">✅ Directa entre negocios</td></tr>
-        <tr><td>Sesgo de texto</td><td class="cx">❌ Alto</td><td class="ck">✅ Eliminado</td></tr>
-        <tr><td>Anonimato</td><td class="cx">❌ Requiere cuenta</td><td class="ck">✅ 100% anónimo</td></tr>
-        <tr><td>Valor para empresas</td><td>Publicidad</td><td class="ck">✅ Inteligencia de mercado</td></tr>
-        <tr><td>Datos vendibles</td><td class="cx">❌ No</td><td class="ck">✅ Datasets y reportes PES</td></tr>
+        <tr><td>Dimensiones</td><td>6: Atención, Limpieza, Eficiencia, Accesibilidad, Seguridad y Ambiente</td></tr>
+        <tr><td>Escala</td><td>De 1 a 5 en cada dimensión</td></tr>
+        <tr><td>PES de un lugar</td><td>Promedio simple de las 6 dimensiones, sobre todas sus evaluaciones</td></tr>
+        <tr><td>Orden en Explorar</td><td>Se ajusta por número de evaluaciones: "Mejor evaluados" exige 5 o más</td></tr>
+        <tr><td>Datos que se piden</td><td>Sin texto libre, sin cuenta, sin nombre ni correo</td></tr>
+        <tr><td>Qué no es</td><td>No es una certificación ni una inspección: es la percepción de usuarios</td></tr>
       </tbody>
     </table>
   </div>
@@ -713,10 +733,10 @@ tr:last-child td{border-bottom:none;}
 </div>
 <section class="faq-sec" id="faq" aria-label="Preguntas frecuentes">
   <h2>Preguntas frecuentes sobre Promundi</h2>
-  <details><summary>¿Qué es Promundi?</summary><p>Promundi es una plataforma ciudadana en Panamá donde cualquier persona evalúa de forma anónima su experiencia en un negocio. Con esas evaluaciones se calcula un puntaje comparable entre negocios, llamado PES.</p></details>
+  <details><summary>¿Qué es Promundi?</summary><p>Promundi es una plataforma ciudadana en Panamá donde cualquier persona evalúa su experiencia en un negocio sin crear cuenta. Con esas evaluaciones se calcula un puntaje comparable entre negocios, llamado PES.</p></details>
   <details><summary>¿Qué es el PES (Promundi Experience Score)?</summary><p>Es un puntaje de 1 a 5 que resume la experiencia de los clientes en un negocio. Se calcula a partir de 6 dimensiones: Atención, Limpieza, Eficiencia, Accesibilidad, Seguridad y Ambiente.</p></details>
   <details><summary>¿Cómo evalúo un negocio en Panamá con Promundi?</summary><p>Entra a promundi.tech, elige o escribe el negocio que visitaste, indica su tipo y provincia y responde las preguntas de cada dimensión eligiendo una carita. No necesitas crear cuenta ni escribir una reseña.</p></details>
-  <details><summary>¿Mi evaluación es anónima?</summary><p>Sí. Promundi no pide nombre ni cuenta y no hay reseñas escritas. Solo se guardan indicadores estructurados sobre el negocio evaluado.</p></details>
+  <details><summary>¿Qué datos guarda Promundi?</summary><p>Promundi no pide nombre, cuenta ni correo, y no hay reseñas escritas. Se guardan indicadores estructurados sobre el negocio evaluado. Para limitar el spam se guarda por unos días una huella técnica irreversible derivada de la conexión (no tu dirección IP), que no permite identificarte.</p></details>
   <details><summary>¿Promundi tiene costo?</summary><p>Evaluar un negocio en Promundi es gratis.</p></details>
   <details><summary>¿Los puntajes son una certificación o inspección?</summary><p>No. Los puntajes son agregaciones de la percepción de los usuarios. Promundi no realiza inspecciones, auditorías ni evaluaciones técnicas de los negocios.</p></details>
   <details><summary>¿Soy dueño de un negocio y quiero reportar una evaluación, qué hago?</summary><p>Escribe a infopromundi.pa@gmail.com indicando el negocio y el motivo del reporte.</p></details>
@@ -725,7 +745,7 @@ tr:last-child td{border-bottom:none;}
 <footer class="legal-footer">
   Los puntajes en Promundi son agregaciones anónimas de opiniones ciudadanas y no reflejan una postura editorial de la plataforma.
   <br>
-  <button onclick="openTerms()">Términos de Uso</button> · ¿Eres dueño de un negocio? <a href="mailto:infopromundi.pa@gmail.com?subject=Reportar%20evaluaci%C3%B3n">Repórtanos aquí</a>
+  <button onclick="openTerms()">Términos de Uso</button> · <a href="https://www.instagram.com/somospromundi" target="_blank" rel="noopener noreferrer">Instagram</a> · ¿Eres dueño de un negocio? <a href="mailto:infopromundi.pa@gmail.com?subject=Reportar%20evaluaci%C3%B3n">Repórtanos aquí</a>
 </footer>
 
 <div class="terms-overlay" id="terms-overlay">
@@ -1213,8 +1233,15 @@ function startEval() {
   document.getElementById('step-questions').style.display = 'block';
   document.getElementById('prog-place').textContent = val;
   renderQ();
+  // Lleva la vista exactamente al inicio de la 1.ª pregunta (antes quedaba abajo y había que deslizar).
+  var sq = document.getElementById('step-questions');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() { if (sq) sq.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); });
+  });
 }
 
+var DIMC = {atencion:'#B83A4B',limpieza:'#1F7A70',eficiencia:'#A86A0A',accesibilidad:'#2F5DBA',seguridad:'#6A4C93',ambiente:'#2F7D52'};
 function renderQ() {
   var cat = CATS[curQ];
   var total = CATS.length;
@@ -1227,7 +1254,7 @@ function renderQ() {
   var sel = answers[cat.id] || null;
   var catName = LANG === 'en' ? cat.name_en : cat.name;
   var catQ = LANG === 'en' ? cat.q_en : cat.q;
-  var html = '<div class="q-card"><div class="q-label">' + cat.icon + ' ' + catName + '</div><div class="q-text">' + catQ + '</div><div class="emo-row">';
+  var html = '<div class="q-card" style="--dim:' + (DIMC[cat.id] || '#0A4D6E') + '"><div class="q-label">' + cat.icon + ' ' + catName + '</div><div class="q-text">' + catQ + '</div><div class="emo-row">';
   cat.emos.forEach(function(em) {
     var ac = sel === em.v ? ' active' : '';
     var emLabel = LANG === 'en' ? em.l_en : em.l;
@@ -1285,7 +1312,7 @@ async function submitRating() {
   // el token con Cloudflare antes de aceptar el dato. Así una evaluación
   // automatizada (script/bot) no puede llegar a guardarse, aunque conozca
   // la URL de Supabase y la anon key (que son públicas por diseño).
-  var ok = false, httpStatus = 0;
+  var ok = false, httpStatus = 0, errCode = '';
   try {
     var r = await fetch('/api/submit', {
       method: 'POST',
@@ -1293,14 +1320,19 @@ async function submitRating() {
       body: JSON.stringify({ token: token, place: curPlace, tipo: curBiz, subcat: curSub, provincia: curProv, scores: answers })
     });
     ok = r.ok; httpStatus = r.status;
-  } catch (e) { ok = false; }
+    if (!ok) { try { var jr = await r.json(); errCode = (jr && jr.error) ? String(jr.error).slice(0, 40) : ''; } catch (e2) {} }
+  } catch (e) { ok = false; httpStatus = 0; }
 
   if (submitBtn) submitBtn.disabled = false;
   if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
 
   if (!ok) {
+    // Mensaje según la causa real. Solo decimos "sin conexión" cuando de verdad no hubo respuesta del servidor.
     if (httpStatus === 429) toast('⚠️ Ya alcanzaste el límite de evaluaciones de hoy para este lugar. Vuelve mañana.');
-    else toast('❌ No se pudo enviar. Revisa tu conexión e intenta de nuevo.');
+    else if (httpStatus === 0) toast('📶 No hay conexión con el servidor. Revisa tu internet e intenta de nuevo.');
+    else if (httpStatus === 403) toast('⚠️ La verificación de seguridad venció. Complétala de nuevo y envía otra vez.');
+    else if (httpStatus === 400) toast('⚠️ Faltan datos o hay un dato inválido. Vuelve atrás y revisa. (código: ' + (errCode || '400') + ')');
+    else toast('❌ El servidor no pudo guardar tu evaluación. Intenta en unos minutos. (código: ' + (errCode || httpStatus) + ')');
     return;
   }
 
@@ -1313,7 +1345,7 @@ async function submitRating() {
   if (activeView && activeView.id === 'view-explorar') renderExplore();
 
   toast('✅ PES enviado. Tu experiencia ya forma parte del Índice Promundi.');
-  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá de forma anónima:\n' + SITE_URL);
+  var txt = encodeURIComponent('Acabo de evaluar ' + curPlace + ' en Promundi 🇵🇦\nEvalúa tú también cualquier negocio de Panamá, sin cuenta ni nombre:\n' + SITE_URL);
   document.getElementById('wa-btn').href = 'https://wa.me/?text=' + txt;
   document.getElementById('wa-card').style.display = 'flex';
 }
@@ -1584,7 +1616,7 @@ function openModal(placeName) {
   document.getElementById('modal-kicker').textContent = (r.subcat || bizName(r.tipo) || '').toUpperCase();
   document.getElementById('modal-title').textContent = r.place;
   document.getElementById('modal-meta').textContent = xpMeta(r);
-  document.getElementById('modal-pes').textContent = score.toFixed(1);
+  document.getElementById('modal-pes').innerHTML = '<div class="md-ring" style="--pct:' + (score / 5 * 100).toFixed(0) + '"><span>' + score.toFixed(1) + '</span></div>';
   document.getElementById('modal-label').textContent = 'PES · escala 1 a 5 · según ' + plural(n, 'evaluación', 'evaluaciones') + ' de usuarios';
   var last = xpLast(r);
   document.getElementById('modal-last').textContent = last ? 'Última evaluación: ' + last : '';
@@ -1599,7 +1631,7 @@ function openModal(placeName) {
   } else st.style.display = 'none';
   document.getElementById('modal-bars').innerHTML = CATS.map(function(cat) {
     var v = r.scores[cat.id], pct = (v/5)*100, cls = v<=2?'low':v<=3.4?'mid':'';
-    return '<div class="cat-bar-row"><div class="cat-bar-label">' + cat.icon + ' ' + cat.name + '</div>' +
+    return '<div class="cat-bar-row"><div class="cat-bar-label"><span class="dimdot" style="background:' + (DIMC[cat.id] || '#0A4D6E') + '"></span>' + cat.icon + ' ' + cat.name + '</div>' +
       '<div class="cat-bar-track"><div class="cat-bar-fill ' + cls + '" style="width:' + pct + '%"></div></div>' +
       '<div class="cat-bar-score">' + v.toFixed(1) + '</div></div>';
   }).join('');
